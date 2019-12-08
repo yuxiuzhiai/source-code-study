@@ -1,0 +1,21 @@
+LockFactory
+
+注释
+
+	Directory使用这个类实现锁。
+
+子类
+
+	FSLockFactory
+		基于文件系统实现锁的基类
+		子类：
+			SimpleFSLockFactory：通过创建文件的方式实现锁
+			NativeFSLockFactory
+
+	SingleInstanceLockFactory
+		通过单例模式的对象实现
+
+	NoLockFactory
+
+	VerifyingLockFactory
+		包装别的LockFactory

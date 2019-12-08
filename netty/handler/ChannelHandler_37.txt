@@ -1,0 +1,164 @@
+ChannelHandler
+
+注释
+
+	处理io事件或是拦截一个io操作,并把它转发到它在ChannelPipeline中的下一个handler
+
+	ChannelHandler本身没有提供太多方法,但是通常需要实现它的两个子类之一:
+		ChannelInboundHandler
+		ChannelOutboundHandler
+
+	一些适配器:
+		ChannelInboundHandlerAdapter
+		ChannelOutboundHandlerAdapter
+		ChannelDuplexHandler
+
+	一个ChannelHandler被提供了一个ChannelHandlerContext对象,handler通过这个context对象与它的ChannelPipeline交互
+
+接口定义
+
+	public interface ChannelHandler {
+
+	    /**
+	     * Gets called after the {@link ChannelHandler} was added to the actual context and it's ready to handle events.
+	     */
+	    void handlerAdded(ChannelHandlerContext ctx) throws Exception;
+
+	    /**
+	     * Gets called after the {@link ChannelHandler} was removed from the actual context and it doesn't handle events
+	     * anymore.
+	     */
+	    void handlerRemoved(ChannelHandlerContext ctx) throws Exception;
+
+	    /**
+	     * Gets called if a {@link Throwable} was thrown.
+	     *
+	     * @deprecated is part of {@link ChannelInboundHandler}
+	     */
+	    @Deprecated
+	    void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception;
+
+	    /**
+	     * Indicates that the same instance of the annotated {@link ChannelHandler}
+	     * can be added to one or more {@link ChannelPipeline}s multiple times
+	     * without a race condition.
+	     * <p>
+	     * If this annotation is not specified, you have to create a new handler
+	     * instance every time you add it to a pipeline because it has unshared
+	     * state such as member variables.
+	     * <p>
+	     * This annotation is provided for documentation purpose, just like
+	     * <a href="http://www.javaconcurrencyinpractice.com/annotations/doc/">the JCIP annotations</a>.
+	     */
+	    @Inherited
+	    @Documented
+	    @Target(ElementType.TYPE)
+	    @Retention(RetentionPolicy.RUNTIME)
+	    @interface Sharable {
+	        // no value
+	    }
+	}
+
+子接口(4)
+
+	ChannelInboundHandler
+
+	ChannelOutboundHandler
+
+	WebSocketFrameDecoder
+
+	WebSocketFrameEncoder
+
+
+子类
+
+适配器:(3)
+
+	ChannelHandlerAdapter
+
+	ChannelInboundHandlerAdapter
+
+	ChannelOutboundHandlerAdapter
+
+codec:
+	
+	ByteToMessageDecoder:
+		抽象类
+		将字节流解码成其他类型
+
+	MessageToMessageDecoder:
+
+	MessageToByteEncoder:
+		抽象类
+		将消息编码为字节
+
+	MessageToMessageEncoder:
+
+	ByteToMessageCodec
+
+	MessageToByteCodec
+
+	frame相关:(4)
+
+		DelimiterBasedFrameDecoder:
+
+		FixedLengthFrameDecoder:
+
+		LengthFieldBasedFrameDecoder:
+
+		LineBasedFrameDecoder
+
+http:(9)
+
+	SslHandler:
+		ssl的支持
+
+	HttpRequestEncoder
+	HttpRequestDecoder
+	HttpResponseEncoder
+	HttpResponseEncoder
+		分别对应request或是response的加解密
+
+	HttpClientCodec:
+		一个组合了HttpRequestEncoder和HttpResponseDecoder的CombinedChannelDuplexHandler,并添加了自动聚合的功能
+
+	HttpServerCodec:
+		同上
+	
+	HttpContentCompressor
+	HttpContentDecompressor:
+		分别对应对服务器响应的加解密操作
+
+WebSocket:
+	
+	WebSocketServerProtocolHandler:
+		处理升级握手
+
+	TextFrameHandler:
+		处理TextWebSocketFrame
+
+	BinaryFrameHandler:
+		处理BinaryWebSocketFrame
+
+	ContinuationFrameHandler:
+		处理ContinuationWebSocketFrame
+
+空闲、超时:
+
+	IdleStateHandler
+
+	ReadTimeoutHandler
+
+	WriteTimeoutHandler
+	
+其他
+
+	SimpleChannelInboundHandler
+
+	ChannelDuplexHandler:
+
+	CombinedChannelDuplexHandler:
+		结合一个ChannelInboundHandler和一个ChannelOutboundHandler成一个ChannelHandler
+
+	ReplayingDecoder:
+			允许你像是已经接收到所有字节那样去处理,而不是检查需要字节的可用

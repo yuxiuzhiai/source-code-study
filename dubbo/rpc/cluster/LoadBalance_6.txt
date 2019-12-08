@@ -1,0 +1,33 @@
+LoadBalance
+
+注释
+
+接口定义
+
+	@SPI(RandomLoadBalance.NAME)
+	public interface LoadBalance {
+
+	    /**
+	     * select one invoker in list.
+	     *
+	     * @param invokers   invokers.
+	     * @param url        refer url
+	     * @param invocation invocation.
+	     * @return selected invoker.
+	     */
+	    @Adaptive("loadbalance")
+	    <T> Invoker<T> select(List<Invoker<T>> invokers, URL url, Invocation invocation) throws RpcException;
+
+	}
+
+子类
+
+	AbstractLoadBalance:
+
+	ConsistentHashLoadBalance
+
+	LeastActiveLoadBalance
+
+	RandomLoadBalance
+
+	RoundRobinLoadBalance

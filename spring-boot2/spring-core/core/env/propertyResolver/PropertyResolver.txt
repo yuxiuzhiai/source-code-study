@@ -1,0 +1,58 @@
+PropertyResolver
+
+注释
+
+    解决查找属性配置相关的接口,以PropertySource为基础
+
+著名子类/接口
+    
+    Environment
+    PropertySourcesPropertyResolver
+
+接口定义
+
+    public interface PropertyResolver {
+
+        boolean containsProperty(String key);
+
+        String getProperty(String key);
+
+        String getProperty(String key, String defaultValue);
+
+        <T> T getProperty(String key, Class<T> targetType);
+
+        <T> T getProperty(String key, Class<T> targetType, T defaultValue);
+
+        /**
+         * Return the property value associated with the given key (never {@code null}).
+         * @throws IllegalStateException if the key cannot be resolved
+         * @see #getRequiredProperty(String, Class)
+         */
+        String getRequiredProperty(String key) throws IllegalStateException;
+
+        <T> T getRequiredProperty(String key, Class<T> targetType) throws IllegalStateException;
+
+        /**
+         * Resolve ${...} placeholders in the given text, replacing them with corresponding
+         * property values as resolved by {@link #getProperty}. Unresolvable placeholders with
+         * no default value are ignored and passed through unchanged.
+         * @param text the String to resolve
+         * @return the resolved String (never {@code null})
+         * @throws IllegalArgumentException if given text is {@code null}
+         * @see #resolveRequiredPlaceholders
+         * @see org.springframework.util.SystemPropertyUtils#resolvePlaceholders(String)
+         */
+        String resolvePlaceholders(String text);
+
+        /**
+         * Resolve ${...} placeholders in the given text, replacing them with corresponding
+         * property values as resolved by {@link #getProperty}. Unresolvable placeholders with
+         * no default value will cause an IllegalArgumentException to be thrown.
+         * @return the resolved String (never {@code null})
+         * @throws IllegalArgumentException if given text is {@code null}
+         * or if any placeholders are unresolvable
+         * @see org.springframework.util.SystemPropertyUtils#resolvePlaceholders(String, boolean)
+         */
+        String resolveRequiredPlaceholders(String text) throws IllegalArgumentException;
+
+    }

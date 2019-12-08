@@ -1,0 +1,39 @@
+HandlerExceptionResolver
+
+注释
+
+	用于处理HandlerMapping或者是handler执行过程中出现的异常
+
+接口定义
+
+	public interface HandlerExceptionResolver {
+
+		ModelAndView resolveException(
+				HttpServletRequest request, HttpServletResponse response, @Nullable Object handler, Exception ex);
+
+	}
+
+子类
+
+	AbstractHandlerExceptionResolver
+
+	AbstractHandlerMethodExceptionResolver:
+		支持处理由HandlerMethod类型的handler抛出的异常
+
+	ExceptionHandlerExceptionResolver:
+		通过@ExceptionHandler方法处理异常
+
+	DefaultHandlerExceptionResolver:
+		默认实现,处理标准的spring异常并将它们转换成对应的status code
+
+	SimpleMappingExceptionResolver:
+		将异常根据类型映射到对应的view
+
+	ResponseStatusExceptionResolver:
+		使用@ResponseStatus注解映射异常
+
+	DefaultErrorAttributes:
+		ErrorAttributes的默认实现,就是那个error页面
+
+	HandlerExceptionResolverComposite:
+		委派给其他一系列的HandlerExceptionResolver

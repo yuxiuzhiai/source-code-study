@@ -1,0 +1,97 @@
+starup.sh脚本会调用Bootstrap类的main方法：
+
+1.Bootstrap类的静态代码块
+	设置两个属性catalinaBaseFile/catalinaHomeFile
+	
+2.新建一个Bootstrap实例
+
+3.调用Bootstrap的init()方法
+	3.1.initClassLoads()
+		3.1.1.加载catalina.properties文件
+			默认会加载tomcat目录/conf/catalina.properties,但是也可以通过设置jvm变量catalina.config来指定
+		3.1.2.依次创建common,catalina,shared加载器,如果没有指定catalina和shared目录,就共用common加载器
+	3.2.把catalina加载器设置到线程上下文加载器中
+	3.3.通过反射加载Catalina类,并创建一个实例
+	3.4.反射调用Catalina的setParentClassLoader方法,将parentClassLoader设置为commonClassLoader
+
+4.根据命令的不同调用对应方法,这里先只关注start命令
+	3.1.设置Catalina的await标志为true
+
+	3.2.调用Catalina的load方法
+		3.2.1.initDirs():验证一下java.io.tmpdir属性是否存在并且对于一个目录
+
+		3.2.2.initNaming():jndi相关
+			1)设置jvm属性catalina.userNaming=true
+			2)设置jvm属性java.naming.factory.url.pkgs=org.apache.naming(jndi相关)
+			3)设置jvm属性java.naming.factory.initial=org.apache.naming.java.javaURLContextFactory
+		
+		3.2.3.创建Digester,并配置一些属性,添加各级Rule
+
+		3.2.4.解析server.xml文件
+
+		3.2.5.digester.parse():会触发各个server.xml中每个标签对应组件的创建
+			1)创建StandardServer
+				1.1)创建一个NamingResourcesImpl
+				1.2)添加一个NamingContextListener监听器
+			2)创建StandardService
+				2.1)创建一个Mapper
+				2.1)创建一个MapperListener
+			3)创建Connector
+				3.1)根据protocolHandlerClassName创建出对应的Protocol,可能为Http11AprProtocol/Http11NioProtocol/AjpAprProtocol/AjpNioProtocol
+					3.1.1)创建出对应的Endpoint
+				3.2)如果executor不为空,则设置
+				3.3)sslImplementationName不为空则设置
+			4)创建StandardEngine
+				4.1)创建一个StandardEngineValve
+			5)创建一个LockOutRealm
+			6)创建一个StandardHost
+				6.1)创建一个StandardHostValve
+
+		3.2.6.调用Server的init()方法:模板方法模式
+			1)发布一个before_init事件
+			2)调用initInternal()方法
+				1)创建一个MBeanServer
+				2)调用NamingResourcesImpl的init()方法
+					发布一个before_init事件
+					将每个标签对应的对象装换成MBean
+					发布一个after_init事件
+				3)中间一段代码看不懂是干嘛的
+				4)调用每个每个service的init()方法
+					3.1)发布一个before_init事件
+					3.2)调用engine的init()方法
+						3.2.1)发布一个before_init事件
+						3.2.2)getRealm()
+						3.2.3)发布一个after_init事件
+					3.2)调用Executor的init()方法,如果配置了executor的话
+					3.3)MapperListener的初始化
+						发布before_init事件
+						注册到MBeanServer
+						发布一个after_init事件
+					3.4)connectors的初始化
+						3.4.1)创建一个CoyoteAdapter
+						3.4.2)protocolHandler的初始化
+							会触发NioEndpoint的初始化:这里会启动对端口的绑定和监听
+					3.5)发布一个after_init事件
+			3)发布一个after_init事件
+			
+	3.3.调用Catalina的start()方法
+		3.3.1.调用Server的start()方法
+			1)发布一个before_start事件
+			2)发布一个configure_start事件
+				NamingContextListener:
+					创建一个NamingContext
+					ContextBindings绑定啥的
+					依次判断每种可能存在的namingResource
+			3)调用NamingResourcesImpl的start()方法
+				发布一个start事件
+					GlobalResourcesLifecycleListener
+			4)调用service的start()方法
+				4.1)发起一个before_start事件
+				4.1)调用engine的start()方法
+					调用Realm的start()方法
+						新建一个X509SubjectDnRetriever
+					对于每个child(host),异步调用start()方法
+
+				4.2)调用executor的start()方法
+				4.3)调用MapperListener的start()方法
+				4.4）调用每个Connector的start()方法

@@ -1,0 +1,20 @@
+PropertySources
+
+注释
+	一或多个PropertySource的holder
+
+接口定义
+
+	public interface PropertySources extends Iterable<PropertySource<?>> {
+		boolean contains(String name);
+		PropertySource<?> get(String name);
+	}
+
+子类
+
+	MutablePropertySources:
+		PropertySources的默认实现,其内部的PropertySource是有序的
+
+注解
+
+	@PropertySources:内容就是@PropertySource注解的数组

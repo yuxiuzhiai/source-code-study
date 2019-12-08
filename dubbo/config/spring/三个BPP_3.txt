@@ -1,0 +1,7 @@
+三个BPP
+
+DubboConfigBindingBeanPostProcessor
+
+ReferenceAnnotationBeanPostProcessor
+
+ServiceAnnotationBeanPostProcessor

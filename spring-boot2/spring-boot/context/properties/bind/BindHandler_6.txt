@@ -1,0 +1,38 @@
+BindHandler
+
+注释
+
+	用于在Binder执行绑定操作的时候处理额外的逻辑的回调接口
+
+接口定义
+
+	public interface BindHandler {
+
+		BindHandler DEFAULT = new BindHandler() {
+
+		};
+
+		default boolean onStart(ConfigurationPropertyName name, Bindable<?> target,
+				BindContext context) {
+			return true;
+		}
+
+		default Object onSuccess(ConfigurationPropertyName name, Bindable<?> target,
+				BindContext context, Object result) {
+			return result;
+		}
+
+		default Object onFailure(ConfigurationPropertyName name, Bindable<?> target,
+				BindContext context, Exception error) throws Exception {
+			throw error;
+		}
+
+		default void onFinish(ConfigurationPropertyName name, Bindable<?> target,
+				BindContext context, Object result) throws Exception {
+		}
+
+	}
+
+子类
+
+	

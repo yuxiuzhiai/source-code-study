@@ -1,0 +1,22 @@
+TomcatConnectorCustomizer
+
+注释
+	
+	回调接口,可以用于自定义Tomcat Connector
+
+接口定义
+
+	@FunctionalInterface
+	public interface TomcatConnectorCustomizer {
+
+		void customize(Connector connector);
+
+	}
+
+子类
+
+	CompressionConnectorCustomizer:
+		在Connector上配置了压缩支持
+
+	SslConnectorCustomizer:
+		在Connector上配置SSL支持

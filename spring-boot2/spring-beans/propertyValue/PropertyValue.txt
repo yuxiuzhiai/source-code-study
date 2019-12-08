@@ -1,0 +1,6 @@
+PropertyValue
+
+注释
+
+    持有一个单独的bean属性的信息和值得对象.使用一个对象而不是通过一个property name为key的map是为了更加灵活,并且可以使属性有序
+    value不需要是最终需要的类型:BeanWrapper实现应该处理所有需要的转换,因为这个对象并不知道它会应用到那个对象上

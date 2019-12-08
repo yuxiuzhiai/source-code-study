@@ -1,0 +1,14 @@
+Watcher
+
+注释
+
+	event handler必须实现的接口
+	Zookeeper客户端会从服务端得到很多种事件
+
+相关类
+
+	WatcherManager
+		服务端处理Watcher.注册Watcher以及触发Watcher
+
+	Zookeeper.ZKWatcherManager
+		客户端处理Watcher

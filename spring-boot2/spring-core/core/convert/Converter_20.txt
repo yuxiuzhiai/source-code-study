@@ -1,0 +1,12 @@
+Converter
+
+注释
+
+    从 S -> T的转换器
+
+接口定义
+
+    @FunctionalInterface
+    public interface Converter<S, T> {
+        T convert(S source);
+    }

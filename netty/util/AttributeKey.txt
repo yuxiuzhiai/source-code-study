@@ -1,0 +1,5 @@
+AttributeKey
+
+注释
+
+	用于在AttributeMap中访问Attribute的key

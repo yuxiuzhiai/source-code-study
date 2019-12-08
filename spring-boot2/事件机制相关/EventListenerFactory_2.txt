@@ -1,0 +1,20 @@
+EventListenerFactory
+
+注释
+
+    为@EventListener注解的方法创建一个ApplicationListener
+
+接口定义
+
+    public interface EventListenerFactory {
+
+        boolean supportsMethod(Method method);
+
+        ApplicationListener<?> createApplicationListener(String beanName, Class<?> type, Method method);
+
+    }
+
+子类
+    
+    DefaultEventListenerFactory:
+    	其功能主要由ApplicationListenerMethodAdapter实现

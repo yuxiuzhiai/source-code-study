@@ -1,0 +1,15 @@
+WebArgumentResolver
+
+注释
+
+	为特定类型的方法参数注册自定义的处理器
+
+接口定义
+
+	public interface WebArgumentResolver {
+
+		Object UNRESOLVED = new Object();
+
+		Object resolveArgument(MethodParameter methodParameter, NativeWebRequest webRequest) throws Exception;
+
+	}

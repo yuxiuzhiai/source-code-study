@@ -1,0 +1,5 @@
+SpringApplicationBuilder
+
+注释
+
+	SpringAppplication和ApplicationContext的builder,流式api并且支持层级结构

@@ -1,0 +1,21 @@
+CacheFactory
+
+接口定义
+
+	@SPI("lru")
+	public interface CacheFactory {
+
+	    @Adaptive("cache")
+	    Cache getCache(URL url);
+
+	}
+
+子类
+
+	AbstractCacheFactory
+
+	LruCacheFactory
+
+	ThreadLocalCacheFactory
+
+	JCacheFactory

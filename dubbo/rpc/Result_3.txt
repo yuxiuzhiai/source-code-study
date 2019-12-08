@@ -1,0 +1,33 @@
+Result
+
+注释
+
+	RPC调用的结果
+
+接口定义
+
+    public interface Result {
+
+        Object getValue();
+
+        Throwable getException();
+
+        boolean hasException();
+
+        Object recreate() throws Throwable;
+
+        Object getResult();
+
+        Map<String, String> getAttachments();
+
+        String getAttachment(String key);
+
+        String getAttachment(String key, String defaultValue);
+
+    }
+
+子类
+
+	RpcResult
+
+	DecodeableRpcResult

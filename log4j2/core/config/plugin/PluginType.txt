@@ -1,0 +1,9 @@
+PluginType
+
+类
+
+	1
+
+描述
+	
+	用于描述一个plugin，包括PluginEntry，类名，elementName属性

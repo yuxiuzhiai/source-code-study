@@ -1,0 +1,12 @@
+AbstractManager
+
+类
+
+	22
+
+描述
+
+
+子类
+
+	OutputStreamManager:管理OutputStream，使可以在多个Logger间共享

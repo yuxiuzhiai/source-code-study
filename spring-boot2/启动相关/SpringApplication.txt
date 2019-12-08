@@ -1,0 +1,60 @@
+SpringApplication:
+	
+注释:用于引导和启动一个spring应用
+
+拓展点
+
+    addInitializers(ACI):添加ACI
+    setDefaultProperties(Map/Properties):往PropertySources中加入一个PropertySource
+    setAdditionalProfiles:添加activeProfiles
+
+内部属性:
+   
+    static String DEFAULT_CONTEXT_CLASS = "org.springframework.context.annotation.AnnotationConfigApplicationContext"
+    
+    static String DEFAULT_WEB_CONTEXT_CLASS = "org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext"
+
+    //根据classpath中是否有这几个类判断是否是SERVLET类型应用
+    static String[] WEB_ENVIRONMENT_CLASSES = { "javax.servlet.Servlet","org.springframework.web.context.ConfigurableWebApplicationContext" }
+    
+    static String DEFAULT_REACTIVE_WEB_CONTEXT_CLASS = "org.springframework.boot.web.reactive.context.ReactiveWebServerApplicationContext"
+    
+    static String REACTIVE_WEB_ENVIRONMENT_CLASS = "org.springframework.web.reactive.DispatcherHandler"
+
+    static String MVC_WEB_ENVIRONMENT_CLASS = "org.springframework.web.servlet.DispatcherServlet"
+
+    static String BANNER_LOCATION_PROPERTY_VALUE = "banner.txt"
+
+    static String BANNER_LOCATION_PROPERTY = "banner.location"
+
+    static String SYSTEM_PROPERTY_JAVA_AWT_HEADLESS = "java.awt.headless"
+
+    Set<Class<?>> primarySources;//the primary bean sources
+
+    Set<String> sources;//
+
+    Class<?> mainApplicationClass;//main方法所在的类
+
+    Banner.Mode bannerMode = Banner.Mode.CONSOLE;
+
+    ResourceLoader resourceLoader;
+
+    BeanNameGenerator beanNameGenerator;
+
+    ConfigurableEnvironment environment;
+
+    Class<? extends ConfigurableApplicationContext> applicationContextClass;
+
+    WebApplicationType webApplicationType;//枚举NONE,SERVLET,REACTIVE
+
+    boolean headless = true;
+
+    boolean registerShutdownHook = true;
+
+    List<ApplicationContextInitializer<?>> initializers;
+
+    List<ApplicationListener<?>> listeners;
+
+    Map<String, Object> defaultProperties;
+
+    Set<String> additionalProfiles

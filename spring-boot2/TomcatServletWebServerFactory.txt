@@ -1,0 +1,6 @@
+TomcatServletWebServerFactory
+
+注释
+
+    用于创建TomcatWebServer.可以通过spring的ServletContextInitializer或者Tomcat的LifecycleListener来实例化
+    除非明确配置否则tomcat会在8080端口监听http请求

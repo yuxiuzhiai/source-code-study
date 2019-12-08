@@ -1,0 +1,47 @@
+PropertyAccessor
+
+注释
+
+	访问属性,没有限制,可以通过getter或者直接访问属性
+	可能也可以设置一个属性的值
+
+接口定义
+
+	public interface PropertyAccessor {
+
+		Class<?>[] getSpecificTargetClasses();
+
+		boolean canRead(EvaluationContext context, @Nullable Object target, String name) throws AccessException;
+
+		TypedValue read(EvaluationContext context, @Nullable Object target, String name) throws AccessException;
+
+		boolean canWrite(EvaluationContext context, @Nullable Object target, String name) throws AccessException;
+
+		void write(EvaluationContext context, @Nullable Object target, String name, @Nullable Object newValue)
+				throws AccessException;
+
+	}
+
+子接口
+	
+	CompilablePropertyAccessor:
+		可以生成代表访问操作的字节码
+
+子类(6)
+
+	BeanExpressionContextAccessor:
+		知道如何遍历beans和spring的BeanExpressionContext的上下文对象
+
+	BeanFactoryAccessor:
+		知道如何遍历BeanFactory中的bean
+
+	ReflectivePropertyAccessor:
+		使用反射区读取或者设置属性
+
+	DataBindingPropertyAccessor:
+		用于data binding目的的PropertyAccessor变体,使用反射区访问属性
+
+	EnvironmentAccessor:
+		只读的PropertyAccessor,知道怎么遍历Environment实例的key
+
+	MapAccessor

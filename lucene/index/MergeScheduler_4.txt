@@ -1,0 +1,11 @@
+MergeScheduler
+
+注释
+
+	MergePolicy使用这个接口去实现merge
+
+子类
+
+	ConcurrentMergeScheduler
+	NoMergeScheduler
+	SerialMergeScheduler

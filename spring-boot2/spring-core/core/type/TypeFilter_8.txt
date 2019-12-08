@@ -1,0 +1,27 @@
+TypeFilter
+
+注释
+
+	基于MetadataReader的type filter
+
+接口定义
+
+	public interface TypeFilter {
+
+		boolean match(MetadataReader metadataReader, MetadataReaderFactory metadataReaderFactory) throws IOException;
+
+	}
+
+子类(7)
+
+	AbstractTypeHierarchyTraversingFilter:
+		可以层级遍历
+
+	AnnotationTypeFilter:
+		基于注解的TypeFilter,比如@Component/@ManagedBean/@Named注解就是作此功能的
+	AssignableTypeFilter:
+	AspectJTypeFilter
+	RegexPatternTypeFilter
+	TypeExcludeFilter
+	AutoConfigurationExcludeFilter:
+		匹配注册了的自动配置类

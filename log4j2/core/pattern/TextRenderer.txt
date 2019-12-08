@@ -1,0 +1,15 @@
+TextRenderer
+
+类
+
+	4
+
+描述
+
+	将输入渲染成输出
+
+子类
+
+	PlainTextRenderer:将输入原封不动的转成输出
+	HtmlTextRenderer:空的！
+	JAnsiTextRenderer

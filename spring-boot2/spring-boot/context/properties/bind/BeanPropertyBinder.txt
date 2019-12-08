@@ -1,0 +1,13 @@
+BeanPropertyBinder
+
+注释
+
+	可以被BeanBinder使用的Binder,用于递归地绑定bean属性
+
+接口定义
+
+	interface BeanPropertyBinder {
+
+		Object bindProperty(String propertyName, Bindable<?> target);
+
+	}

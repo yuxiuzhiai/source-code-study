@@ -1,0 +1,21 @@
+Client
+
+接口定义
+
+	public interface Client extends Endpoint, Channel, Resetable {
+
+	    /**
+	     * reconnect.
+	     */
+	    void reconnect() throws RemotingException;
+
+	    @Deprecated
+	    void reset(com.alibaba.dubbo.common.Parameters parameters);
+
+	}
+
+子接口
+
+	ExchangeClient
+
+子类(8)

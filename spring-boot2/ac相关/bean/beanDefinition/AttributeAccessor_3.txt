@@ -1,0 +1,26 @@
+interface AttributeAccessor
+
+注释
+
+    Interface defining a generic contract for attaching and accessing metadata to/from arbitrary objects.
+
+接口定义
+
+    public interface AttributeAccessor {
+
+        void setAttribute(String name, @Nullable Object value);
+
+        Object getAttribute(String name);
+
+        Object removeAttribute(String name);
+
+        boolean hasAttribute(String name);
+
+        String[] attributeNames();
+
+    }
+
+子类
+
+    AttributeAccessorSupport
+    BeanMetadataAttributeAccessor

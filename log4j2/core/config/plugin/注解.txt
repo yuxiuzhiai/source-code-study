@@ -1,0 +1,25 @@
+注解
+
+类
+
+	11
+
+
+描述
+
+	plugin相关注解
+
+
+相关类
+
+	Plugin:将一个类标记为Plugin的枚举
+	PluginAliases
+	PluginAttribute:标记一个plugin的属性和默认值
+	PluginBuilderAttribute:用在builder中，标记字段是plugin的一个属性
+	PluginBuilderFactory:
+	PluginConfiguration:将一个参数或是字段标记为Configuration
+	PluginElement:将一个参数标记为Plugin，对应一个xml元素
+	PluginFactory:将一个方法标记为创建plugin的工厂
+	PluginNode:将参数标记为plugin的一个node
+	PluginValue:
+	PluginVisitorStrategy

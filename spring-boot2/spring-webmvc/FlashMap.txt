@@ -1,0 +1,6 @@
+FlashMap
+
+注释
+
+	提供了一种可以在一个request中储存属性,然后在另一个request中使用的能力
+	这在redirect的时候很好用

@@ -1,0 +1,13 @@
+MergeStrategy
+
+类
+
+	2
+
+描述
+	
+	合并两个配置.是一个扩展点，可以通过自己实现这个接口，并通过log4j.mergeStrategy属性指定全称类名来使用自定义个MergeStrategy
+
+子类
+	
+	DefaultMergeStrategy

@@ -1,0 +1,20 @@
+TypeComparator
+
+注释
+
+	比较两个对象..
+
+接口定义
+
+	public interface TypeComparator {
+
+		boolean canCompare(@Nullable Object firstObject, @Nullable Object secondObject);
+
+		int compare(@Nullable Object firstObject, @Nullable Object secondObject) throws EvaluationException;
+
+	}
+
+子类
+
+	StandardTypeComparator:
+		基本实现

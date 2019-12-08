@@ -1,0 +1,15 @@
+ChannelOption
+
+注释
+
+	允许以线程安全的方式去配置ChannelConfig
+
+子类
+
+	EpollChannelOption
+
+	KQueueChannelOption
+
+	SctpChannelOption
+
+	UnixChannelOption

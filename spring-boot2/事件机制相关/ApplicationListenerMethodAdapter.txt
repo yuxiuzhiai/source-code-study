@@ -1,0 +1,2 @@
+ApplicationListenerMethodAdapter:
+    注释:传递事件到@EventListener注解的方法中

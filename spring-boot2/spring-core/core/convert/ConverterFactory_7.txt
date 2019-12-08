@@ -1,0 +1,32 @@
+ConverterFactory
+
+注释
+
+接口定义
+
+    public interface ConverterFactory<S, R> {
+
+        <T extends R> Converter<S, T> getConverter(Class<T> targetType);
+
+    }
+
+子类(6)
+
+	CharacterToNumberFactory:
+		将Character转换成JDK标准的Number实现
+		支持的Number类包括:Byte,Short,Integer,Float,Double,Long,BinInteger,BigDecimal.这个操作会将转换操作委派给NumberUtils.convertNumberToTargetClass(NUmber,Class)
+
+	IntegerToEnumConverterFactory:
+		转换Integer到Enum的一组转换器
+
+	NumberToNumberConverterFactory：
+		JDK NUmber实现类之间的转换
+
+	StringToEnumConverterFactory：
+		String -> Enum,通过调用Enum.valueOf(Class,String)方法
+
+	StringToEnumIgnoringCaseConverterFactory:
+		忽略大小写的String -> Enum
+
+	StringToNumberConverterFactory：
+		String -> Number.委派给NumberUtils.parseNUmber(String,Class)实现

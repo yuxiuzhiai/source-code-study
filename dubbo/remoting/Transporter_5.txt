@@ -1,0 +1,24 @@
+Transporter
+
+接口定义
+
+	@SPI("netty")
+	public interface Transporter {
+
+	    @Adaptive({Constants.SERVER_KEY, Constants.TRANSPORTER_KEY})
+	    Server bind(URL url, ChannelHandler handler) throws RemotingException;
+
+	    @Adaptive({Constants.CLIENT_KEY, Constants.TRANSPORTER_KEY})
+	    Client connect(URL url, ChannelHandler handler) throws RemotingException;
+
+	}
+
+子类
+
+	NettyTransporter
+
+	GrizzlyTransporter
+
+	MinaTransporter
+
+	NettyTransporter:(Netty4)

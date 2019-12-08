@@ -1,0 +1,16 @@
+LoaderUtil
+
+类
+
+	1
+
+描述
+
+	ClassLoader相关工具类
+
+主要方法
+
+Collection<UrlResource> findUrlResources(final String resource):
+	获取当前ThreadContext、加载自己的、ClassLoader.getSystemClassLoader()获取到的Classloader;
+	分别获取该路径的resource
+	返回resource collection 或者是空

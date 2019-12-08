@@ -1,0 +1,27 @@
+ConfigurationPropertySource
+
+注释
+
+    ConfigurationProperty的source
+
+接口定义
+
+    public interface ConfigurationPropertySource {
+
+        ConfigurationProperty getConfigurationProperty(ConfigurationPropertyName name);
+
+        ConfigurationPropertyState containsDescendantOf(ConfigurationPropertyName name);
+
+        default ConfigurationPropertySource filter(
+                Predicate<ConfigurationPropertyName> filter) {
+            return new FilteredConfigurationPropertiesSource(this, filter);
+        }
+
+        default ConfigurationPropertySource withAliases(
+                ConfigurationPropertyNameAliases aliases) {
+            return new AliasedConfigurationPropertySource(this, aliases);
+        }
+
+        Object getUnderlyingSource();
+
+    }

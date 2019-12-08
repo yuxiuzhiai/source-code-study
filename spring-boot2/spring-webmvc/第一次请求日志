@@ -1,0 +1,58 @@
+2018-04-29 19:24:11.291 DEBUG 4648 --- [nio-8083-exec-1] o.a.coyote.http11.Http11InputBuffer      : Received [GET /hello HTTP/1.1
+Host: localhost:8083
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:59.0) Gecko/20100101 Firefox/59.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+Cache-Control: max-age=0
+
+]
+2018-04-29 19:24:11.340 DEBUG 4648 --- [nio-8083-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing servlet 'dispatcherServlet'
+2018-04-29 19:24:11.341  INFO 4648 --- [nio-8083-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring FrameworkServlet 'dispatcherServlet'
+2018-04-29 19:24:11.341  INFO 4648 --- [nio-8083-exec-1] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization started
+2018-04-29 19:24:11.341 DEBUG 4648 --- [nio-8083-exec-1] o.s.b.f.s.DefaultListableBeanFactory     : Returning cached instance of singleton bean 'multipartResolver'
+2018-04-29 19:24:11.341 DEBUG 4648 --- [nio-8083-exec-1] o.s.web.servlet.DispatcherServlet        : Using MultipartResolver [org.springframework.web.multipart.support.StandardServletMultipartResolver@79ccaafd]
+2018-04-29 19:24:11.342 DEBUG 4648 --- [nio-8083-exec-1] o.s.b.f.s.DefaultListableBeanFactory     : Creating instance of bean 'org.springframework.web.servlet.i18n.AcceptHeaderLocaleResolver'
+2018-04-29 19:24:11.347 DEBUG 4648 --- [nio-8083-exec-1] o.s.b.f.s.DefaultListableBeanFactory     : Finished creating instance of bean 'org.springframework.web.servlet.i18n.AcceptHeaderLocaleResolver'
+2018-04-29 19:24:11.347 DEBUG 4648 --- [nio-8083-exec-1] o.s.web.servlet.DispatcherServlet        : Unable to locate LocaleResolver with name 'localeResolver': using default [org.springframework.web.servlet.i18n.AcceptHeaderLocaleResolver@73338653]
+2018-04-29 19:24:11.347 DEBUG 4648 --- [nio-8083-exec-1] o.s.b.f.s.DefaultListableBeanFactory     : Creating instance of bean 'org.springframework.web.servlet.theme.FixedThemeResolver'
+2018-04-29 19:24:11.347 DEBUG 4648 --- [nio-8083-exec-1] o.s.b.f.s.DefaultListableBeanFactory     : Finished creating instance of bean 'org.springframework.web.servlet.theme.FixedThemeResolver'
+2018-04-29 19:24:11.347 DEBUG 4648 --- [nio-8083-exec-1] o.s.web.servlet.DispatcherServlet        : Unable to locate ThemeResolver with name 'themeResolver': using default [org.springframework.web.servlet.theme.FixedThemeResolver@7ab21918]
+2018-04-29 19:24:11.347 DEBUG 4648 --- [nio-8083-exec-1] o.s.b.f.s.DefaultListableBeanFactory     : Returning cached instance of singleton bean 'faviconHandlerMapping'
+2018-04-29 19:24:11.347 DEBUG 4648 --- [nio-8083-exec-1] o.s.b.f.s.DefaultListableBeanFactory     : Returning cached instance of singleton bean 'requestMappingHandlerMapping'
+2018-04-29 19:24:11.347 DEBUG 4648 --- [nio-8083-exec-1] o.s.b.f.s.DefaultListableBeanFactory     : Returning cached instance of singleton bean 'viewControllerHandlerMapping'
+2018-04-29 19:24:11.347 DEBUG 4648 --- [nio-8083-exec-1] o.s.b.f.s.DefaultListableBeanFactory     : Returning cached instance of singleton bean 'beanNameHandlerMapping'
+2018-04-29 19:24:11.347 DEBUG 4648 --- [nio-8083-exec-1] o.s.b.f.s.DefaultListableBeanFactory     : Returning cached instance of singleton bean 'resourceHandlerMapping'
+2018-04-29 19:24:11.362 DEBUG 4648 --- [nio-8083-exec-1] o.s.b.f.s.DefaultListableBeanFactory     : Returning cached instance of singleton bean 'defaultServletHandlerMapping'
+2018-04-29 19:24:11.362 DEBUG 4648 --- [nio-8083-exec-1] o.s.b.f.s.DefaultListableBeanFactory     : Returning cached instance of singleton bean 'welcomePageHandlerMapping'
+2018-04-29 19:24:11.362 DEBUG 4648 --- [nio-8083-exec-1] o.s.b.f.s.DefaultListableBeanFactory     : Returning cached instance of singleton bean 'requestMappingHandlerAdapter'
+2018-04-29 19:24:11.362 DEBUG 4648 --- [nio-8083-exec-1] o.s.b.f.s.DefaultListableBeanFactory     : Returning cached instance of singleton bean 'httpRequestHandlerAdapter'
+2018-04-29 19:24:11.362 DEBUG 4648 --- [nio-8083-exec-1] o.s.b.f.s.DefaultListableBeanFactory     : Returning cached instance of singleton bean 'simpleControllerHandlerAdapter'
+2018-04-29 19:24:11.362 DEBUG 4648 --- [nio-8083-exec-1] o.s.b.f.s.DefaultListableBeanFactory     : Returning cached instance of singleton bean 'errorAttributes'
+2018-04-29 19:24:11.362 DEBUG 4648 --- [nio-8083-exec-1] o.s.b.f.s.DefaultListableBeanFactory     : Returning cached instance of singleton bean 'handlerExceptionResolver'
+2018-04-29 19:24:11.362 DEBUG 4648 --- [nio-8083-exec-1] o.s.b.f.s.DefaultListableBeanFactory     : Creating instance of bean 'org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator'
+2018-04-29 19:24:11.362 DEBUG 4648 --- [nio-8083-exec-1] o.s.b.f.s.DefaultListableBeanFactory     : Finished creating instance of bean 'org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator'
+2018-04-29 19:24:11.362 DEBUG 4648 --- [nio-8083-exec-1] o.s.web.servlet.DispatcherServlet        : Unable to locate RequestToViewNameTranslator with name 'viewNameTranslator': using default [org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@1d5e4a89]
+2018-04-29 19:24:11.362 DEBUG 4648 --- [nio-8083-exec-1] o.s.b.f.s.DefaultListableBeanFactory     : Returning cached instance of singleton bean 'beanNameViewResolver'
+2018-04-29 19:24:11.362 DEBUG 4648 --- [nio-8083-exec-1] o.s.b.f.s.DefaultListableBeanFactory     : Returning cached instance of singleton bean 'mvcViewResolver'
+2018-04-29 19:24:11.362 DEBUG 4648 --- [nio-8083-exec-1] o.s.b.f.s.DefaultListableBeanFactory     : Returning cached instance of singleton bean 'defaultViewResolver'
+2018-04-29 19:24:11.362 DEBUG 4648 --- [nio-8083-exec-1] o.s.b.f.s.DefaultListableBeanFactory     : Returning cached instance of singleton bean 'viewResolver'
+2018-04-29 19:24:11.362 DEBUG 4648 --- [nio-8083-exec-1] o.s.b.f.s.DefaultListableBeanFactory     : Creating instance of bean 'org.springframework.web.servlet.support.SessionFlashMapManager'
+2018-04-29 19:24:11.362 DEBUG 4648 --- [nio-8083-exec-1] o.s.b.f.s.DefaultListableBeanFactory     : Finished creating instance of bean 'org.springframework.web.servlet.support.SessionFlashMapManager'
+2018-04-29 19:24:11.362 DEBUG 4648 --- [nio-8083-exec-1] o.s.web.servlet.DispatcherServlet        : Unable to locate FlashMapManager with name 'flashMapManager': using default [org.springframework.web.servlet.support.SessionFlashMapManager@57abe1f8]
+2018-04-29 19:24:11.378 DEBUG 4648 --- [nio-8083-exec-1] o.s.web.servlet.DispatcherServlet        : Published WebApplicationContext of servlet 'dispatcherServlet' as ServletContext attribute with name [org.springframework.web.servlet.FrameworkServlet.CONTEXT.dispatcherServlet]
+2018-04-29 19:24:11.378  INFO 4648 --- [nio-8083-exec-1] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization completed in 37 ms
+2018-04-29 19:24:11.378 DEBUG 4648 --- [nio-8083-exec-1] o.s.web.servlet.DispatcherServlet        : Servlet 'dispatcherServlet' configured successfully
+2018-04-29 19:24:11.394 DEBUG 4648 --- [nio-8083-exec-1] o.s.b.w.s.f.OrderedRequestContextFilter  : Bound request context to thread: org.apache.catalina.connector.RequestFacade@64ee9507
+2018-04-29 19:24:11.409 DEBUG 4648 --- [nio-8083-exec-1] o.s.web.servlet.DispatcherServlet        : DispatcherServlet with name 'dispatcherServlet' processing GET request for [/hello]
+2018-04-29 19:24:11.423 DEBUG 4648 --- [nio-8083-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Looking up handler method for path /hello
+2018-04-29 19:24:11.426 DEBUG 4648 --- [nio-8083-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Returning handler method [public java.lang.String com.blt.springbootstudy.api.IndexApi.hello()]
+2018-04-29 19:24:11.426 DEBUG 4648 --- [nio-8083-exec-1] o.s.b.f.s.DefaultListableBeanFactory     : Returning cached instance of singleton bean 'indexApi'
+2018-04-29 19:24:11.427 DEBUG 4648 --- [nio-8083-exec-1] o.s.web.servlet.DispatcherServlet        : Last-Modified value for [/hello] is: -1
+2018-04-29 19:24:11.460 DEBUG 4648 --- [nio-8083-exec-1] m.m.a.RequestResponseBodyMethodProcessor : Written [world.] as "text/html" using [org.springframework.http.converter.StringHttpMessageConverter@36b310aa]
+2018-04-29 19:24:11.460 DEBUG 4648 --- [nio-8083-exec-1] o.s.web.servlet.DispatcherServlet        : Null ModelAndView returned to DispatcherServlet with name 'dispatcherServlet': assuming HandlerAdapter completed request handling
+2018-04-29 19:24:11.460 DEBUG 4648 --- [nio-8083-exec-1] o.s.web.servlet.DispatcherServlet        : Successfully completed request
+2018-04-29 19:24:11.460 DEBUG 4648 --- [nio-8083-exec-1] o.s.b.w.s.f.OrderedRequestContextFilter  : Cleared thread-bound request context: org.apache.catalina.connector.RequestFacade@64ee9507
+2018-04-29 19:24:11.460 DEBUG 4648 --- [nio-8083-exec-1] o.apache.coyote.http11.Http11Processor   : Socket: [org.apache.tomcat.util.net.NioEndpoint$NioSocketWrapper@2661ae19:org.apache.tomcat.util.net.NioChannel@209050ab:java.nio.channels.SocketChannel[connected local=/0:0:0:0:0:0:0:1:8083 remote=/0:0:0:0:0:0:0:1:64350]], Status in: [OPEN_READ], State out: [OPEN]

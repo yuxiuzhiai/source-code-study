@@ -1,0 +1,48 @@
+Server
+
+接口定义
+
+	public interface Server extends Endpoint, Resetable {
+
+	    /**
+	     * is bound.
+	     *
+	     * @return bound
+	     */
+	    boolean isBound();
+
+	    /**
+	     * get channels.
+	     *
+	     * @return channels
+	     */
+	    Collection<Channel> getChannels();
+
+	    /**
+	     * get channel.
+	     *
+	     * @param remoteAddress
+	     * @return channel
+	     */
+	    Channel getChannel(InetSocketAddress remoteAddress);
+
+	    @Deprecated
+	    void reset(com.alibaba.dubbo.common.Parameters parameters);
+
+	}
+
+子接口
+
+	Peer:
+	ExchangePeer
+	ExchangeServer
+
+子类(10)
+
+	AbstractServer：
+
+	NettyServer:
+
+	HeaderExchangeServer:
+		实现了ExchangeServer,包装了一个Server
+		内部维护了一个心跳机制

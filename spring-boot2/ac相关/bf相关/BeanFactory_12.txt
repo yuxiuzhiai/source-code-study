@@ -1,0 +1,125 @@
+BeanFactory
+
+注释
+
+	访问spring bean容器的根接口
+
+接口定义
+
+	public interface BeanFactory {
+
+		String FACTORY_BEAN_PREFIX = "&";
+
+		Object getBean(String name) throws BeansException;
+
+		<T> T getBean(String name, @Nullable Class<T> requiredType) throws BeansException;
+		Object getBean(String name, Object... args) throws BeansException;
+
+		<T> T getBean(Class<T> requiredType) throws BeansException;
+
+		<T> T getBean(Class<T> requiredType, Object... args) throws BeansException;
+
+		boolean containsBean(String name);
+		boolean isSingleton(String name) throws NoSuchBeanDefinitionException;
+		boolean isPrototype(String name) throws NoSuchBeanDefinitionException;
+
+		boolean isTypeMatch(String name, ResolvableType typeToMatch) throws NoSuchBeanDefinitionException;
+
+		boolean isTypeMatch(String name, @Nullable Class<?> typeToMatch) throws NoSuchBeanDefinitionException;
+
+		Class<?> getType(String name) throws NoSuchBeanDefinitionException;
+
+		String[] getAliases(String name);
+
+	}
+
+子接口(5)
+
+	HierarchicalBeanFactory:
+		添加了对继承结构的支持
+	ConfigurableBeanFactory:
+		继承自HierarchicalBF,还继承了SingletonBeanRegistry
+	ListableBeanFactory:
+		可以列举所有bean的BeanFactory扩展
+	AutowireCapableBeanFactory:
+		具备自动装配功能的BeanFactory
+	ConfigurableListableBeanFactory:
+		继承自ConfigurableBF,AutowireCapableBF,ListableBF
+
+抽象子类(2)
+
+	AbstractBeanFactory
+	AbstractAutowireCapableBeanFactory
+
+
+实现类(4)
+
+	DefaultListableBF:
+		实现了ConfigurableListableBF,继承自AbstractAutowireCapableBF
+
+	SimpleJndiBeanFactory
+
+	XmlBeanFactory:
+		继承自DefaultListableBF,已过时
+
+	StaticListableBeanFactory:
+		管理已有的bean,而不能根据BeanDefinition创建新的bean
+
+
+方法解析:
+#doGetbean方法:
+
+protected <T> T doGetBean(final String name, final Class<T> requiredType, final Object[] args, boolean typeCheckOnly)
+
+1.transformedBeanName(name):看是否以&开头,如果是就去掉
+
+2.getSingleton(beanName):在DefaultSingletonBeanRegistry中找看是否已经有名为beanName的已经实例化了的bean,如果有就返回
+
+3.如果父BF中有且当前BF中没有,则通过父BF实例化bean
+
+4.如果typeCheckOnly=false,则将当前bean标记为已创建：在AbstractBF的alreadyCreated Set中加入这个beanName
+
+5.getMergedLocalBeanDefinition(beanName):如果当前BeanDefinition是child,会和其父BeanDefinition合并
+
+6.checkMergedBeanDefinition(mbd, beanName, args):如果是抽象类,报异常
+
+7.判断依赖
+
+8.创建bean实例:根据bean的scope分别处理
+	对于singleton:调用DefaultSingletonBeanRegistry#getSingleton(beanName,singletonFactory)
+		8.1.beforeSingletonCreation(beanName);
+		8.2.调用createBean(beanName,mbd,args)方法
+			a)Prepare method overrides.
+			b)调用before-instantiation BPP
+			c)doCreateBean(beanName,mbd,args):最终创建特定的bean.pre-creation处理已经结束
+				i)createBeanInstance(beanName, mbd, args):使用一个合适的策略,eg:工厂方法,构造函数,或是简单地实例化来创建一个新的实例
+					1)判断BD是否有factoryMethodName,如果有就通过工厂方法实例化
+					2)determineConstructorsFromBeanPostProcessors(beanClass, beanName):决定要使用的构造函数,检查所有的SmartInstantiationAwareBeanPostProcessor
+					3)instantiateBean(beanName, mbd):如果以上条件都不满足,则就简单地使用无参构造函数
+						3.1)看有没有methodOverrides,如果有就用CGLIB如果没有就调用无参的构造函数
+						3.2)根据创建的bean实例创建一个BeanWrapper
+						3.3)initBeanWrapper
+
+				ii)applyMergedBeanDefinitionPostProcessors(mbd, beanType, beanName):调用MergedBeanDefinitionPostProcessors
+
+				iii)populateBean(beanName, mbd, instanceWrapper):将BeanDefinition中的属性值装填到给定的BeanWrapper中
+					1)InstantiationAwareBeanPostProcessors
+					2)applyPropertyValues(beanName, mbd, bw, pvs)
+
+				iv)initializeBean(beanName, exposedObject, mbd):bean的初始化
+					1)对于实现了*Aware接口的bean,设置进去相应的属性
+					2)调用BPP的postProcessBeforeInitialization:
+						ApplicationContextAwareProcessor:为实现了*Aware的接口设置值
+					3)invokeInitMethods(beanName, wrappedBean, mbd):如果bean实现了InitializingBean或者BD中定义了initMethod,则调用相应方法
+					4)调用BPP的postProcessAfterInitialization
+
+				v)earlySingletonExposure的相应处理
+
+				vi)registerDisposableBeanIfNecessary(beanName, bean, mbd)
+					1)判断bean是否是DisposableBean或者AutoCloseable
+					2)判断BF中是否有DestructionAwareBeanPostProcessors,如果 有就调用requiresDestruction(bean)方法看看需不需要
+	对于prototype:
+
+	其他scope:
+
+9.

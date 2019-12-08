@@ -1,0 +1,19 @@
+BeanDefinitionDocumentReader
+
+接口定义
+
+	解析包含BeanDefinition信息的XML文档
+	XmlBeanDefinitionReader用于真正解析DOM 文档
+
+接口定义
+
+	public interface BeanDefinitionDocumentReader {
+
+		void registerBeanDefinitions(Document doc, XmlReaderContext readerContext)
+				throws BeanDefinitionStoreException;
+
+	}
+
+子类
+
+	DefaultBeanDefinitionDocumentReader

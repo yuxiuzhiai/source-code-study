@@ -1,0 +1,8 @@
+DatadirCleanupManager
+
+注释
+
+	管理snapshots和日志文件的自动清理任务
+	关联配置项有:
+		autopurge.purgeInterval
+		autopurge.snapRetainCount

@@ -1,0 +1,12 @@
+spring.factories中的配置项
+
+result = {LinkedMultiValueMap@1872}  size = 13
+ 0 = {LinkedHashMap$Entry@1908} "org.springframework.boot.autoconfigure.AutoConfigurationImportFilter" -> " size = 1"
+
+ 2 = {LinkedHashMap$Entry@1959} "org.springframework.boot.autoconfigure.AutoConfigurationImportListener" -> " size = 1"
+
+ 4 = {LinkedHashMap$Entry@2007} "org.springframework.boot.autoconfigure.template.TemplateAvailabilityProvider" -> " size = 5"
+
+ 6 = {LinkedHashMap$Entry@2055} "org.springframework.boot.autoconfigure.EnableAutoConfiguration" -> " size = 109"
+
+ 12 = {LinkedHashMap$Entry@2204} "org.springframework.beans.BeanInfoFactory" -> " size = 1"

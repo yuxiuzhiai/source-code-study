@@ -1,0 +1,24 @@
+GenericFilterBean
+
+注释
+
+	Filter的基础实现,也是spring中各个filter的基类
+
+子类
+
+	OncePerRequestFilter:
+		确保一个请求只会被filter一次,其实就是通过一个request属性确定的
+		抽象类
+
+	RequestContextFilter:
+		继承自OncePerRequestFilter
+		一般用于第三方servlet
+
+	AbstractRequestLoggingFilter:
+		继承自OncePerRequestFilter
+		在请求开始之前和之后执行一些日志操作
+		子类应该重写#beforeRequest/#afterRequest来执行一些实际的日志操作
+
+	MultipartFilter:
+		继承自OncePerRequestFilter
+		通过MultipartResolver来解析multipart request

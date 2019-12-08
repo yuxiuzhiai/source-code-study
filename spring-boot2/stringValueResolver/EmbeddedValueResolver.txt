@@ -1,0 +1,2 @@
+EmbeddedValueResolver:
+	注释:已ConfigurableBeanFactory为背景,解决占位符和表达式

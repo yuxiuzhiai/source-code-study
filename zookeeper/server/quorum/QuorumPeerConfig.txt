@@ -1,0 +1,5 @@
+QuorumPeerConfig
+
+注释
+
+	集群配置

@@ -1,0 +1,19 @@
+OriginProvider
+
+注释
+
+	提供访问item Origin的接口
+
+接口定义
+
+	public interface OriginProvider {
+
+		Origin getOrigin();
+
+	}
+
+
+子类
+
+	OriginTrackedValue:
+		Object和Origin的包装器

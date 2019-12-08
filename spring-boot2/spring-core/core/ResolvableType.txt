@@ -1,0 +1,5 @@
+ResolvableType
+
+注释
+
+    封装一个java.lang.reflect.Type,并提供对其各种属性的访问,getSuperType()/getInterfaces()等.一般ResolvableType会从其自己的forField()/forInstance/forMethodParameter()/forClass/forMethodReturnType()等获得实例.

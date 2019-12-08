@@ -1,0 +1,15 @@
+SmartLifecycle
+
+注释
+
+    Lifecycle接口的额扩展,用于需要以特定次序start/shutdown的对象
+
+接口定义
+
+    public interface SmartLifecycle extends Lifecycle, Phased {
+
+        boolean isAutoStartup();
+
+        void stop(Runnable callback);
+
+    }

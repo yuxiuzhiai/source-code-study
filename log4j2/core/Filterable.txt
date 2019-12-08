@@ -1,0 +1,15 @@
+Filterable
+
+类
+
+	14
+
+描述
+
+	执行事件过滤
+
+子类
+
+	AbstractFilter
+	ThresholdFilter:根据level来过滤事件
+	DynamicThresholdFilter:

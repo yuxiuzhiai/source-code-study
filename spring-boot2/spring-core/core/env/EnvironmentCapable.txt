@@ -1,0 +1,5 @@
+EnvironmentCapable
+
+注释
+
+    指明对象包含了一个Environment并暴露了获取Environment的接口,所以的ApplicationContext都实现了这个接口

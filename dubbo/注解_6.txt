@@ -1,0 +1,16 @@
+注解
+
+@MethodValidated:
+
+@Reference
+
+@Service
+
+@SPI:
+	就是service provider interface的意思吧
+
+@Adaptive:
+	用于注解@SPI接口中的方法,用于匹配url中特定的参数名称
+
+@Active:
+	用于决定对于一个url是否生效,可以通过group指定参数

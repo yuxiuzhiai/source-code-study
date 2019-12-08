@@ -1,0 +1,5 @@
+SecurityClassLoad
+
+注释
+
+	用于预加载java类当使用Java SecurityManager的时候,从而使defineClassInPackage RuntimePermission不会触发AccessControlException异常

@@ -1,0 +1,9 @@
+FormattingInfo
+
+类
+
+	1
+
+描述
+
+	修改PatternConvert的输出，特定的最小宽度最大宽度和对齐

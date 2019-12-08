@@ -1,0 +1,62 @@
+Advisor
+
+注释
+
+	持有AOP advice(action to take at a joinpoint)和pointcut
+	spring aop是通过方法拦截来完成around advice的,但是before和afteradvice不需要使用方法拦截实现
+
+接口定义
+
+	public interface Advisor {
+
+		Advice EMPTY_ADVICE = new Advice() {};
+
+
+		/**
+		 * Return the advice part of this aspect. An advice may be an
+		 * interceptor, a before advice, a throws advice, etc.
+		 * @return the advice that should apply if the pointcut matches
+		 * @see org.aopalliance.intercept.MethodInterceptor
+		 * @see BeforeAdvice
+		 * @see ThrowsAdvice
+		 * @see AfterReturningAdvice
+		 */
+		Advice getAdvice();
+
+		boolean isPerInstance();
+
+	}
+
+子接口
+	
+	PointcutAdvisor:
+		pointcut驱动的Advisor
+		除了introduction advisor其它都实现了这个接口
+		接口定义:
+			public interface PointcutAdvisor extends Advisor {
+				Pointcut getPointcut();
+			}
+	
+	IntroductionAdvisor:
+		introduction相关的advice类型
+
+	InstantiationModelAwarePointcutAdvisor:
+		继承自PointcutAdvisor
+		包装一个可能有延迟初始化策略的aspects
+
+子类
+	
+	AbstractPointcutAdvisor:
+
+	AbstractGenericPointcutAdvisor:
+
+	DefaultPointcutAdvisor:
+		方便的pointcut驱动型advisor实现
+		这是最常用的Advisor实现,可以用于任何pointcut和advice类型,除了introduction
+
+	ExposeInvocationInterceptor:
+		作为一个thread-local对象来暴露当前的MethodInvocation.
+		如果用了,这个拦截器一般会是拦截器链中的第一个
+
+	InstantiationModelAwarePointcutAdvisorImpl:
+		

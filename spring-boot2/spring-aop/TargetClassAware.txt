@@ -1,0 +1,24 @@
+TargetClassAware
+
+注释
+
+	暴露proxy下目标类的最小化接口
+	AOP 代理对象和代理工厂都实现了这个接口
+
+接口定义
+
+	public interface TargetClassAware {
+
+		Class<?> getTargetClass();
+
+	}
+
+子接口
+
+	TargetSource:
+		TargetSource用于获取当前AOP调用的目标
+		如果TargetSource是静态的,则总是返回同一个target,允许spring aop的优化.动态TargetSource可以支持池化,热替换等
+
+	Advised:
+		持有AOP代理工厂配置的类会实现这个接口
+		任何spring中的AOP代理都可以被转换成这个接口以允许对它的advice进行操作

@@ -1,0 +1,12 @@
+RuleSet
+
+注释
+
+子类
+
+	NamingRuleSet:处理JNDI企业命名上下文资源的声明元素.
+	EngineRuleSet:处理<Engine>标签
+	HostRuleSet:处理<Host>标签
+	ContextRuleSet:处理<Context>标签
+	RealmRuleSet:处理<Realm>标签
+	ClusterRuleSet:处理<Cluster>标签

@@ -1,0 +1,53 @@
+HandlerInterceptor
+
+注释
+
+	允许自定义handler执行链的工作流接口.应用可以注册任意多个已有的或者自定义的拦截器,用于特定的一组handler来添加一些公共的逻辑处理
+
+接口定义
+
+	public interface HandlerInterceptor {
+
+		default boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
+				throws Exception {
+
+			return true;
+		}
+
+		default void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
+				@Nullable ModelAndView modelAndView) throws Exception {
+		}
+
+		default void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler,
+				@Nullable Exception ex) throws Exception {
+		}
+
+	}
+
+子接口
+	
+	AsyncHandlerInterceptor
+
+子类(9)
+
+	HandlerInterceptorAdapter:
+		适配器类
+
+	ConversionServiceExposingInterceptor:
+		主要用于JSP tags,比如spring:eval tag
+
+	LocaleChangeInterceptor:
+		允许在每个请求中改变当前locale的拦截器,通过一个可配置的request参数,默认为locale
+
+	ThemeChangeInterceptor:
+
+	UserRoleAuthorizationInterceptor:
+		通过当前用户的角色来检查授权消息
+
+	ResourceUrlProviderExposingInterceptor:
+
+	WebContentInterceptor:
+
+	WebRequestHandlerInterceptorAdapter:
+
+	MappedInterceptor

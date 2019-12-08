@@ -1,0 +1,17 @@
+TokenStream
+
+注释
+
+	枚举可能是来源于Field、Document、查询文本中的token
+
+子类
+
+	Tokenizer
+		输入是一个Reader的TokenStream
+
+		子类18
+			StandardTokenizer：通过JFlex实现的基于语法的Tokenizer
+
+	TokenFilter
+		输入是另一个TokenStream
+		子类110

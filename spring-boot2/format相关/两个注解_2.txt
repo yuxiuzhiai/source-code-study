@@ -1,0 +1,7 @@
+两个注解
+
+@DateTimeFormat
+	声明一个字段或者方法参数应该被格式化成date或者time
+
+@NumberFormat
+	声明一个字段或者方法参数应该被格式化成一个数字

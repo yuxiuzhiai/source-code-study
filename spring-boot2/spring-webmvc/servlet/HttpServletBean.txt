@@ -1,0 +1,15 @@
+HttpServletBean
+
+注释
+
+	HttpServlet的扩展
+
+子类
+
+	FrameworkServlet:
+		spring web 中的基本servlet
+		提供的功能:
+			1.每个servlet管理一个WebAC实例
+			2.请求处理的时候会发布一个事件,无论请求是否被成功处理
+		子类必须实现#doService()方法来处理请求
+		接受一个可选的contextInitializerClasses启动参数,通过指定一个或多个

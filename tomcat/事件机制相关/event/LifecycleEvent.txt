@@ -1,0 +1,9 @@
+LifecycleEvent
+
+注释
+
+接口定义
+
+	public interface LifecycleListener {
+	    public void lifecycleEvent(LifecycleEvent event);
+	}

@@ -1,0 +1,13 @@
+ConfigurationBuilder
+
+类
+
+描述
+
+子类
+
+	DefaultConfigurationBuilder
+
+相关类
+
+	ConfigurationBuilderFactory:提供获取ConfigurationBuilder的方法

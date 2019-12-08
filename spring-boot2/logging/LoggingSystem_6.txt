@@ -1,0 +1,18 @@
+abstract class LoggingSystem
+
+注释
+
+    日志系统的公共抽象
+
+抽象子类
+
+    AbstractLoggingSystem:
+    	LoggingSystem实现的抽象基类
+    Slf4JLoggingSystem:
+    	利用SLF4J的LoggingSystem实现的抽象基类
+
+具体子类
+
+    LogbackLoggingSystem
+    JavaLoggingSystem
+    Log4J2LoggingSystem

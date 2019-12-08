@@ -1,0 +1,37 @@
+EventLoop
+
+注释
+
+	会处理注册的Channel的所有IO事件
+	一个EventLoop实例往往会处理不止一个Channel,但是也取决于实现细节
+
+接口定义
+
+	public interface EventLoop extends OrderedEventExecutor, EventLoopGroup {
+	    @Override
+	    EventLoopGroup parent();
+	}
+
+子类
+
+	AbstractEventLoop:
+		根本就没有继承这个的实现
+		
+	SingleThreadEventLoop:
+		继承自SingleThreadEventExecutor
+
+	DefaultEventLoop:
+
+	EpollEventLoop:
+		linux下有效
+
+	KQueueEventLoop:
+		BSD下有效
+
+	NioEventLoop:
+		多路复用
+
+	ThreadPerChannelEventLoop:
+		每个Channel一个Thread,用于OIO的Channel
+
+	EmbeddedEventLoop:

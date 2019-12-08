@@ -1,0 +1,27 @@
+ExpressionParser
+
+注释
+	
+	解析表达式字符
+	支持解析模板和标准表达式字符串
+
+接口定义
+
+	public interface ExpressionParser {
+
+		Expression parseExpression(String expressionString) throws ParseException;
+
+		Expression parseExpression(String expressionString, ParserContext context) throws ParseException;
+
+	}
+
+子类
+
+	TemplateAwareExpressionParser:(抽象类)
+		基于模板的表达式解析
+
+	InternalSpelExpressionParser:
+		继承TemplateAwareExpressionParser
+
+	SpelExpressionParser:
+		主要功能还是InternalSpelExpressionParser提供

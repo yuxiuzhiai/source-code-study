@@ -1,0 +1,9 @@
+Appender
+
+类
+
+	30
+
+描述
+
+	一个Appender可以包含一个Layout也可以包含一个ErrorHandler。典型的Appender实现还会有一个AbstractManager来处理外部资源

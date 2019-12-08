@@ -1,0 +1,66 @@
+BeanFactoryPostProcessor
+
+注释
+	
+	允许对AC中的BeanDefinition进行修改,但是别修改bean实例
+
+接口定义
+
+	@FunctionalInterface
+	public interface BeanFactoryPostProcessor {
+
+		void postProcessBeanFactory(ConfigurableListableBeanFactory beanFactory) throws BeansException;
+
+	}
+
+子接口
+	
+	BeanDefinitionRegistryPostProcessor:
+		BFPP的扩展,允许注册BeanDefinition,特别的是BeanDefinitionRegistryPostProcessor注册的BeanDefinition可能会定义出一个BFPP
+
+子类
+
+BDRPP实现:
+	ConfigurationClassPostProcessor:
+		用于引导@Configuration类的解析
+	CachingMetadataReaderFactoryPostProcessor(内部类):
+		注册CachingMetadataReaderFactory,配置ConfigurationClassPostProcessor
+	ConfigurationWarningsPostProcessor(内部类):
+		report warnings
+
+BFPP实现:
+	ConfigurationBeanFactoryMetaData:
+    	在BF初始化时候记住@Bean的元数据的功能类
+    PreserveErrorControllerTargetClassPostProcessor:(内部类)
+    	确保ErrorController目标类被保留当使用AOP的时候
+    PropertyResourceConfigurer:(抽象类)
+    	允许从一个PropertyResource配置一个bean属性的值.在系统管理员用自定义的配置文件覆盖AC中的bean属性时很有用
+    	有两个实现:
+    		PropertyOverrideConfigurer:用于beanName.property=value形式的覆盖
+    		PropertyPlaceholderConfigurer:替换占位符
+    PlaceholderConfigurerSupport:(抽象类)
+    	替换占位符功能的抽象基类
+
+    PropertySourcesPlaceholderConfigurer:
+    	替换BeanDefinition和@Value中的占位符
+
+    AbstractDependsOnBeanFactoryPostProcessor:(抽象类)
+    	用于动态声明一个特定类型的bean应该依赖一个或多个其他bean
+
+    AspectJWeavingEnabler
+
+    AtomikosDependsOnBeanFactoryPostProcessor
+
+    BitronixDependentBeanFactoryPostProcessor
+
+    CustomAutowireConfigurer:
+    	允许自定义@Autowire类型的BFPP
+
+    CustomEditorConfigurer:
+    	允许注册自定义PE的BFPP实现
+
+    CustomScopeConfigurer:
+    	允许注册自定义Scope的BFPP实现
+
+    ServletComponentRegisteringPostProcessor:
+    	注册servlet组件bean通过包扫描

@@ -1,0 +1,5 @@
+zookeeper的启动过程
+
+1.加载配置文件(QuorumPeerConfig)
+
+2.自动清理定时任务(DatadirCleanupManager)

@@ -1,0 +1,31 @@
+StatusChecker
+
+接口定义
+
+	@SPI
+	public interface StatusChecker {
+
+	    /**
+	     * check status
+	     *
+	     * @return status
+	     */
+	    Status check();
+
+	}
+
+子类(7)
+
+	MemoryStatusChecker
+
+	LoadStatusChecker
+
+	ServerStatusChecker
+
+	ThreadPoolStatusChecker
+
+	RegistryStatusChecker
+
+	SpringStatusChecker
+
+	DataSourceStatusChecker

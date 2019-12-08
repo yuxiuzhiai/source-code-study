@@ -1,0 +1,72 @@
+ApplicationContext
+
+注释
+
+    为应用提供配置的核心接口.当应用已经运行的时候是只读的,但是也可以reload如果实现类支持的话
+    一个ApplicationContext提供
+        BeanFactory相关方法,继承自ListableBeanFactory
+        加载资源文件,继承自ResourceLoader接口
+        发布事件,继承自ApplicationEventPublisher
+        国际化支持,继承自MessageSource接口
+        从父AC继承
+
+接口定义
+
+    public interface ApplicationContext extends EnvironmentCapable, ListableBeanFactory, HierarchicalBeanFactory,
+        MessageSource, ApplicationEventPublisher, ResourcePatternResolver {
+
+        String getId();
+
+        String getApplicationName();
+
+        String getDisplayName();
+
+        long getStartupDate();
+
+        ApplicationContext getParent();
+
+        AutowireCapableBeanFactory getAutowireCapableBeanFactory() throws IllegalStateException;
+
+    }
+
+子接口(7)
+
+    ConfigurableAC:
+        大多数AC实现都实现了这个接口
+        配置和生命周期方法封装在这里,避免使暴露给客户端
+
+    WebAC:
+        为web应用提供配置
+        添加了一个getServletContext()方法
+
+    WebServerAC:
+        创建和管理内置WebServer的AC实现
+
+    ConfigurableWebAC:
+        继承ConfigurableAC/WebAC
+
+    ConfigurableWebServerAC:
+        几乎所有的WebServerAC都会实现的SPI接口
+
+    ReactiveWebAC:
+
+    ConfigurableReactiveWebAC:
+
+抽象子类(5)
+
+    AbstractAC
+    AbstractXmlAC:
+        基于XML配置的AC抽象基类,XML读取由XmlBeanDefinitionReader实现
+    AbstractRefreshableAC:
+        支持多次调用refresh()方法,每次都会创建一个新的内部BeanFactory实例
+    AbstractRefreshableConfigAC:
+    AbstractRefreshableWebAC:
+
+
+子类(19)
+
+    GenericApplicationContext
+    GenericWebApplicationContext
+    ServletWebServerApplicationContext
+    XmlServletWebServerApplicationContext
+    AnnotationConfigServletWebServerApplicationContext

@@ -1,0 +1,35 @@
+others
+
+StopWatch:
+	统计springboot启动耗时
+
+WebApplicationType:
+	枚举,SERVLET/NONE/REACTIVE三个值
+
+ApplicationPid:
+	应用进程id
+
+ConfigurationClass:
+	对应一个用户定义的@Configuration类
+
+BeanDefinitionDefaults:
+	BeanDefinition属性默认值
+
+StartupInfoLogger:
+	在启动时候打印应用信息
+
+CommonsFileUploadSupport:
+	没有卵用
+
+SpringBootVersion:
+    用于暴露spring boot版本号的类.
+    其实现是基于ClassLoader的,具体就是jar包里的META-INF/MANIFEST.MF
+
+SpringVersion:
+	暴露spring版本
+
+ValueConstants:
+
+
+RequestMethod:
+	request method枚举

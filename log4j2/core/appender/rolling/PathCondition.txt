@@ -1,0 +1,19 @@
+PathCondition
+
+类
+
+	8
+
+描述
+
+	接受或者拒绝Path的过滤器，用于删除文件
+
+子类
+
+	IfAccumulatedFileCount
+	IfAccumulatedFileSize:
+	IfAll:用于组合多个PathCondition，相当于&&
+	IfAny: ||
+	IfNot: !
+	IfFileName:
+	IfLastModified

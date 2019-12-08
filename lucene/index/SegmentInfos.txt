@@ -1,0 +1,10 @@
+SegmentInfos
+
+注释
+
+	操作文件系统的Segment的一系列方法
+
+	一个index中的active segment存储在segment info 文件segments_N中，可能有一个或者多个这种文件，但是最后一个生成的segment_N文件才是活跃的。
+	老的segment_N文件还在，可能是因为他们暂时还不能删除或者是使用了自定义的IndexDeletionPolicy
+	这个文件通过文件名列举了所有的segment和codec和删除generation的详情
+	

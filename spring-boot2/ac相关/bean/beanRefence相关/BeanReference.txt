@@ -1,0 +1,17 @@
+BeanReference
+
+注释
+
+    以一种抽象的方式暴露一个bean name的引用.这个接口不必指向一个真实的bean实例,它仅仅表达一个对bean name的逻辑上的引用.
+    bean reference holder的公共接口,比如RuntimeBeanReference/RuntimeBeanNameReference
+
+接口定义
+
+    public interface BeanReference extends BeanMetadataElement {
+
+        /**
+         * Return the target bean name that this reference points to (never {@code null}).
+         */
+        String getBeanName();
+
+    }

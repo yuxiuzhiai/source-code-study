@@ -1,0 +1,21 @@
+Exchanger
+
+注释
+
+	消息交换模式,有数据报、请求响应、全双工三种.dubbo用的是请求响应模式
+
+接口定义
+
+	public interface Exchanger {
+
+	    @Adaptive({Constants.EXCHANGER_KEY})
+	    ExchangeServer bind(URL url, ExchangeHandler handler) throws RemotingException;
+
+	    @Adaptive({Constants.EXCHANGER_KEY})
+	    ExchangeClient connect(URL url, ExchangeHandler handler) throws RemotingException;
+
+	}
+
+子类
+
+	HeaderExchanger

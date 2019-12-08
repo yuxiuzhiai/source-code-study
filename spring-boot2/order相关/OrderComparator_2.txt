@@ -1,0 +1,32 @@
+OrderComparator
+
+注释
+
+    Ordered对象的Comparator实现,Ordered升序,PriorityOrdered降序
+
+其它
+    
+    内部接口:
+
+        OrderSourceProvider
+            注释:为特定对象提供一个对应的Ordered实现用于排序
+            定义:
+                public interface OrderSourceProvider {
+
+                    /**
+                     * Return an order source for the specified object, i.e. an object that
+                     * should be checked for an order value as a replacement to the given object.
+                     * <p>Can also be an array of order source objects.
+                     * <p>If the returned object does not indicate any order, the comparator
+                     * will fall back to checking the original object.
+                     * @param obj the object to find an order source for
+                     * @return the order source for that object, or {@code null} if none found
+                     */
+                    @Nullable
+                    Object getOrderSource(Object obj);
+                }
+
+子类
+
+    AnnotationAwareOrderComparator:
+        除了支持实现Ordered接口的类的排序,还支持@Order/@Priority注解

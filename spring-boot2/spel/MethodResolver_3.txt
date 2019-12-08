@@ -1,0 +1,22 @@
+MethodResolver
+
+注释
+
+	定位方法,返回一个MethodExecutor
+
+接口定义
+
+	public interface MethodResolver {
+
+		MethodExecutor resolve(EvaluationContext context, Object targetObject, String name,
+				List<TypeDescriptor> argumentTypes) throws AccessException;
+
+	}
+
+子类
+	
+	ReflectiveMethodResolver:
+		反射实现
+
+	DataBindingMethodResolver:
+		

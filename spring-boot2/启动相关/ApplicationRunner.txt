@@ -1,0 +1,14 @@
+ApplicationRunner
+
+注释
+
+	会获取ApplicationArguments参数的Runner
+
+接口定义
+
+	@FunctionalInterface
+	public interface ApplicationRunner {
+
+		void run(ApplicationArguments args) throws Exception;
+
+	}

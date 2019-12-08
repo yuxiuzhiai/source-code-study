@@ -1,0 +1,5 @@
+RuntimeBeanNameReference
+
+注释
+
+    同RuntimeBeanReference

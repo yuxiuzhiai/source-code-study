@@ -1,0 +1,20 @@
+Directory
+
+接口定义
+
+	public interface Directory<T> extends Node {
+
+	    Class<T> getInterface();
+
+	    List<Invoker<T>> list(Invocation invocation) throws RpcException;
+
+	}
+
+子类
+
+	AbstractDirectory
+
+	StaticDirectory
+
+	RegistryDirectory:
+		与注册中心关联的Directory

@@ -1,0 +1,13 @@
+LoggerConfig
+
+类
+
+	2
+
+描述
+
+	通过这个类创建Logger对象
+
+子类
+
+	AsyncLoggerConfig:继承自LoggerConfig，通过一个同步LoggerConfig以及这个类来创建一个异步Logger

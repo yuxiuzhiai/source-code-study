@@ -1,0 +1,20 @@
+Constant
+
+注释
+
+	单例对象,可以直接通过==比较.通过ConstantPool来创建和管理
+
+接口定义
+
+	public interface Constant<T extends Constant<T>> extends Comparable<T> {
+
+	    int id();
+
+	    String name();
+	}
+
+子类
+
+	AbstractConstant:
+	
+	

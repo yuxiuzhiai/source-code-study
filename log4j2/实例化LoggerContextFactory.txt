@@ -1,0 +1,9 @@
+实例化LoggerContextFactory
+
+1.加载一个ContextSelector
+	1.1.通过Log4jContextSelector属性指定
+	1.2.没有指定，则使用ClassloaderContextSelector
+
+2.设置ShutdownCallbackRegistry
+	2.1.通过log4j.shutdownCallbackRegistry指定
+	2.2.如没有指定，则使用DefaultShutdownCallbackRegistry

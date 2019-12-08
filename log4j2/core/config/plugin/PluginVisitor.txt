@@ -1,0 +1,19 @@
+PluginVisitor
+
+类
+
+	8
+
+描述
+
+	从Node解析数据的访问策略，会进行类型转换，给变量返回一个合适的值
+
+子类
+
+	AbstractPluginVisitor:
+	PluginBuilderAttributeVisitor:对应@PluginBuilderAttribute
+	PluginAttributeVisitor:对应@PluginAttribute
+	PluginConfigurationVisitor:对应@PluginConfiguration
+	PluginElementVisitor:对应@PluginElement
+	PluginNodeVisitor:对应@PluginNode
+	PluginValueVisitor:对应@PluginValue

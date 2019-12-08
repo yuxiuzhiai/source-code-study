@@ -1,0 +1,17 @@
+BeanExpressionResolver
+注释
+
+	策略接口,用于将一个value当做表达式来解析.解析形如#{}的表达式
+	BeanFactory不包含该接口的实现,AC具备表达式支持的能力
+
+接口定义
+	
+	public interface BeanExpressionResolver {
+
+		Object evaluate(@Nullable String value, BeanExpressionContext evalContext) throws BeansException;
+
+	}
+
+子类/接口
+
+	StandardBeanExpressionResolver:当成spel来解析

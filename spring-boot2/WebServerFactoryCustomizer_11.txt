@@ -1,0 +1,31 @@
+WebServerFactoryCustomizer
+
+注释
+	
+	定制WebServerFactory的策略接口
+	该接口会在WebServerFactory启动前收到回调,从而可以修改WebServerFactory的配置属性
+
+接口定义
+
+	@FunctionalInterface
+	public interface WebServerFactoryCustomizer<T extends WebServerFactory> {
+
+		void customize(T factory);
+
+	}
+
+子类
+
+	JettyWebServerFactoryCustomizer
+	JettyWebSocketServletWebServerCustomizer
+
+	ReactiveWebServerFactoryCustomizer
+	ServletWebServerFactoryCustomizer
+
+	TomcatServletWebServerFactoryCustomizer
+	TomcatWebServerFactoryCustomizer
+	TomcatWebSocketReactiveWebServerCustomizer
+	TomcatWebSocketServletWebServerCustomizer
+
+	UndertowWebServerFactoryCustomizer
+	UndertowWebSocketServletWebServerCustomizer

@@ -1,0 +1,45 @@
+ASM 是一个 Java 字节码操纵框架。它可以直接以二进制形式动态地生成 stub 类或其他代理类，或者在装载时动态地修改类。ASM 提供类似于 BCEL 和 SERP 之类的工具包的功能，但是被设计得更小巧、更快速，这使它适用于实时代码插装。
+
+3.3.1.AutoConfigurationImportFilter(1)
+				OnClassCondition
+			3.3.2.FailureAnalyzer(14)
+				NoSuchBeanDefinitionFailureAnalyzer
+				DataSourceBeanCreationFailureAnalyzer
+				HikariDriverConfigurationFailureAnalyzer
+				NonUniqueSessionRepositoryFailureAnalyzer
+				BeanCurrentlyInCreationFailureAnalyzer
+				BeanNotOfRequiredTypeFailureAnalyzer
+				BindFailureAnalyzer
+				BindValidationFailureAnalyzer
+				UnboundConfigurationPropertyFailureAnalyzer
+				ConnectorStartFailureAnalyzer
+				NoUniqueBeanDefinitionFailureAnalyzer
+				PortInUseFailureAnalyzer
+				ValidationExceptionFailureAnalyzer
+				InvalidConfigurationPropertyNameFailureAnalyzer
+			3.3.3.AutoConfigurationImportListener(1)
+				ConditionEvaluationReportAutoConfigurationImportListener
+
+			3.3.5.TemplateAvailabilityProvider(5)
+				FreeMarkerTemplateAvailabilityProvider
+				MustacheTemplateAvailabilityProvider
+				GroovyTemplateAvailabilityProvider
+				ThymeleafTemplateAvailabilityProvider
+				JspTemplateAvailabilityProvider
+
+			3.3.7.EnableAutoConfiguration:有100多个自动配置类,但是只有少量会真正被用到
+			3.3.8.EnvironmentPostProcessor
+				CloudFoundryVcapEnvironmentPostProcessor
+				SpringApplicationJsonEnvironmentPostProcessor
+				SystemEnvironmentPropertySourceEnvironmentPostProcessor
+			3.3.9.SpringApplicationRunListener
+				EventPublishingRunListener
+			3.3.10.PropertySourceLoader
+				PropertiesPropertySourceLoader
+				YamlPropertySourceLoader
+			3.3.11.FailureAnalysisReporter
+				LoggingFailureAnalysisReporter
+			3.3.12.SpringBootExceptionReporter
+				FailureAnalyzers
+			3.3.13.BeanInfoFactory
+				ExtendedBeanInfoFactory

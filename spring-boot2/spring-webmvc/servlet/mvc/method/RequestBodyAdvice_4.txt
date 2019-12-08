@@ -1,0 +1,37 @@
+RequestBodyAdvice
+
+注释
+
+	在request body被读取并转化成对象之前,允许自定义request,也允许在这个对象被作为参数传到controller方法前进行处理
+	这个接口的实现可能被直接注册到RequestMappingHandlerAdapter或者@ControllerAdvice
+
+接口定义
+
+	public interface RequestBodyAdvice {
+
+		boolean supports(MethodParameter methodParameter, Type targetType,
+				Class<? extends HttpMessageConverter<?>> converterType);
+
+		HttpInputMessage beforeBodyRead(HttpInputMessage inputMessage, MethodParameter parameter,
+				Type targetType, Class<? extends HttpMessageConverter<?>> converterType) throws IOException;
+
+		Object afterBodyRead(Object body, HttpInputMessage inputMessage, MethodParameter parameter,
+				Type targetType, Class<? extends HttpMessageConverter<?>> converterType);
+
+		Object handleEmptyBody(@Nullable Object body, HttpInputMessage inputMessage, MethodParameter parameter,
+				Type targetType, Class<? extends HttpMessageConverter<?>> converterType);
+
+
+	}
+
+子类
+
+	RequestBodyAdviceAdapter:
+		抽象类
+
+	JsonViewRequestBodyAdvice:
+		继承自RequestBodyAdviceAdapter
+		用于支持@HttpEntity或者@RequestBody注解的参数时加上@JsonView
+
+	RequestResponseBodyAdviceChain:
+		同时实现了RequestAdvice和ResponseAdvice

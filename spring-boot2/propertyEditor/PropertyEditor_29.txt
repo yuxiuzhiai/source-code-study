@@ -1,0 +1,74 @@
+PropertyEditor
+注释
+    
+    一个PropertySource类为GUI提供了允许用户更改property值的支持.简单的propertyEditor一般只支持getAsText/setAsText方法
+
+接口定义
+
+    public interface PropertyEditor {
+
+        void setValue(Object value);
+
+        Object getValue();
+
+        boolean isPaintable();
+
+        void paintValue(java.awt.Graphics gfx, java.awt.Rectangle box);
+
+        String getJavaInitializationString();
+
+        String getAsText();
+
+        void setAsText(String text) throws java.lang.IllegalArgumentException;
+
+        String[] getTags();
+
+        java.awt.Component getCustomEditor();
+
+        boolean supportsCustomEditor();
+
+        void addPropertyChangeListener(PropertyChangeListener listener);
+
+        void removePropertyChangeListener(PropertyChangeListener listener);
+
+    }
+
+spring提供的子类(29)
+
+    PropertyEditorSupport:
+        用于构建PE的帮助类
+        可以作为父类使用或者作为委派实现
+    
+    ByteArrayPE
+    CharacterEditor
+    CharArrayPE
+    CharsetEditor
+    ClassArrayEditor
+    ClassEditor
+    CurrencyEditor
+    CustomBooleanEditor:
+        加Custom只是为了跟原生的实现区别
+    CustomCollectionEditor
+    CustomDateEditor
+    CustomNumberEditor
+    FileEditor
+    InputSourceEditor
+    InputStreamEditor
+    LocaleEditor
+    PathEditor
+    PatternEditor
+    PropertiesEditor
+    ReaderEditor
+    ResourceBundleEditor
+    StringArrayPE
+    StringTrimmerEditor
+    TimeZoneEditor
+    URIEditor
+    URLEditor
+    UUIDEditor
+    ZoneIdEditor
+
+    ResourceEditor:
+        Resource的PE实现,会自动转换string路径比如file:c:/myfile.txt或者classpath:myfile.txt成Resource属性
+        路径可能包含${}占位符,会把他们当成Environment属性来解析,解析不了默认会忽略掉
+        Resource的加载会委派给ResourceLoader实现,其默认实现是DefaultResourceLoader

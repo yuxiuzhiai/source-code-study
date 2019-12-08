@@ -1,0 +1,19 @@
+TriggeringPolicy
+
+类
+
+	8
+
+描述
+
+	控制文件滚动发生的条件。条件包括一天中的某个时间，文件大小，一个内部事件，打印日志请求或者是他们的结合
+
+子类
+
+	AbstractTriggeringPolicy
+	CronTriggeringPolicy：定时任务
+	NoOpTriggeringPolicy:永不滚动
+	OnStartupTriggeringPolicy:每次重启都会触发滚动只要文件大小>0
+	SizeBasedTriggeringPolicy:基于文件大小决定是否滚动
+	TimeBasedTriggeringPolicy:基于时间
+	CompositeTriggeringPolicy:组合多个TriggeringPolicy

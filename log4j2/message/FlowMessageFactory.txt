@@ -1,0 +1,13 @@
+FlowMessageFactory
+
+类
+
+	2
+
+描述
+
+	创建FlowMessage
+
+子类
+	
+	DefaultFlowMessageFactory

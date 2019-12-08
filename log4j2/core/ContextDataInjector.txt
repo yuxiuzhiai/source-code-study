@@ -1,0 +1,13 @@
+ContextDataInjector
+
+类
+
+	1
+
+描述
+
+	负责初始化LogEvent的上下文数据。上下文数据是由应用设置，后续所有LogEvent都会包含的
+
+相关类
+
+	ThreadContextDataInjector

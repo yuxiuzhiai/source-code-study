@@ -1,0 +1,14 @@
+CommandLineRunner
+
+注释
+	
+	可以访问命令行参数的Runner
+
+接口定义
+
+	@FunctionalInterface
+	public interface CommandLineRunner {
+
+		void run(String... args) throws Exception;
+
+	}

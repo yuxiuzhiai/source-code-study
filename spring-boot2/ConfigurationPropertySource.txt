@@ -1,0 +1,51 @@
+ConfigurationPropertySource
+
+注释
+
+    ConfigurationProperty的source
+
+接口定义
+
+    public interface ConfigurationPropertySource {
+
+        ConfigurationProperty getConfigurationProperty(ConfigurationPropertyName name);
+
+        /**
+         * Returns if the source contains any descendants of the specified name. May return
+         * {@link ConfigurationPropertyState#PRESENT} or
+         * {@link ConfigurationPropertyState#ABSENT} if an answer can be determined or
+         * {@link ConfigurationPropertyState#UNKNOWN} if it's not possible to determine a
+         * definitive answer.
+         * @param name the name to check
+         * @return if the source contains any descendants
+         */
+        ConfigurationPropertyState containsDescendantOf(ConfigurationPropertyName name);
+
+        /**
+         * Return a filtered variant of this source, containing only names that match the
+         * given {@link Predicate}.
+         * @param filter the filter to match
+         * @return a filtered {@link ConfigurationPropertySource} instance
+         */
+        default ConfigurationPropertySource filter(
+                Predicate<ConfigurationPropertyName> filter) {
+            return new FilteredConfigurationPropertiesSource(this, filter);
+        }
+
+        /**
+         * Return a variant of this source that supports name aliases.
+         * @param aliases a function that returns a stream of aliases for any given name
+         * @return a {@link ConfigurationPropertySource} instance supporting name aliases
+         */
+        default ConfigurationPropertySource withAliases(
+                ConfigurationPropertyNameAliases aliases) {
+            return new AliasedConfigurationPropertySource(this, aliases);
+        }
+
+        /**
+         * Return the underlying {@link PropertySource}.
+         * @return the underlying property source.
+         */
+        Object getUnderlyingSource();
+
+    }

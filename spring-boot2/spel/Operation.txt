@@ -1,0 +1,22 @@
+Operation
+
+注释
+
+
+枚举定义
+
+	public enum Operation {
+
+		ADD,
+
+		SUBTRACT,
+
+		DIVIDE,
+
+		MULTIPLY,
+
+		MODULUS,
+
+		POWER
+
+	}

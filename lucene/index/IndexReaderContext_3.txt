@@ -1,0 +1,10 @@
+IndexReaderContext
+
+注释
+
+	代表不同IndexReader间的层级关系
+
+子类
+
+	LeafReaderContext
+	CompositeReaderContext

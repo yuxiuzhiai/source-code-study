@@ -1,0 +1,38 @@
+AutowireCandidateResolver
+
+注释
+
+    决定一个BeanDefinition是否可以最为自动注入的依赖
+
+接口定义
+
+    public interface AutowireCandidateResolver {
+
+        default boolean isAutowireCandidate(BeanDefinitionHolder bdHolder, DependencyDescriptor descriptor) {
+            return bdHolder.getBeanDefinition().isAutowireCandidate();
+        }
+
+        default boolean isRequired(DependencyDescriptor descriptor) {
+            return descriptor.isRequired();
+        }
+
+        default Object getSuggestedValue(DependencyDescriptor descriptor) {
+            return null;
+        }
+
+        default Object getLazyResolutionProxyIfNecessary(DependencyDescriptor descriptor, @Nullable String beanName) {
+            return null;
+        }
+
+    }
+
+子类
+
+    SimpleAutowireCandidateResolver:
+        没有注解支持的情况下用这个,仅仅检查BeanDefinition
+    GenericTypeAwareAutowireCandidateResolver:
+        继承SimpleAutowireCandidateResolver,支持泛型
+    QualifierAnnotationAutowireCandidateResolver:
+        支持@Qualifier注解
+    ContextAnnotationAutowireCandidateResolver:
+        继承自QualifierAnnotationAutowireCandidateResolver,还支持@Lazy注解

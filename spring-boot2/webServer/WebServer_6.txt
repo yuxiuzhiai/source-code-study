@@ -1,0 +1,25 @@
+WebServer
+
+注释
+
+	代表完全配置的webServer的接口,比如tomcat,jetty,netty.允许server启动或者停止
+
+接口定义
+
+	public interface WebServer {
+
+		void start() throws WebServerException;
+
+		void stop() throws WebServerException;
+
+		int getPort();
+
+	}
+
+子类
+
+	JettyWebServer
+	NettyWebServer
+	TomcatWebServer
+	UndertowServletWebServer
+	UndertowWebServer

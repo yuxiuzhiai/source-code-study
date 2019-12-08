@@ -1,0 +1,52 @@
+Codec2
+
+注释
+
+	编解码器
+
+接口定义
+
+	public interface Codec2 {
+
+	    @Adaptive({Constants.CODEC_KEY})
+	    void encode(Channel channel, ChannelBuffer buffer, Object message) throws IOException;
+
+	    @Adaptive({Constants.CODEC_KEY})
+	    Object decode(Channel channel, ChannelBuffer buffer) throws IOException;
+
+
+	    enum DecodeResult {
+	        NEED_MORE_INPUT, SKIP_SOME_INPUT
+	    }
+
+	}
+
+子类
+
+	AbstractCodec:
+		抽象实现
+
+	TransportCodec:
+		继承自AbstractCodec
+
+	TelnetCodec:
+		继承自TransportCodec
+
+	ExchangeCodec:
+		继承自TelnetCodec
+
+	DubboCodec:
+		继承自ExchangeCodec,dubbo协议的编解码器
+
+	DubboCountCodec:
+		封装了一个DubboCodec
+
+	ThriftCodec:
+		thrift协议的编解码器
+
+	ThriftNativeCodec:
+
+	CodecAdapter:
+		Codec的适配器类
+
+

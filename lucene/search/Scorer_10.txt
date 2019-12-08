@@ -1,0 +1,14 @@
+Scorable
+
+注释
+
+	查询分数
+
+子类
+
+	Score
+		打分
+		子类
+			TermScorer：文档匹配了Term查询的分数
+			PhraseScorer
+			FilterScorer：包装了一个别的Scorer

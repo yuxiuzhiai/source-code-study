@@ -1,0 +1,52 @@
+Environment
+
+注释
+    
+    代表当前应用正在运行的环境的接口.可以分为两个方面:profiles/properties.关于属性访问的方法一般由超类接口PropertyResolver解决
+
+接口定义
+
+    public interface Environment extends PropertyResolver {
+   
+        String[] getActiveProfiles();
+
+        String[] getDefaultProfiles();
+
+        boolean acceptsProfiles(String... profiles);
+
+    }
+
+子接口
+	
+	ConfigurableEnvironment:
+		提供操作profile的功能,操作默认PropertySources的功能.允许客户端设置和验证必须的属性,自定义ConversionService,以及来源于ConfigurablePropertyResolver的功能
+
+	ConfigurableWebEnvironment:
+		允许初始化servlet相关的PropertySource对象的特定ConfigurableEnvironment
+
+	ConfigurableReactiveWebEnvironment:
+		继承ConfigurableEnvironment,没有新增任何方法
+
+抽象类
+
+	AbstractEnvironment
+
+实现类
+
+	StandardEnvironment:
+		适合非web应用的Environment实现.
+	    系统环境变量对应的propertySource名称为:systemEnvironment
+	    jvm变量对应的propertySource名称为:systemProperties
+
+	StandardServletEnvironment:
+		基于servlet的web应用的Environment实现.默认情况下,所有web相关的AC都会初始化这么个实例
+		添加了以下几个propertySource:
+        	servletContextInitParams
+        	servletConfigInitParams
+        	jndiProperties
+	    默认的查找顺序为:
+	        servletConfigInitParams > servletContextInitParams > jndiProperties > systemProperties > systemEnvironment
+
+	StandardReactiveWebEnvironment:
+		继承自StandardEnvironment,没有重写或新增任何方法
+

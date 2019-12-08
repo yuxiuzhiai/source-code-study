@@ -1,0 +1,5 @@
+LoggingInitializationContext
+
+注释
+
+	在LoggingSystem初始化时候作为Context传入

@@ -1,0 +1,6 @@
+ComponentScanAnnotationParser
+
+注释
+
+	@ComponentScan的解析器
+	主要还是ClassPathBeanDefinitionScanner的功能

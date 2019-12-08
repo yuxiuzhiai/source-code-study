@@ -1,0 +1,26 @@
+OriginLookup
+
+注释
+
+	可以用于从给定的key查找Origin信息的接口
+	可以用于给已经存在的类添加Origin支持
+接口定义
+
+	@FunctionalInterface
+	public interface OriginLookup<K> {
+
+		Origin getOrigin(K key);
+
+		static <K> Origin getOrigin(Object source, K key) {
+			if (!(source instanceof OriginLookup)) {
+				return null;
+			}
+			try {
+				return ((OriginLookup<K>) source).getOrigin(key);
+			}
+			catch (Throwable ex) {
+				return null;
+			}
+		}
+
+	}

@@ -1,0 +1,4 @@
+缺点
+
+1.类命名差劲。Logger/LoggerContext等核心domain，竟然有重名的接口和实现，真的low，MessageFactory，MessageFactory2等..
+2.加载插件那里，竟然有readUTF readBoolean这种操作，感觉就是在为难自己

@@ -1,0 +1,5 @@
+ConfigurationPropertyName
+
+注释
+
+    一个配置属性名称由.分割的元素组成.

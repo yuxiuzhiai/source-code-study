@@ -1,0 +1,20 @@
+TypeLocator
+
+注释
+
+	定位类型
+	其实现可能使用一个自定义的ClassLoader或者通过公共的package前缀
+
+接口定义
+
+	@FunctionalInterface
+	public interface TypeLocator {
+
+		Class<?> findType(String typeName) throws EvaluationException;
+
+	}
+
+子类
+
+	StandardTypeLocator:
+		使用context ClassLoader

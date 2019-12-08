@@ -1,0 +1,19 @@
+InvokerListener
+
+注释
+
+接口定义
+
+    public interface InvokerListener {
+
+        void referred(Invoker<?> invoker) throws RpcException;
+
+        void destroyed(Invoker<?> invoker);
+
+    }
+
+子类
+
+    InvokerListenerAdapter
+
+    DeprecatedInvokerListener

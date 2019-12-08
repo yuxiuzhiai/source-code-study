@@ -1,0 +1,44 @@
+ConversionService
+
+注释
+
+    类型转换的服务接口.转换系统的入口
+    调用convert(Object,Class)方法来执行线程安全的类型转换
+
+接口定义
+
+    public interface ConversionService {
+
+        boolean canConvert(@Nullable Class<?> sourceType, Class<?> targetType);
+
+        boolean canConvert(@Nullable TypeDescriptor sourceType, TypeDescriptor targetType);
+
+        @Nullable
+        <T> T convert(@Nullable Object source, Class<T> targetType);
+
+        @Nullable
+        Object convert(@Nullable Object source, @Nullable TypeDescriptor sourceType, TypeDescriptor targetType);
+
+    }
+
+子接口
+
+	ConfigurableConversionService:
+		引入Converter
+
+子类(6)
+	
+	GenericConversionService:
+		ConversionService的基础实现,适用于大多数的Environment
+
+	DefaultConversionService:
+
+	
+	FormattingConversionService:
+
+	DefaultFormattingConversionService
+
+	WebConversionService:
+		继承自DefaultFormattingConversionService
+
+	ApplicationConversionService:

@@ -1,0 +1,6 @@
+interface PriorityOrdered extend Ordered
+
+注释
+
+    就是一个标记接口,用于表达比所有Ordered实现都高的优先级
+    

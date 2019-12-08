@@ -1,0 +1,9 @@
+ResourceBase
+
+注释
+
+	代表一个上下文元素
+
+子类
+
+	ContextResource:代表一个web应用的资源引用

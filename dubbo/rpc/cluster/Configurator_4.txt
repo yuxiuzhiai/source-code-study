@@ -1,0 +1,19 @@
+Configurator
+
+接口定义
+
+	public interface Configurator extends Comparable<Configurator> {
+
+	    URL getUrl();
+
+	    URL configure(URL url);
+
+	}
+
+子类
+
+	AbstractConfigurator
+
+	AbsentConfigurator
+
+	OverrideConfigurator

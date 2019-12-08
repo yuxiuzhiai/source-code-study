@@ -1,0 +1,10 @@
+IndexableFieldType
+
+注释
+
+	描述一个字段的属性
+
+子类
+
+	FieldType
+		

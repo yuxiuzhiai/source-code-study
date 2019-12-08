@@ -1,0 +1,19 @@
+Lifecycle
+
+注释
+
+    定义start/stop生命周期控制的方法的公共接口.典型使用是用于控制异步处理
+    可以被component和container实现.容器会传播start/stop信号给所有的component
+
+接口定义
+
+    public interface Lifecycle {
+
+        void start();
+
+        void stop();
+
+        boolean isRunning();
+
+    }
+

@@ -1,0 +1,16 @@
+MethodExecutor
+
+注释
+
+接口定义
+
+	public interface MethodExecutor {
+
+		TypedValue execute(EvaluationContext context, Object target, Object... arguments) throws AccessException;
+
+	}
+
+子类
+
+	ReflectiveMethodExecutor:
+		反射实现

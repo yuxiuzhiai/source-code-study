@@ -1,0 +1,50 @@
+ChannelHandler
+
+注释
+
+接口定义
+
+	@SPI
+	public interface ChannelHandler {
+
+	    void connected(Channel channel) throws RemotingException;
+
+	    void disconnected(Channel channel) throws RemotingException;
+
+	    void sent(Channel channel, Object message) throws RemotingException;
+
+	    void received(Channel channel, Object message) throws RemotingException;
+
+	    void caught(Channel channel, Throwable exception) throws RemotingException;
+
+	}
+
+子接口
+
+	ChannelHandlerDelegate:
+
+		接口定义
+			public interface ChannelHandlerDelegate extends ChannelHandler {
+			    ChannelHandler getHandler();
+			}
+
+子类
+
+	AbstractChannelHandlerDelegate:
+
+	HeartbeatHandler:
+
+	HeaderExchangeHandler:
+		继承自ChannelHandlerDelegate,包装了一个ExchangeHandler
+
+	DecodeHandler:
+		继承自ChannelHandlerDelegate,包装了一个ChannelHandler
+
+	MultiMessageHandler:
+
+	WrappedChannelHandler:
+		ThreadPool就封装在这个ChannelHandler里面
+
+
+
+

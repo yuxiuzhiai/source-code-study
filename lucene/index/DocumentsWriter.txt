@@ -1,0 +1,6 @@
+DocumentsWriter
+
+注释
+
+	用于写segment文件
+	

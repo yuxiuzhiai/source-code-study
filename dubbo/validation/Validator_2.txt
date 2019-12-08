@@ -1,0 +1,13 @@
+Validator
+
+接口定义
+
+	public interface Validator {
+
+	    void validate(String methodName, Class<?>[] parameterTypes, Object[] arguments) throws Exception;
+
+	}
+
+子类
+	
+	JValidator

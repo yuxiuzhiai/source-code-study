@@ -1,0 +1,17 @@
+DocValuesIterator
+
+注释
+
+子类
+
+	BinaryDocValues
+		每个文档都是
+
+	NumericDocValues
+		每个文档都是数字
+
+	SortedDocValues
+
+	SortedNumericDocValues
+
+	SortedSetDocValues

@@ -1,0 +1,5 @@
+AggregateBinder
+
+注释
+
+	Binder用于绑定聚合对象(map,list)的内部抽象类 

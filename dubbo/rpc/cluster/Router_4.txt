@@ -1,0 +1,35 @@
+Router
+
+注释
+
+接口定义
+
+	public interface Router extends Comparable<Router> {
+
+	    /**
+	     * get the router url.
+	     *
+	     * @return url
+	     */
+	    URL getUrl();
+
+	    /**
+	     * route.
+	     *
+	     * @param invokers
+	     * @param url        refer url
+	     * @param invocation
+	     * @return routed invokers
+	     * @throws RpcException
+	     */
+	    <T> List<Invoker<T>> route(List<Invoker<T>> invokers, URL url, Invocation invocation) throws RpcException;
+
+	}
+
+子类
+
+	ConditionRouter
+
+	ScriptRouter
+
+	MockInvokersSelector

@@ -1,0 +1,45 @@
+ApplicationContextInitializer
+
+注释
+
+    初始化ConfigurableAC的回调接口,会在ac.refresh()之前调用,一般用于需要在应用启动时进行一些编程式初始化的web应用
+
+接口定义
+
+    public interface ApplicationContextInitializer<C extends ConfigurableApplicationContext> {
+
+        void initialize(C applicationContext);
+
+    }
+
+实现类
+
+	SharedMetadataReaderFactoryContextInitializer:
+		创建一个CachingMetadataReaderFactory,在ConfigurationClassPostProcessor和sb之间共享MetadataReader
+
+	ConditionEvaluationReportLoggingListener:
+		写ConditionEvaluationReport到日志中,一般是debug级别,如果出错则是info级别
+
+	ConfigurationWarningsACI:
+		报告公共的错误配置产生的warning
+
+	ContextIdACI:
+		设置AC的id,这三个配置项会用于设置id的值:spring.application.name/vcap.application.name/spring.config.name,如果都没有,则id默认为application
+	    spring.application.index/vcap.application.instance_index/server.port会用于加到后面
+	    当前的profile也会用于加到后面
+	    最终的id可能会是:application:8080:dev
+
+	DelegatingACI:
+		委托给context.initializer.classes环境属性指定的别的initializers,通过context.initializer.classes指定
+
+	ServerPortInfoACI:
+		设置WebServer会实际监听的端口.
+		这个也是一个ApplicationListener
+
+
+
+	ServletContextACI:
+		设置ServletContext的ACI
+
+	ParentContextACI:
+		设置parent context.同时也会发布ParentContextAvailableEvent事件

@@ -1,0 +1,5 @@
+RuntimeBeanReference
+
+注释
+
+    不可变的占位符class,property value object用来指向其它bean,运行时解析

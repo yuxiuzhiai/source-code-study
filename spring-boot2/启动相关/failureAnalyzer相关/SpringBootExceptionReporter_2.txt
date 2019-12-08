@@ -1,0 +1,20 @@
+SpringBootExceptionReporter
+
+注释
+    
+    用于报告SpringApplication启动错误的回调接口,通过SpringFactoriesLoader加载
+	唯一实现:FailureAnalyzers
+
+接口定义
+
+	@FunctionalInterface
+	public interface SpringBootExceptionReporter {
+
+		boolean reportException(Throwable failure);
+
+	}
+
+实现类
+
+	FailureAnalyzers:
+	    触发从spring.factories中加载FailureAnalysisReporter/FailureAnalyzer

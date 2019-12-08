@@ -1,0 +1,19 @@
+ConditionalConverter
+
+注释
+
+	允许Converter,GenericConverter,COnverterFactory去条件式的执行,基于source和target的TypeDescriptor
+	常用于基于字段或者类级别的元数据,如注解或者方法,来选择性地匹配自定义的转换逻辑
+
+接口定义
+
+	public interface ConditionalConverter {
+
+		boolean matches(TypeDescriptor sourceType, TypeDescriptor targetType);
+
+	}
+
+子接口
+
+	ConditionalGenericConverter:
+		一个GenericConvert,会基于source和target的TypeDescriptor来条件执行

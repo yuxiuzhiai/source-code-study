@@ -1,0 +1,6 @@
+ConfigurationClassEnhancer
+
+注释
+
+    通过生成CGLIB子类来增强@Configuration类
+    每个@Bean注解的方法都会在生成的子类中被覆盖.只有容器确实请求了bean实例,才会转发给真正的@Bean方法

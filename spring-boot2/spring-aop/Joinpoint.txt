@@ -1,0 +1,38 @@
+Joinpoint
+
+注释
+
+	一般就是指方法执行
+
+接口定义
+
+	public interface Joinpoint {
+
+		Object proceed() throws Throwable;
+
+		Object getThis();
+
+		AccessibleObject getStaticPart();
+
+	}
+
+子接口
+
+	Invocation:
+		代表程序的依次调用
+		invocation是一种joinpoint并且可以被拦截器拦截
+
+	MethodInvocation:
+		代表方法执行
+
+	ConstructorInvocation:
+		代表构造方法的执行
+
+	ProxyMethodInvocation:
+		MethodInvocation的拓展,允许访问发起这次方法调用的proxy
+
+子类
+
+	ReflectiveMethodInvocation:
+		spring对aop里面的MethodInvocation接口的实现,实现了ProxyMethodInvocation接口
+		用反射来调用目标对象

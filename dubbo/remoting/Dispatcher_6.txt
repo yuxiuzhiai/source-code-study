@@ -1,0 +1,36 @@
+Dispatcher
+
+注释
+
+	通道信息派发器，用于指定线程池模型
+
+接口定义
+
+	@SPI(AllDispatcher.NAME)
+	public interface Dispatcher {
+
+	    /**
+	     * dispatch the message to threadpool.
+	     *
+	     * @param handler
+	     * @param url
+	     * @return channel handler
+	     */
+	    @Adaptive({Constants.DISPATCHER_KEY, "dispather", "channel.handler"})
+	    // The last two parameters are reserved for compatibility with the old configuration
+	    ChannelHandler dispatch(ChannelHandler handler, URL url);
+
+	}
+
+子类
+
+	AllDispatcher:
+		默认
+
+	DirectDispatcher:
+
+	MessageOnlyDispatcher:
+
+	ExecutionDispatcher:
+
+	ConnectionOrderedDispatcher:

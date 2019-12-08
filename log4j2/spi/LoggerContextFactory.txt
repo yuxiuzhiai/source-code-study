@@ -1,0 +1,16 @@
+LoggerContextFactory
+
+类
+
+	3
+
+描述
+	
+	用于创建LoggerContext的接口
+
+子类
+	
+	Log4jContextFactory:log4j-core对应的factory
+	SimpleLoggerContextFactory:如果没有在classpath找到一个日志实现，就用这个
+
+	

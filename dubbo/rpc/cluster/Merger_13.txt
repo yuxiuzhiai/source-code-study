@@ -1,0 +1,16 @@
+Merger
+
+注释
+
+接口定义
+
+	@SPI
+	public interface Merger<T> {
+
+	    T merge(T... items);
+
+	}
+
+子类
+
+	ArrayMerger

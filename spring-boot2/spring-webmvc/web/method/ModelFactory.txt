@@ -1,0 +1,7 @@
+ModelFactory
+
+注解
+
+	在Controller方法调用之前,帮助Model的初始化
+	在初始化的时候,model会被填入临时存在session中的attributes,以及@ModelAttribute方法的调用
+	

@@ -1,0 +1,10 @@
+TermVectorsWriter
+
+注释
+
+	写入term vector的codec api
+
+子类
+
+	CompressingTermVectorsWriter
+		

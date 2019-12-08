@@ -1,0 +1,28 @@
+ThreadContextMap
+
+类
+
+	8
+
+ 描述
+
+ 	SPI机制，实现自定义MDC
+ 	键值都是String类型
+
+ 子类
+
+ 	子接口
+ 	ThreadContextMap2:
+ 	CleanableThreadContextMap:提供一个移除所有key的方法
+ 	ObjectThreadContextMap:可以提供对象形式的value
+ 	
+
+ 	子类
+ 	NoOpThreadContextMap
+ 	GarbageFreeSortedArrayThreadContextMap:
+ 	CopyOnWriteSortedArrayThreadContextMap
+ 	DefaultThreadContextMap
+
+相关类
+
+	ReadOnlyThreadContextMap:只读的ThreadContextMap

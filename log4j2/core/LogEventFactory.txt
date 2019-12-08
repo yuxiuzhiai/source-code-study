@@ -1,0 +1,14 @@
+LogEventFactory
+
+类
+
+	3
+
+描述
+
+	用于获取LogEvent
+
+子类
+
+	DefaultLogEventFactory:总是返回一个新的LogEvent
+	ReusableLogEventFactory:garbage-free factory，总重用同一个可变LogEvent

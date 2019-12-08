@@ -1,0 +1,5 @@
+EncodedResource
+
+注释
+
+    结合一个Resource和一个特定字符集的holder

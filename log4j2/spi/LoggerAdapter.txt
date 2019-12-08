@@ -1,0 +1,13 @@
+LoggerAdapter
+
+类
+
+	2
+
+描述
+
+	用于代理别的日志框架
+
+子类
+
+	AbstractLoggerAdapter

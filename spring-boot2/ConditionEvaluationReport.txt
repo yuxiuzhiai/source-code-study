@@ -1,0 +1,5 @@
+ConditionEvaluationReport
+
+注释
+    
+    记录条件评估的详情,用于report和logging

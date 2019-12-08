@@ -1,0 +1,60 @@
+Scope
+
+注释
+
+    ConfigurableBF使用,代表一个目标scope来持有bean实例
+    允许拓展BF的标准scope
+
+接口定义
+
+    public interface Scope {
+
+        Object get(String name, ObjectFactory<?> objectFactory);
+
+        Object remove(String name);
+
+        void registerDestructionCallback(String name, Runnable callback);
+
+        Object resolveContextualObject(String key);
+
+        String getConversationId();
+
+    }
+
+子类
+
+    AbstractRequestAttributesScope:
+        从一个RequestAttribute中读取对象
+
+    RequestScope:
+        基于request的scope实现
+
+    ServletContextScope:
+
+    SessionScope:
+
+    SimpSessionScope:
+
+    SimpleThreadScope:
+
+    SimpleTransactionScope:
+
+
+@Scope
+
+注解定义
+
+    @Target({ElementType.TYPE, ElementType.METHOD})
+    @Retention(RetentionPolicy.RUNTIME)
+    @Documented
+    public @interface Scope {
+
+        @AliasFor("scopeName")
+        String value() default "";
+
+        @AliasFor("value")
+        String scopeName() default "";
+
+        ScopedProxyMode proxyMode() default ScopedProxyMode.DEFAULT;
+
+    }

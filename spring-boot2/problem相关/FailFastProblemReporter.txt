@@ -1,0 +1,5 @@
+FailFastProblemReporter
+
+注释
+
+    ProblemReport的fail-fast实现

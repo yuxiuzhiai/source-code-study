@@ -1,0 +1,27 @@
+QueryParser
+
+注释
+
+	由JavaCC生成，最重要的就是parse()方法
+
+父类
+
+	CommonQueryParserConfiguration
+		查询的配置
+
+	QueryBuilder
+		从一个Analyzer链中构建QueryParse
+
+	QueryParserBase
+
+子类
+
+	ComplexPhraseQueryParser
+		允许复杂的查询短语
+
+	MultiFieldQueryParser
+		查询多个Field
+
+	ExtendableQueryParser
+		
+相关类

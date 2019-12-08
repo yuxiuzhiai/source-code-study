@@ -1,0 +1,20 @@
+TypeConverter
+
+注释
+
+	将value转换成不同的类型
+
+接口定义
+	
+	public interface TypeConverter {
+
+		boolean canConvert(@Nullable TypeDescriptor sourceType, TypeDescriptor targetType);
+
+		Object convertValue(@Nullable Object value, @Nullable TypeDescriptor sourceType, TypeDescriptor targetType);
+
+	}
+
+子类
+
+	StandardTypeConverter:
+		通过委派给ConversionService实现类型转换

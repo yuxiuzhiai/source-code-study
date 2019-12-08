@@ -1,0 +1,5 @@
+SpringFactoriesLoader
+
+注释
+
+    从META-INF/spring.factories中加载和实例化给定的类型.spring.factories必须是Properties格式,对个类名以","分割,存在于多个jar中

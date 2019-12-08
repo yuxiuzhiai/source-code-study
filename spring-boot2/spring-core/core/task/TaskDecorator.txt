@@ -1,0 +1,14 @@
+TaskDecorator
+
+注释
+
+	回调接口,对Runnable的装饰
+	主要的用途是为task的执行设置一些执行上下文,或者是提供一些监控、统计数据
+
+接口定义
+
+	public interface TaskDecorator {
+
+		Runnable decorate(Runnable runnable);
+
+	}

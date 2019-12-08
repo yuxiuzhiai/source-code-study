@@ -1,0 +1,18 @@
+ConstructorExecutor
+
+注释
+
+	执行构造函数
+
+接口定义
+
+	public interface ConstructorExecutor {
+
+		TypedValue execute(EvaluationContext context, Object... arguments) throws AccessException;
+
+	}
+
+子类
+
+	ReflectiveConstructorExecutor:
+		反射实现

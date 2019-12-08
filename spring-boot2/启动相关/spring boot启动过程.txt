@@ -1,0 +1,296 @@
+spring java files:4277
+spring boot java files:2436
+studied:1125
+
+当运行SpringApplication.run(***.class, args)时:
+	
+首先,SpringApplication的初始化:主要就是加载spring.factories中的ACI和AL
+	
+	1.将启动类设置到primarySources属性中(启动类是可以有多个的)
+
+	2.推导当前的webApplication的类型:deduceWebApplicationType()方法
+		如果classpath下
+			存在	o.s.w.reactive.DispatherServlet -> REACTIVE
+			不存在o.s.w.context.DispatherServlet或者javax.servlet.Servlet -> NONE
+			否则 -> SERVLET 
+
+	3.设置ApplicationContextInitializer:6个
+
+		3.1.获取当前线程上下文ClassLoader
+		3.2.加载当前classpath下所有的spring.factories
+		3.3.读取里面所有的配置项并缓存起来(SpringFactoriesLoader中)
+		3.4.创建spring.factories中ApplicationContextInitializer配置项的所有对应实例
+
+	4.设置listeners,10个,跟上面一样的方法
+
+	5.deduceMainApplicationClass():因为用于初始化SpringApplication的类不一定是一个,所以就要根据main方法所在,来确定所在类
+		关键方法:StackTraceElement[] stackTrace = new RuntimeException().getStackTrace();
+
+然后,调用SpringApplication.run(args)方法
+	
+	1.加载spring.factories中的SpringApplicationRunListener实例(EventPublishingRunListener),并创建出一个SpringApplicationRunListeners
+	
+	2.listeners发布一个ApplicationStartingEvent事件
+
+		2.1.SimpleApplicationEventMulticaster中用getALs(event,type)选出合适的方法
+			处理方法就是将所有的AL转换成GenericAL,如果本身不是GenericAL的就用GenericApplicationListenerAdapter处理成GenericAL
+
+		2.2.相关listener的处理
+			a)LoggingApplicationListener
+				i)初始化日志系统,按照logback > log4j > jul 的顺序从classpath中查找存在的日志系统并初始化
+				ii)loggingSystem.beforeInitialize()
+					(1)Slf4JLoggingSystem.beforeInitialize():好像是移除jul里的handler然后注册slf4j的
+					(2)todo...(都是日志相关的,不是很懂)
+			b)BackgroundPreinitializer:触发后台耗时线程的初始化
+				i)spring messageConverters的初始化(AllEncompassingFormHttpMessageConverter)
+				ii)new MBeanFactory()(tomcat相关)
+				iii)Validation.byDefaultProvider().configure()(todo...)
+				vi)Jackson2ObjectMapperBuilder
+				v)spring conversionService的初始化(DefaultFormattingConversionService(直接new一个对象不会被gc???(todo...)))
+
+	3.新建一个ApplicationArguments,用于访问启动时的参数
+
+	4.prepareEnvironment()
+	
+		4.1.根据webApplication类型创建一个Environment(一般为StandardServletEnvironment)
+			创建StandardServletEnvironment,并在propertySources属性中依次加入下列PropertySource:
+				servletConfigInitParams
+				servletContextInitParams
+				(jndiProperties)
+				systemProperties(jvm变量,通过System.getProperties()获得)
+				systemEnvironment(环境变量,通过 System.getenv()获得)
+		
+		4.2.configureEnvironment(environment,args)
+			a)配置propertySource
+				i)根据defaultProperties是否为空,判断是否需要加入一个defaultProperties
+				ii)根据args是否为空,判断是否需要加入一个SimpleCommandLinePropertySource
+			b)配置activeProfiles,如果没有设置则为default
+
+		4.3.listeners发布一个ApplicationEnvironmentPreparedEvent事件
+
+			a)ConfigFileAL:EPP处理
+				i)SystemEnvironmentPropertySourceEnvironmentPostProcessor
+					将systemEnvironment从SystemEnvironmentPropertySource替换为内部类OriginAwareSystemEnvironmentPropertySource
+				ii)SpringApplicationJsonEnvironmentPostProcessor
+					解析spring.application.json/SPRING_APPLICATION_JSON,并将其作为一个JsonPropertySource添加到Environment中
+				iii)ConfigFileApplicationListener
+					(1)添加一个RandomValuePropertySource到environment
+					(2)从spring.factories中读取PropertySourceLoader
+						PropertiesPropertySourceLoader
+						YamlPropertySourceLoader
+					(3)读取application.properties及所有当前profile对应的配置文件,作为PropertySource加到environment中
+			b)AnsiOutputApplicationListener
+
+			c)LoggingApplicationListener
+				i)通过LoggingSystemProperties设置一些日志相关的jvm变量
+				ii)创建spring.log
+				iii)initializeEarlyLoggingLevel(environment)
+				iv)initializeSystem(environment, this.loggingSystem, logFile)
+				v)initializeFinalLoggingLevels(environment, this.loggingSystem);
+				vi)registerShutdownHookIfNecessary(environment, this.loggingSystem);
+
+			e)ClasspathLoggingApplicationListener
+				如果日志级别是DEBUG,打印一下classpath
+			f)FileEncodingApplicationListener
+				校验spring.mandatory-file-encoding.如果有就比较是否和System.getProperty("file.encoding")相等
+
+		4.4.将environment绑定到SpringApplication中(还是没有看懂是在干嘛todo...)
+
+		4.5.往Environment的propertySources中加了一个ConfigurationPropertySourcesPropertySource
+	
+	5.创建ApplicationContext
+
+		5.1.AnnotationConfigServletWebServerAC的初始化
+			a)DefaultResourceLoader的初始化
+				将classLoader设置成线程上线文classLoader
+			b)AbstractApplicationContext的初始化
+				新建一个ResourcePatternResolver(ServletContextResourcePatternResolver)
+			c)GenericWebAC的初始化
+				新建一个DefaultListableBeanFactory
+					i)SimpleAliasRegistry的初始化
+					ii)DefaultSingletonBeanRegistry的初始化
+					iii)FactoryBeanRegistrySupport的初始化
+					iv)AbstractBeanFactory的初始化
+					v)AbstractAutowireCapableBeanFactory的初始化
+			d)ServletWebServerAC的初始化
+			e)自己的初始化
+				i)新建一个AnnotatedBeanDefinitionReader
+					(1)新建一个ConditionEvaluator
+					(2)调用AnnotationConfigUtils.registerAnnotationConfigProcessors(this.registry)
+						a)注册ConfigurationClassPostProcessor
+						b)注册AutowiredAnnotationBPP
+						c)注册RequiredAnnotationBPP
+						d)注册CommonAnnotationBPP
+						e)如果classpath存在JPA,则注册PersistenceAnnotationBPP
+						f)注册EventListenerMethodProcessor
+						g)注册DefaultEventListenerFactory
+				ii)新建一个ClassPathBeanDefinitionScanner
+					注册@Component @ManagedBean @Named的TypeFilter
+	
+	6.获取spring.factories中的SpringBootExceptionReporter:FailureAnalyzers并初始化
+	
+	7.prepareContext():
+	
+		7.1.调用ACI的initialize方法
+			a)DelegatingACI
+				根据context.initializer.classes属性查找有没有自定义的aci,如果有则实例化并调用对应的initialze方法
+			b)ContextIdACI
+				设置ac的id属性,并将ContextId内部类注册到BF中
+			c)SharedMetadataReaderFactoryCI
+				加入一个BDRPP(内部类CachingMetadataReaderFactoryPostProcessor)
+			d)ConditionEvaluationReportLoggingListener
+				加入一个ConditionEvaluationReportListener(内部类)
+			e)ConfigurationWarningsACI
+				加入一个BDRPP:ConfigurationWarningsPostProcessor来报告错误配置产生的warning
+			f)ServerPortInfoApplicationContextInitializer
+				往ac中加入一个ApplicationListener,就是它自己
+
+		7.2.注册两个springboot独有的bean:springApplicationArguments/springBootBanner
+
+		7.3.load():把sources解析成BeanDefinition注册到AC中
+			a)创建一个BeanDefinitionLoader
+				i)依次创建AnnotatedBeanDefinitionReader,XmlBeanDefinitionReader,ClassPathBeanDefinitionScanner
+			b)调用BeanDefinitionLoader.load()
+				最终会调用到AnnotatedBeanDefinitionReader.register(),结果是sources对应的实例会被注册到AC中
+		7.4.listeners发布一个contextLoaded(ApplicationPreparedEvent)事件
+			i)ConfigFileApplicationListener:
+				往AC中添加一个BFPP(ConfigFileApplicationListener.PropertySourceOrderingPostProcessor)
+			ii)LoggingApplicationListener
+				往BF中注册一个springBootLoggingSystem(this.loggingSystem)
+	
+	8.refreshContext(context):标准的模板方法,tomcat在这一步启动
+		
+		8.1.prepareRefresh():refresh的准备工作,设置启动时间,active标识,property source的初始化等
+			a)initPropertySources()
+				替换propertySources中的servletContextInitParams/servletConfigInitParams为对应的ServletContextPropertySource/ServletConfigPropertySource
+			b)验证必须的属性:Environment暴露了添加必须属性的接口
+		
+		8.2.obtainFreshBeanFactory()
+			a)refreshBeanFactory():说是刷新BF,但其实只是设置了一个serializedId
+		
+		8.3.prepareBeanFactory(beanFactory):
+			a)设置beanClassLoader
+			b)设置beanExpressionResolver:这个StandardBeanExpressionResolver看起来就是spel起作用的地方
+			c)addPropertyEditorRegistrar
+			d)添加BPP:ApplicationContextAwareProcessor(将AC注入到各种*Aware中)
+			e)添加BPP:ApplicationListenerDetector(用于检测作为ApplicationListener的bean,包括内部bean)
+			f)注册environment/systemProperties/systemEnvironment到beanFactory中
+		
+		8.4.postProcessBeanFactory():添加一个BPP:WebApplicationContextServletContextAwareProcessor
+		
+		8.5.invokeBeanFactoryPostProcessors(beanFactory):调用各个BFPP/BDRPP
+			顺序: BeanDefinitionRegistryPostProcessor -> BFPP , PriorityOrder -> Order -> 其它
+			BeanDefinitionRegistryPostProcessor:
+				a)SharedMetadataReaderFactoryContextInitializer.CachingMetadataReaderFactoryPostProcessor
+					i)注册一个name为org.springframework.boot.autoconfigure.internalCachingMetadataReaderFactory的SharedMetadataReaderFactoryBean
+					ii)给ConfigurationClassPostProcessor添加一个属性(BeanReference相关)
+				b)ConfigurationWarningsACI.ConfigurationWarningsPostProcessor
+					检查ComponentScan的包是否有org/org.springframework
+				b-c)当中触发了加载spring.factories的BeanInfoFactory
+					实例化ExtendedBeanInfoFactory
+				c)ConfigurationClassPostProcessor
+					i)processConfigBeanDefinitions(registry)
+						(1)找到所有的@Configuration类
+						(2)对于所有@Configuration类调用ConfigurationClassParser.parse()
+							期间会触发所有的自动配置类
+							parse的时候还会触发TemplateAvailabilityProvider的加载
+				d)ConfigurationClassPostProcessor(作为BFPP)
+					i)enhanceConfigurationClasses(beanFactory)
+						用CGLIB为所有的@Configuration类(包括自动配置的)生成一个子类(todo...不知道这么做是干嘛的)
+					ii)添加了一个BFPP(内部类ImportAwareBeanPostProcessor)
+				e)ConfigFileApplicationListener.PropertySourceOrderingPostProcessor
+					reorderSources(this.context.getEnvironment())
+
+			BFPP:
+				a)PropertySourcesPlaceholderConfigurer
+					解决BeanDefinition各个属性中的占位符${}占位符
+				b)ConfigurationBeanFactoryMetaData
+					将所有@Bean方法存到一个map中
+				c)ErrorMvcAutoConfiguration.PreserveErrorControllerTargetClassPostProcessor
+					为BF中所有的ErrorController的BeanDefinition设置一个属性
+
+		8.6.registerBeanPostProcessors(beanFactory):注册所有的BPP
+			ApplicationContextAwareProcessor:
+			WebApplicationContextServletContextAwareProcessor:
+			ConfigurationClassPostProcessor.ImportAwareBPP
+			PostProcessorRegistrationDelegate.BeanPostProcessorChecker
+			ConfigurationPropertiesBindingPostProcessor
+			AnnotationAwareAspectJAutoProxyCreator
+			DataSourceInitializerPostProcessor
+			MethodValidationPostProcessor
+			PersistenceExceptionTranslationPostProcessor
+			WebServerFactoryCustomizerBPP
+			ErrorPageRegistrarBPP
+			CommonAnnotationBPP
+			AutowiredAnnotationBPP
+			RequiredAnnotationBPP
+			ApplicationListenerDetector:
+
+
+		8.7.initMessageSource():根据有没有自定义的messageSource bean,分别处理.结果就是BeanFactory中会有一个名为messagesource的bean
+		
+		8.8.initApplicationEventMulticaster():跟上面一样
+		
+		8.9.onRefresh():实例化一些特别的bean在特定的ac中(TODO)
+			a)GenericWebAC:构建了一个themeSource,其结果就是bf中会有个themeSource bean,默认类型是ResourceBundleThemeSource
+			b)ServletWebServerAC:createWebServer():创建一个webServer
+				i)获得一个ServletWebServerFactory(8.5.c中的自动配置)
+				ii)调用ServletWebServerFactory.getWebServer()
+					(1)新建一个Tomcat对象
+					(2)好像就设置了一个唯一的Http11NioProtocol
+					(3)调用Tomcat的start()方法
+				iii)替换原来Environment中的servletCOnfigInitParams/servletContextInitParams
+		
+		8.10.registerListeners():注册AL
+		
+		8.11.finishBeanFactoryInitialization(beanFactory):实例化所有剩下的singleton bean
+			a)如果bf中有名为conversionService的bean,就设置成对应的属性
+			b)如果没有EmbeddedValueResolver就注册一个
+			c)如果有LoadTimeWeaverAware,就先实例化出来
+			d)缓存所有的beanDefinitionNames
+			e)preInstantiateSingletons()
+				i)根据上面的这个beanDefinitionNames,逐一实例化bean
+				ii)对于实现了SmartInitializingSingleton的bean有个处理
+					EventListenerMethodProcessor
+					BeanTypeRegistry
+					AnnotationMBeanExporter
+
+		8.8.finishRefresh()
+			
+			AbstractAC:
+				a)如果有lifecycleProcessor,则注册进去,如果没有则注册一个DefaultLifecycleProcessor
+				b)调用lifecycleProcessor.onRefresh()
+				c)发布一个ContextRefreshedEvent
+					i)DelegatingApplicationListener
+					iiAutoConfigurationReportListener:打印自动配置的日志
+					iii)ClearCachesApplicationListener:清除ReflectionUtils中的cache
+					vi)SharedMetadataReaderFactoryBean:清除缓存
+					v)ResourceUrlProvider:用于获取static资源的url
+				d)LiveBeansView.registerApplicationContext(this)
+					todo
+
+			ServletWebServerAC:
+				a)启动webServer(todo...)
+				b)发布一个ServletWebServerInitializedEvent
+					i)DelegatingApplicationListener
+					ii)ApplicationListenerMethodAdapter
+		8.13.registerShutdownHook()
+	
+	9.listeners.finished(context, null):发布一个ApplicationReadyEvent
+
+	10.callRunners(context, applicationArguments):ApplicationRunner/CommandLineRunner
+
+	11.listeners.running():发布一个ApplicationReadyEvent事件
+
+
+
+
+
+
+
+
+
+
+
+
+

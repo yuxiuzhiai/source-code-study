@@ -1,0 +1,6 @@
+ZKDatabase
+
+注释
+
+	在内存中维系zookeeper服务器状态,包括sessions,datatree和提交的日志
+	会在读取了磁盘上的日志和snapshot后启动

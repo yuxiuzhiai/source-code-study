@@ -1,0 +1,11 @@
+InstantiationStrategy
+
+注释
+    
+    负责创建符合RootBeanDefinition的bean实例
+    BeanFactory使用
+
+两个实现
+
+    SimpleInstantiationStrategy:不支持方法注入
+    CglibSubclassingInstantiationStrategy:BeanFactory使用的默认创建bean实例策略

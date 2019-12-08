@@ -1,0 +1,17 @@
+ProtocolHandler
+
+注释
+
+
+子类
+
+	AbstractProtocol
+		AbstractAjpProtocol
+			AjpAprProtocol
+			AjpNioProtocol
+			AjpNio2Protocol
+		AbstractHttp11Protocol
+			AbstractHttp11JsseProtocol
+				Http11NioProtocol
+				Http11Nio2Protocol
+			Http11AprProtocol

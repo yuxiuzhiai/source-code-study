@@ -1,0 +1,26 @@
+ConverterRegistry
+
+注释
+
+    注册converer(Converter或者是GenericConverter)到类型转换系统中
+
+接口定义
+
+    public interface ConverterRegistry {
+
+        void addConverter(Converter<?, ?> converter);
+
+        <S, T> void addConverter(Class<S> sourceType, Class<T> targetType, Converter<? super S, ? extends T> converter);
+        
+        void addConverter(GenericConverter converter);
+        
+        void addConverterFactory(ConverterFactory<?, ?> factory);
+
+        void removeConvertible(Class<?> sourceType, Class<?> targetType);
+
+    }
+
+子接口
+
+    FormatterRegistry:
+        包含字段格式化的逻辑

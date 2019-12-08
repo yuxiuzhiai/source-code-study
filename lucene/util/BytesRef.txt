@@ -1,0 +1,6 @@
+BytesRef
+
+注释
+
+	一个已有byte[]的切片
+	由offset+length定义切片的位置和长度

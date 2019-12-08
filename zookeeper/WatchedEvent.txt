@@ -1,0 +1,6 @@
+WatchedEvent
+
+注释
+
+	代表了一个Watcher可以响应的Zookeeper改变
+	WatchedEvent包括了发生了什么,当前Zookeeper的状态和event设计到的znode path

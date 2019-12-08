@@ -1,0 +1,14 @@
+Contained
+
+注释
+
+	指定其实现类最多关联到一个container
+
+接口定义
+
+	public interface Contained {
+
+	    Container getContainer();
+
+	    void setContainer(Container container);
+	}

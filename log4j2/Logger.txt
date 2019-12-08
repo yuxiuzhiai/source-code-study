@@ -1,0 +1,20 @@
+Logger
+
+类
+
+	9
+
+描述
+
+	核心接口。除了配置以外的大多数log4j功能都由这个类实现
+
+子类
+
+	ExtendedLogger:包括了很多isEnable方法
+	AbstractLogger:logger实现类的基类
+	SimpleLogger
+	StatusLogger:记录log4j自己的日志，一般通过<Configuration status="LEVEL"/>来配置，其实际日志打印是有SimpleLogger完成的
+	ExtendedLoggerWrapper:包装logger
+	WrappedLogger:包装类
+	Logger:核心实现
+	AsyncLogger:继承Logger,使用disruptor来实现高吞吐低延迟的logger

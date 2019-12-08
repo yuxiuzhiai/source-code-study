@@ -1,0 +1,25 @@
+exception
+
+MethodArgumentNotValidException:
+	当@Valid注解的参数验证失败时触发
+
+NestedServletException:
+	ServletException的子类,处理root cause
+
+ServletRequestBindingException:
+	当遇到不可恢复的bind异常时抛出
+
+MissingServletRequestParameterException:
+	指出缺失的参数的异常
+
+UnsatisfiedServletRequestParameterException:
+	指出参数不满足的条件
+
+MaxUploadSizeExceededException:
+	当上传文件超过了最大大小时抛出的异常
+
+MultipartException:
+	当解析上传文件出错时
+
+HttpSessionRequiredException:
+	当一个HTTP请求的handler需要一个预先存在的session时

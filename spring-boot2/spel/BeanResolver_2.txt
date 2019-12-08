@@ -1,0 +1,18 @@
+BeanResolver
+
+注释
+
+	BeanResolver可以被注册到表达式上下文
+
+接口定义
+
+	public interface BeanResolver {
+
+		Object resolve(EvaluationContext context, String beanName) throws AccessException;
+
+	}
+
+子类
+
+	BeanFactoryResolver:
+		用BF解决bean引用的问题

@@ -1,0 +1,19 @@
+ConstructorResolver
+
+注释
+
+	尝试定位一个构造函数并返回一个ConstructorExecutor
+
+接口定义
+
+	@FunctionalInterface
+	public interface ConstructorResolver {
+
+		ConstructorExecutor resolve(EvaluationContext context, String typeName, List<TypeDescriptor> argumentTypes) throws AccessException;
+
+	}
+
+子类
+
+	ReflectiveConstructorResolver:
+		反射实现

@@ -1,0 +1,25 @@
+Directory
+
+注释
+
+	存储文件列表的抽象层。
+	只包含文件，不包括子目录
+
+
+子类
+
+	BaseDirectory
+		抽象类
+
+	FSDirectory
+		抽象类。存储索引文件到文件系统中。
+		子类：
+			SimpleFSDirectory：Files.newByteChannel。并发性能差
+			NIOFSDirectory：使用java NIO
+			MMapDirectory：使用内存映射io
+
+	ByteBuffersDirectory
+
+	FilterDirectory
+
+	NRTCachingDirectory

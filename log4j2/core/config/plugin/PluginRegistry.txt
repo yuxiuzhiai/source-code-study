@@ -1,0 +1,5 @@
+PluginRegistry
+
+描述
+
+	单例类。维护一个根据source type和category分类的PluginType Map

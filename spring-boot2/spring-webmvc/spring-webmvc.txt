@@ -1,0 +1,80 @@
+spring-webmvc:
+DispatcherServlet
+WebApplicationInitializer
+
+special bean types:
+
+HandlerMapping:将请求根据url匹配到对应的handler
+HandlerAdapter:意思就是使用对应的handler去处理请求
+HandlerExceptionResolver:可以解决HandlerMapping或者执行过程中的异常接口
+ViewResolver：根据name找到对应的view
+LocaleResolver/LocaleContextResolver
+ThemeResolver
+MultipartResolver
+FlashMapManager
+
+DispatcherServlet处理请求的过程:
+
+1.把WebApplicationContext设置到request中作为一个属性
+2.将LocaleResolver绑定到request的一个属性中
+3.ThemeResolver同上
+4.如果配置了MutipartResolver,request会被包装成MultipartHttpServletRequest
+5.找到一个合适的handler.如果找到了,handler相关的执行链会依次执行
+6.如果返回了model,则会渲染一个view.
+
+ViewResolver:
+    AbstractCachingViewResolver
+    XmlViewResolver:
+    ResourceBundleViewResolver:
+    UrlBasedViewResolver
+    InternalResourceViewResolver
+    FreeMarkerViewResolver
+    ContentNegotiatingViewResolver:根据request的file name和Accept head来渲染view
+View
+
+DispatcherServlet的init是在接收到第一次请求之后
+
+
+
+
+
+1个RequestToViewNameTranslator
+    
+
+
+当第一个请求进来的时候
+0.DispathcerServlet中的static语句块
+    0.1.加载classpath下的DispatcherServlet.properties
+    0.2.通过这个Properties文件加载默认的strategy实现
+
+2.请求处理过程
+    2.1.DispatcherServlet.service()(FrameworkServlet.service())
+        2.1.1.获取http method
+        2.1.2.doService(request,response)
+            i)判断是否是include request
+            ii)设置各种属性到request中
+                org.springframework.web.servlet.DispatcherServlet.CONTEXT -> ac
+                org.springframework.web.servlet.DispatcherServlet.LOCALE_RESOLVER
+                org.springframework.web.servlet.DispatcherServlet.THEME_RESOLVER
+                org.springframework.web.servlet.DispatcherServlet.THEME_SOURCE
+            iii)flashMapManager的相关操作
+            iv)doDispatch(request,response)
+                a)getAsyncManger(servletRequest)(异步请求处理相关)
+                b)checkMultipart(request)
+                c)getHandler(request):返回的是HandlerExecutionChain而不是handler
+                    遍历HandlerMapping
+                d)getHandlerAdapter(handler)
+                    遍历HandlerAdapter
+                e)如果http method是GET/HEAD,则添加一个Last-Modified
+                f)使用handlerAdapter去处理请求,返回值是一个ModelAndView
+                g)applyDefaultViewName(processedRequest, mv);
+                h)mappedHandler.applyPostHandle(processedRequest, response, mv);
+                i)processDispatchResult
+                    (1)如果有异常则调用processHandlerException
+        2.1.3.resetContextHolders(request, previousLocaleContext, previousAttributes);
+        2.1.4.发布一个publishRequestHandledEvent
+
+
+
+
+

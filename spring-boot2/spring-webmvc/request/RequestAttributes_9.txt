@@ -1,0 +1,66 @@
+RequestAttributes
+
+注释
+
+	访问request关联的属性对象的抽象
+
+接口定义
+	
+	public interface RequestAttributes {
+
+		int SCOPE_REQUEST = 0;
+
+		int SCOPE_SESSION = 1;
+
+		String REFERENCE_REQUEST = "request";
+
+		String REFERENCE_SESSION = "session";
+
+		Object getAttribute(String name, int scope);
+
+		void setAttribute(String name, Object value, int scope);
+
+		void removeAttribute(String name, int scope);
+
+		String[] getAttributeNames(int scope);
+
+		void registerDestructionCallback(String name, Runnable callback, int scope);
+
+		Object resolveReference(String key);
+
+		String getSessionId();
+
+		/**
+		 * Expose the best available mutex for the underlying session:
+		 * that is, an object to synchronize on for the underlying session.
+		 * @return the session mutex to use (never {@code null})
+		 */
+		Object getSessionMutex();
+
+	}
+
+子接口
+
+	AsyncWebRequest:
+		扩展了一些异步请求处理的方法
+
+	WebRequest:
+		web request的一般性接口,主要用于web请求拦截
+
+	NativeWebRequest:
+		继承自WebRequest,暴露了原生的request和response对象
+		主要用于spring内部
+
+子类
+
+	AbstractRequestAttributes:
+
+	ServletRequestAttributes
+
+	ServletWebRequest:
+		HttpServletRequest转换为WebRequest的适配器
+
+	StandardServletAsyncWebRequest
+
+	DispatcherServletWebRequest:
+		

@@ -1,0 +1,22 @@
+ContextSelector
+
+类
+
+	7
+	
+
+描述
+
+	用于定位一个LoggerContext
+
+子类
+
+	NamedContextSelector:接口，具备name的ContextSelector
+	BasicContextSelector:返回线程或者默认的LoggerContext
+	ClassLoaderContextSelector:基于调用者的ClassLoader选择LoggerContext
+	AsyncLoggerContextSelector:
+	JndiContextSelector:jndi相关,不懂
+
+相关类
+
+	CoreContextSelectors:包括ClassLoader、Basic、Async三个ContextSelector

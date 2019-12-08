@@ -1,0 +1,25 @@
+AopProxy
+
+注释
+
+	代表aop代理对象
+
+接口定义
+
+	public interface AopProxy {
+
+		Object getProxy();
+
+		Object getProxy(@Nullable ClassLoader classLoader);
+
+	}
+
+子类
+
+	JdkDynamicAopProxy:
+		
+
+	CglibAopProxy:
+
+	ObjenesisCglibAopProxy:
+		继承自CglibAopProxy.不需要调用类的构造方法

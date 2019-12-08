@@ -1,0 +1,5 @@
+ConfigurationProperty
+
+注释
+
+    从ConfigurationPropertySource获取的单个配置属性,包括getName/getValue,和一个可选的getOrigin方法

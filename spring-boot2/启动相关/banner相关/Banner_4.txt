@@ -1,0 +1,32 @@
+Banner
+
+注释
+
+
+接口定义
+
+    public interface Banner {
+
+        void printBanner(Environment environment, Class<?> sourceClass, PrintStream out);
+
+        enum Mode {
+
+            OFF,
+
+            CONSOLE,
+
+            LOG
+
+        }
+
+    }
+
+实现类
+
+	SpringBootBanner:默认实现
+
+	ResourceBanner:
+		从一个Resource源文件中打印
+
+	ImageBanner:
+		从image resource中打印ASCII

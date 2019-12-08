@@ -1,0 +1,21 @@
+AnnotatedTypeMetadata
+
+接口注释
+    
+    定义访问特定类型AnnotationMetadata/MethodMetadata的元数据,不需要类已经被加载
+
+接口定义
+    
+    public interface AnnotatedTypeMetadata {
+
+        boolean isAnnotated(String annotationName);
+
+        Map<String, Object> getAnnotationAttributes(String annotationName);
+
+        Map<String, Object> getAnnotationAttributes(String annotationName, boolean classValuesAsString);
+
+        MultiValueMap<String, Object> getAllAnnotationAttributes(String annotationName);
+
+        MultiValueMap<String, Object> getAllAnnotationAttributes(String annotationName, boolean classValuesAsString);
+
+    }

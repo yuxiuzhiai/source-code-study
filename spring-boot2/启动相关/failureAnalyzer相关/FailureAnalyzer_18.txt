@@ -1,0 +1,34 @@
+FailureAnalyzer
+
+注释
+
+    用于分析错误并提供诊断信息
+
+接口定义
+
+    @FunctionalInterface
+    public interface FailureAnalyzer {
+        FailureAnalysis analyze(Throwable failure);
+    }
+
+子类(17)
+
+    AbstractFailureAnalyzer:
+        大部分FailureAnalyzer都基于它实现.T代表要分析的异常类型
+    AbstractInjectionFailureAnalyzer:
+        处理injection failure的FailureAnalyzer的抽象基类
+    
+    NoSuchBeanDefinitionFailureAnalyzer
+    DataSourceBeanCreationFailureAnalyzer
+    HikariDriverConfigurationFailureAnalyzer
+    NonUniqueSessionRepositoryFailureAnalyzer
+    BeanCurrentlyInCreationFailureAnalyzer
+    BeanNotOfRequiredTypeFailureAnalyzer
+    BindFailureAnalyzer
+    BindValidationFailureAnalyzer
+    UnboundConfigurationPropertyFailureAnalyzer
+    ConnectorStartFailureAnalyzer
+    NoUniqueBeanDefinitionFailureAnalyzer
+    PortInUseFailureAnalyzer
+    ValidationExceptionFailureAnalyzer
+    InvalidConfigurationPropertyNameFailureAnalyzer

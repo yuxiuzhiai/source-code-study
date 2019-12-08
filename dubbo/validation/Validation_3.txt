@@ -1,0 +1,17 @@
+Validation
+
+接口定义
+
+	@SPI("jvalidation")
+	public interface Validation {
+
+	    @Adaptive(Constants.VALIDATION_KEY)
+	    Validator getValidator(URL url);
+
+	}
+
+子类
+
+	AbstractValidation
+
+	JValidation

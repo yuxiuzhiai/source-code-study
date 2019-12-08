@@ -1,0 +1,19 @@
+PropertyEditorRegistry
+
+注释
+
+    封装了注册javabean的PropertyEditor的方法.是PropertyEditorRegistrar的操作对象
+    BeanWrapper继承了这个接口,由BeanWrapperImpl/DataBinder实现
+
+
+接口定义
+
+    public interface PropertyEditorRegistry {
+
+        void registerCustomEditor(Class<?> requiredType, PropertyEditor propertyEditor);
+
+        void registerCustomEditor(@Nullable Class<?> requiredType, @Nullable String propertyPath, PropertyEditor propertyEditor);
+
+        PropertyEditor findCustomEditor(@Nullable Class<?> requiredType, @Nullable String propertyPath);
+
+    }

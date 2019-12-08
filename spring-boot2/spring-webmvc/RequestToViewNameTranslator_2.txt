@@ -1,0 +1,18 @@
+RequestToViewNameTranslator
+
+注释
+
+	根据request得到一个view name
+
+接口定义
+
+	public interface RequestToViewNameTranslator {
+
+		String getViewName(HttpServletRequest request) throws Exception;
+
+	}
+
+子类
+
+	DefaultRequestToViewNameTranslator:
+		去掉url的/和后缀,然后加上前缀和后缀当做view name

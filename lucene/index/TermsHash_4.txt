@@ -1,0 +1,11 @@
+TermsHash
+
+注释
+
+子类
+
+	TermVectorsConsumer
+
+	SortingTermVectorsConsumer
+
+	FreqProxTermsWriter

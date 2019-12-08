@@ -1,0 +1,19 @@
+Invoker
+
+注释
+
+接口定义
+
+	public interface Invoker<T> extends Node {
+
+	    Class<T> getInterface();
+
+	    Result invoke(Invocation invocation) throws RpcException;
+
+	}
+
+子类(25)
+	
+	DubboInvoker:	
+
+	ProviderInvokerWrapper:

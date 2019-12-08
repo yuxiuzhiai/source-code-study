@@ -1,0 +1,17 @@
+interface Ordered
+
+注释
+
+    表示排序
+
+接口定义
+
+    public interface Ordered {
+
+        int HIGHEST_PRECEDENCE = Integer.MIN_VALUE;
+
+        int LOWEST_PRECEDENCE = Integer.MAX_VALUE;
+
+        int getOrder();
+
+    }

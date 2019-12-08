@@ -1,0 +1,6 @@
+ScopeMetadata
+
+注释
+
+    描述bean的scope信息,包括scope name和scope-proxy行为
+    默认scope是singleton,默认scope-proxy行为是不创建scope-proxy

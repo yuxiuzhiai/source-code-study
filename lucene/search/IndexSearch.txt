@@ -1,0 +1,8 @@
+IndexSearcher
+
+注释
+
+	通过一个IndexReader实现查询
+	如果索引是不变的，那可以通过在不同的查询中共享同一个IndexSearcher实例。
+	如果希望实时看到索引的更改，那需要在每次更新后，重新获取一个reader，再重新创建一个IndexSearcher
+	如果想要低延迟，最好使用DirectoryReader#open(IndexWriter)来获得一个near-real-time reader

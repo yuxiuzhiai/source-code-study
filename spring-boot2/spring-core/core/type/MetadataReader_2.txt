@@ -1,0 +1,23 @@
+MetadataReader
+
+接口注释
+
+    访问类元数据的简单门面,通过ASM org.springframework.asm.ClassReader读取
+    读取一个.class文件,提取出它的元数据
+
+接口定义
+    
+    public interface MetadataReader {
+
+        Resource getResource();
+
+        ClassMetadata getClassMetadata();
+
+        AnnotationMetadata getAnnotationMetadata();
+
+    }
+
+子类
+
+    SimpleMetadataReader:
+        基于org.springframework.asm.ClassReader的实现

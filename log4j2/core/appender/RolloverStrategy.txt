@@ -1,0 +1,15 @@
+RolloverStrategy
+
+类
+
+	4
+
+描述
+
+	当写入文件时，控制文件的rollover
+
+子类
+
+	AbstractRolloverStrategy
+	DefaultRolloverStrategy:
+	DirectWriteRolloverStrategy

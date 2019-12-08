@@ -1,0 +1,22 @@
+WebDataBinderFactory
+
+注释
+
+	创建WebDataBinder实例的工厂类接口
+
+接口定义
+
+	public interface WebDataBinderFactory {
+
+		WebDataBinder createBinder(NativeWebRequest webRequest, @Nullable Object target, String objectName)
+				throws Exception;
+
+	}
+
+子类
+
+	DefaultDataBinderFactory:
+
+	InitBinderDataBinderFactory:
+
+	ServletRequestDataBinderFactory:

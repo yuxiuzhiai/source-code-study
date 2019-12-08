@@ -1,0 +1,45 @@
+Protocol
+
+注释
+
+接口定义
+
+	@SPI("dubbo")
+	public interface Protocol {
+
+	    int getDefaultPort();
+
+	    @Adaptive
+	    <T> Exporter<T> export(Invoker<T> invoker) throws RpcException;
+
+	    @Adaptive
+	    <T> Invoker<T> refer(Class<T> type, URL url) throws RpcException;
+
+	    void destroy();
+
+	}
+
+子类(18)
+
+	AbstractProtocol:
+		抽象基类
+
+	AbstractProxyProtocol:
+
+	DubboProtocol:
+
+	RmiProtocol:
+
+	HttpProtocol:
+
+	HessianProtocol:
+
+	InjvmProtocol:
+
+	RegistryProtocol:
+	
+	QosProtocolWrapper:
+		封装了一个DubboProtocol
+
+	ProtocolListenerWrapper:
+		封装了一个QosProtocolWrapper

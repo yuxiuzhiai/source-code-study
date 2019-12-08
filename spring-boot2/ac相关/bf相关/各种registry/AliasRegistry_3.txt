@@ -1,0 +1,29 @@
+AliasRegistry
+
+注释
+
+    管理alias.作为BeanDefinitionRegistry的超类提供服务
+
+接口定义
+
+    public interface AliasRegistry {
+
+        void registerAlias(String name, String alias);
+
+        void removeAlias(String alias);
+        boolean isAlias(String name);
+
+        String[] getAliases(String name);
+
+    }
+
+子接口
+
+	BeanDefinitionRegistry:
+	    一般会由BeanFactory实现
+    	封装了BeanDefinition的注册
+
+子类
+
+    SimpleAliasRegistry:
+    	AliasRegistry的简单实现,服务于BeanDefinitionRegistry

@@ -1,0 +1,9 @@
+ConfigurationSource
+
+类
+
+	1
+
+描述
+
+	代表log4j的物理配置文件来源

@@ -1,0 +1,15 @@
+LoggerConfiguration
+
+注释
+
+    不可变类,代表LoggingSystem的配置
+
+内部
+
+    主要配置项就是LogLevel
+
+        public enum LogLevel {
+
+            TRACE, DEBUG, INFO, WARN, ERROR, FATAL, OFF
+
+        }

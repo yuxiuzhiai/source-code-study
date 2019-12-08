@@ -1,0 +1,23 @@
+PropertySource
+
+类
+
+	5
+
+描述
+
+	代表全局的配置属性
+
+内部细节
+
+	有个Util类,会将具体的属性转化为token.
+
+子类
+
+	PropertiesPropertySource:对应一个java的Properties实例
+
+	PropertyFilePropertySource:继承上面.对应一个properties文件
+
+	EnvironmentPropertySource:代表环境变量
+
+	SystemPropertiesPropertySource:代表jvm变量

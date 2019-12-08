@@ -1,0 +1,5 @@
+Binder
+
+注释
+
+    绑定一或多个ConfigurationPropertySource的容器类

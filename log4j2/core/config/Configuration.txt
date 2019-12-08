@@ -1,0 +1,21 @@
+Configuration
+
+类
+
+	10
+
+描述
+
+	代表log4j的配置.对于每种配置方式都有一个对应的实现
+
+子类
+	
+	AbstractConfiguration:具体实现的抽象基类
+	NullConfiguration:没有日志配置时的实现
+	XmlConfiguration:xml配置对应实现
+	DefaultConfiguration:默认将所有日志输出到console
+	JsonConfiguration:json配置对应实现，需要jackson依赖
+	BuiltConfiguration:
+	PropertiesConfiguration:properties文件对应实现
+	YamlConfiguration:yaml文件对应实现
+	CompositeConfiguration:组合配置

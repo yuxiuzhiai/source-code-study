@@ -1,0 +1,17 @@
+Formatter
+
+注释
+
+	格式化T类型的对象
+	Formatter是一个对象的Printer和Parser
+
+接口定义
+
+	public interface Formatter<T> extends Printer<T>, Parser<T> {
+
+	}
+
+子类(21)
+
+	
+

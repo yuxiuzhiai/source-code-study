@@ -1,0 +1,6 @@
+Container
+
+注释
+
+	一个container是一个可以处理客户端request并返回response的对象
+	container也可以通过实现Pipeline接口来支持Valve的管道来依序处理request

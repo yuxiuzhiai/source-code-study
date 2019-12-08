@@ -1,0 +1,39 @@
+Layout
+
+类
+
+	16
+
+描述
+
+	以不同的形式布局LogEvent
+
+子类
+	
+	AbstractLayout
+	AbstractStringLayout
+	PatternLayout:使用模式的Layout
+
+	CSV Layout:需要依赖Apache Commons CSV 1.2.
+		AbstractCsvLayout:
+		CsvLogEventLayout:
+		CsvParameterLayout
+	HtmlLayout:将LogEvent输出为html table的row
+	JSON Layout:依赖jackson
+		JsonLayout
+		AbstractJacksonLayout
+
+	MessageLayout
+	Rfc5424Layout
+	SyslogLayout
+	XmlLayout
+	YamlLayout
+	SerializedLayout:已过时
+	GelfLayout
+
+相关类3
+
+	Encoder:接口，将对象转化成二进制表示，并且写入结果到ByteBufByteBuffer
+		子类:
+			StringBuilderEncoder:处理StringBuilder的Encoder，会尽可能使用ThreadLocal来避免锁
+			LockingStringBuilderEncoder:我发现log4j里面并没有用到这个类

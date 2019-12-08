@@ -1,0 +1,14 @@
+Phased
+
+注释
+
+    参与phased处理,比如生命周期管理
+    也只有SmartLifecycle用到了
+
+接口定义
+
+    public interface Phased {
+
+        int getPhase();
+
+    }

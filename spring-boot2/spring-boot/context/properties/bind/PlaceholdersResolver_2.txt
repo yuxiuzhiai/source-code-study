@@ -1,0 +1,19 @@
+PlaceholdersResolver
+
+注释
+
+接口定义
+
+    @FunctionalInterface
+    public interface PlaceholdersResolver {
+
+        PlaceholdersResolver NONE = (value) -> value;
+
+        Object resolvePlaceholders(Object value);
+
+    }
+
+子类
+
+    PropertySourcesPlaceholdersResolver:
+        解决PropertySources中占位符的PlaceholdersResolver

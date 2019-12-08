@@ -1,0 +1,28 @@
+TemplateAvailabilityProvider
+
+注释
+
+	可用的模板引擎
+
+接口定义
+
+	public interface TemplateAvailabilityProvider {
+
+		boolean isTemplateAvailable(String view, Environment environment, ClassLoader classLoader, ResourceLoader resourceLoader);
+
+	}
+
+子类(6)
+
+	PathBasedTemplateAvailabilityProvider:(抽象类)
+		从路径中找模板引擎实现
+
+	ThymeleafTemplateAvailabilityProvider:
+
+	JspTemplateAvailabilityProvider
+
+	MustacheTemplateAvailabilityProvider
+
+	GroovyTemplateAvailabilityProvider
+
+	FreeMarkerTemplateAvailabilityProvider

@@ -1,0 +1,18 @@
+BeanBinder
+
+注释
+
+	Binder用来bind bean的内部使用接口
+
+接口定义
+
+	interface BeanBinder {
+
+		<T> T bind(ConfigurationPropertyName name, Bindable<T> target, Context context,
+				BeanPropertyBinder propertyBinder);
+
+	}
+
+子类
+
+	JavaBeanBinder

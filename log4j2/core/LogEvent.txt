@@ -1,0 +1,18 @@
+LogEvent
+
+类
+
+	7
+
+描述
+
+	提供日志message的上下文信息，实现了Serializable接口，以便用于网络传输。以SerializedLayout的形式输出或是别的。除了包含Message，LogEvent还会关联到一个Level。如果用了Marker，也会包含进去。会有ThreadContext，如果输入Throwable，那这个异常会被包装成ThrowableProxy以便于序列化后网络输出
+
+子类
+
+	AbstractLogEvent:实现说有方法，返回一个默认值
+	Log4jLogEvent:主力实现
+	LogEventJsonMixIn:
+	LogEventWithContextListMixIn
+	MutableLogEvent:可变实现，一般会将此LogEvent存入ThreadLocal来重用
+	RingBufferLogEvent:用于disruptor的RingBuffer

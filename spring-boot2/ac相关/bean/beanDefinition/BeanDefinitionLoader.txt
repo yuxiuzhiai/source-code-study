@@ -1,0 +1,4 @@
+BeanDefinitionLoader
+
+注释
+    从潜在的sources(一般就是启动类)中加载BeanDefinition,包括xml和JavaConfig.作为AnnotatedBeanDefinitionReader/XmlBeanDefinitionReader/ClassPathBeanDefinitionScanner的简单门面

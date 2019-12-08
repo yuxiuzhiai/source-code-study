@@ -1,0 +1,5 @@
+SegmentCommitInfo
+
+注释
+
+	内置一个只读的SegmentInfo，每次提交

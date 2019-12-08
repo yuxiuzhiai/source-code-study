@@ -1,0 +1,5 @@
+DocIdSetIterator
+
+注释
+
+	定义了在非减的doc id集上迭代的方法

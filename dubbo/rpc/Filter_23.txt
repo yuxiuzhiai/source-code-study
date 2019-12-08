@@ -1,0 +1,39 @@
+Filter
+
+注释
+
+接口定义
+
+	@SPI
+	public interface Filter {
+
+	    Result invoke(Invoker<?> invoker, Invocation invocation) throws RpcException;
+
+	}
+
+子类(22)
+
+	EchoFilter:
+		用于回声测试.该Filter判断methodName = $echo并且有一个参数后,就直接返回rpc调用
+
+	ClassLoaderFilter:
+
+	GenericFilter:
+		判断方法名是否是$invoke，如果是
+
+	ContextFilter:
+
+	TraceFilter:
+
+	TimeoutFilter:
+
+	MoniterFilter:
+
+	ExceptionFilter:
+
+	AccessLogFilter
+
+	MonitorFilter:
+
+	CacheFilter:
+		用于缓存的处理

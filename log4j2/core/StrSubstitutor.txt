@@ -1,0 +1,10 @@
+StrSubstitutor
+
+类
+
+	1
+
+描述
+
+	用于属性替换。eg:StrSubstitutor.replaceSystemProperties("You are running with java.version = ${java.version} and os.name = ${os.name}.");.可以使用:- 在后面加上默认值。
+	其具体的string由key替换成value的功能由StrLookup提供

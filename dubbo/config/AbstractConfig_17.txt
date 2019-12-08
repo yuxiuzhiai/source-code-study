@@ -1,0 +1,74 @@
+AbstractConfig
+
+注释
+
+	各种级别配置的抽象基类
+
+子类(16)
+
+	AbstractMethodConfig:
+		一次方法调用相关的参数:
+			timeout,retries,actives,loadbalance,async,sent,mock,merger,cache,validation,parameters
+
+	AbstractInterfaceConfig:
+		继承自AbstractMethodConfig
+		相关参数:
+			local,stub,monitor,proxy,cluster,filter,listener,owner,connections,layer,registries
+			事件相关属性:onconnect,ondisconnect
+			callbacks,scope
+
+	AbstractServiceConfig:
+		继承自AbstractInterfaceConfig
+		相关参数:
+			version,group,deprecated,delay,weight,document,dynamic,token,accesslog,protocols,executed,register,warmup,serialization
+
+	AbstractReferenceConfig:
+		继承自AbstractInterfaceConfig
+		相关属性:
+			check,init,generic,lazy,reconnect,sticky,stubevent,version,group
+
+	ModuleConfig
+
+	ReferenceBean
+
+	ServiceBean
+
+应用共享配置:
+	ApplicationConfig:
+		对应一个应用的配置
+
+	RegistryConfig:
+		注册中心的配置,应用共享
+
+	MonitorConfig:
+		监控中心的配置,应用共享
+
+provider方配置:
+	ProtocolConfig:
+		协议配置,由provider指定
+
+	ProviderConfig:
+		全局provider共享配置
+
+	ServiceConfig:
+		继承自AbstractServiceConfig
+		相关属性:
+			interfaceName,interfaceClass,path,methods,provider
+
+consumer方配置	
+
+	ReferenceConfig:
+		consumer方的配置
+
+	ConsumerConfig:
+		全局consumer共享配置
+
+provider/consumer共有的子配置:
+	MethodConfig:
+		继承自AbstractMethodConfig,代表接口类一个方法的配置
+
+	ArgumentConfig
+	
+
+
+

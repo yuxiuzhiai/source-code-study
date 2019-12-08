@@ -1,0 +1,10 @@
+Analyzer
+
+注释
+
+	通过分析文本，创建TokenStream
+
+子类
+
+	StandardAnalyzer
+	SimpleAnalyzer：

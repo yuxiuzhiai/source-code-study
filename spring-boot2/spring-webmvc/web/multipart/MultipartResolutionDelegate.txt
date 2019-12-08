@@ -1,0 +1,5 @@
+MultipartResolutionDelegate
+
+注释
+
+	用于HandlerMethodArgumentResolver实现,来解决MultipartFile和Part参数

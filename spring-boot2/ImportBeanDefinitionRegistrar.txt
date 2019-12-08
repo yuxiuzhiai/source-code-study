@@ -1,0 +1,5 @@
+ImportBeanDefinitionRegistrar
+
+注释
+
+    当处理@Configuration类的时候注册额外的BeanDefinition

@@ -1,0 +1,22 @@
+Condition
+
+注释
+
+    BeanDefinition注册前检查,可以否决掉BeanDefinition的注册
+    不要与bean实例交互.如果想要更细粒度的控制,可以考虑使用ConfigurationCondition接口
+
+接口定义
+
+    public interface Condition {
+
+        /**
+         * Determine if the condition matches.
+         * @param context the condition context
+         * @param metadata metadata of the {@link org.springframework.core.type.AnnotationMetadata class}
+         * or {@link org.springframework.core.type.MethodMetadata method} being checked
+         * @return {@code true} if the condition matches and the component can be registered,
+         * or {@code false} to veto the annotated component's registration
+         */
+        boolean matches(ConditionContext context, AnnotatedTypeMetadata metadata);
+
+    }

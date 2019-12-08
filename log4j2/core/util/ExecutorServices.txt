@@ -1,0 +1,9 @@
+ExecutorServices
+
+类
+
+	1
+
+描述
+
+	用于提供一个自定义的shutdown方法关闭ExecutorService

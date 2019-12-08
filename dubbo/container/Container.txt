@@ -1,0 +1,28 @@
+Container
+
+注释
+
+接口定义
+
+	@SPI("spring")
+	public interface Container {
+
+	    /**
+	     * start.
+	     */
+	    void start();
+
+	    /**
+	     * stop.
+	     */
+	    void stop();
+
+	}
+
+子类
+
+	Log4jContainer
+
+	LogbackContainer
+
+	SpringContainer

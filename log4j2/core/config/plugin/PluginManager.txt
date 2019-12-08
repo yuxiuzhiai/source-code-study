@@ -1,0 +1,9 @@
+PluginManager
+
+类
+
+	1
+
+描述
+
+	负责加载和管理plugin

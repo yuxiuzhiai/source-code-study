@@ -1,0 +1,10 @@
+log4j2启动过程
+
+1.LogManager静态代码块
+	1.1.初始化PropertiesUtil
+	1.2.绑定一个日志实现，找到一个LoggerContextFactory，对于log4j-core来说就是Log4jContextFactory
+
+2.获取一个LoggerContext
+	1.1.创建LoggerContext
+	1.2.start LoggerContext
+		1.2.1.调用reconfig方法

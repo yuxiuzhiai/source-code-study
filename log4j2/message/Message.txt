@@ -1,0 +1,54 @@
+Message
+
+类
+
+	23
+
+描述
+
+
+
+子类20
+
+	ReusableMessage:实现了StringBuilderFormattable接口的可重用Message，可以在日志调用间重用
+	ReusableParameterizedMessage:可重用的参数message
+
+	FormattedMessage:
+	MessageFormatMessage:使用MessageFormat的message
+
+	ThreadDumpMessage:捕获所有运行线程的信息
+
+	StructuredDataMessage:
+
+	MapMessage:代表一个包含Map的message
+
+	StringMapMessage:
+
+	StringFormattedMessage:
+
+	SimpleMessage:
+
+	ReusableSimpleMessage:
+
+	ReusableObjectMessage:
+
+	ObjectMessage:
+
+	ObjectArrayMessage
+
+	MultiformatMessage
+
+	MessageCollectionMessage:一种表示一组message集合的message
+
+	LocalizedMessage:
+
+	FlowMessage:操作流message
+
+	EntryMessage:标记接口，代表进入
+
+	ExitMessage:标记接口，代表退出
+
+相关类
+
+	TimestampMessage
+	LoggerNameAwareMessage

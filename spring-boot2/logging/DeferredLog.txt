@@ -1,0 +1,5 @@
+DeferredLog
+
+注释
+
+	用于存储消息。在LoggingSystem完全初始化之后再打印

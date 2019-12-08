@@ -1,0 +1,5 @@
+MutablePropertyValues
+
+注释
+
+    PropertySources的默认实现.允许对属性的简单操作,提供构造函数来支持deep copy和从map构建

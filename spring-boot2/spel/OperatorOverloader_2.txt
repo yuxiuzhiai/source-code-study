@@ -1,0 +1,20 @@
+OperatorOverloader
+
+注释
+
+	
+接口定义
+
+	public interface OperatorOverloader {
+
+		boolean overridesOperation(Operation operation, @Nullable Object leftOperand, @Nullable Object rightOperand)
+				throws EvaluationException;
+
+		Object operate(Operation operation, @Nullable Object leftOperand, @Nullable Object rightOperand)
+				throws EvaluationException;
+
+	}
+
+子类
+	
+	StandardOperatorOverloader

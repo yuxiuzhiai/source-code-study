@@ -1,0 +1,12 @@
+MultipartProperties
+
+注释
+
+	用于配置MultipartConfigElement的属性类
+	有@ConfigurationProperties注释,prefix="spring.servlet.multipart",可配置项有:
+		enabled
+		location:上传文件的临时路径
+		maxFileSize
+		maxRequestSize
+		fileSizeThreshold
+		resolveLazily

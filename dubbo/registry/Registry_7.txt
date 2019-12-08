@@ -1,0 +1,27 @@
+Registry
+
+注释
+
+接口定义
+
+	public interface Registry extends Node, RegistryService {
+	}
+
+子类
+
+	AbstractRegistry:
+
+	FailbackRegistry:
+		继承自AbstractRegistry
+
+	DubboRegistry:
+		继承自FailbackRegistry
+
+	MulticastRegistry:
+		继承自FailbackRegistry
+
+	RedisRegistry:
+		继承自FailbackRegistry,使用redis作为注册中心
+
+	ZookeeperRegistry:
+		继承自FailbackRegistry,使用zookeeper作为注册中心

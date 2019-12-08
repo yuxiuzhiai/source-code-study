@@ -1,0 +1,13 @@
+Printer
+
+注释
+
+	打印T类型的对象
+
+接口定义
+
+	public interface Printer<T> {
+
+		String print(T object, Locale locale);
+
+	}

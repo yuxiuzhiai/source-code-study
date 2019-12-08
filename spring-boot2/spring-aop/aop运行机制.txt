@@ -1,0 +1,6 @@
+aop运行机制
+
+
+AdvisorChainFactory负责织入advice
+整个运行机制,主要靠一个BeanPostProcessor来起作用的:
+1.

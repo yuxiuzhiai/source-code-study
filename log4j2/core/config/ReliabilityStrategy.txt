@@ -1,0 +1,16 @@
+ReliabilityStrategy
+
+类
+
+	5
+
+描述
+
+	用于确保将LogEvent传递到合适的appeander，即使在配置重置期间或者之后
+
+子类
+
+	DefaultReliabilityStrategy:把配置文件当做从不刷新
+	LockingReliabilityStrategy:使用读写锁
+	AwaitCompletionReliabilityStrategy:
+	AwaitUnconditionallyReliabilityStrategy:

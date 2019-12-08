@@ -1,0 +1,5 @@
+FileTxnSnapLog
+
+注释
+
+	txnlog和snapshot实现类的帮助类

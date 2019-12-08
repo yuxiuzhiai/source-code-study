@@ -1,0 +1,14 @@
+ServletWebServerFactory
+
+注释
+	
+	创建WebServer的工厂接口
+
+接口定义
+
+	@FunctionalInterface
+	public interface ServletWebServerFactory {
+
+		WebServer getWebServer(ServletContextInitializer... initializers);
+
+	}

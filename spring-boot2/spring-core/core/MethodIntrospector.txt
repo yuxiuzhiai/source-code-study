@@ -1,0 +1,6 @@
+MethodIntrospector
+
+注释
+
+	定义查找元数据相关的方法的算法,包括父类和接口,也可以处理参数化的方法
+	一般用于HandlerMethod的处理过程

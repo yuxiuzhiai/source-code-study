@@ -1,0 +1,13 @@
+RolloverDescription
+
+类
+
+	2
+
+描述
+
+	完成Rollover需要的Action描述
+
+子类
+
+	RolloverDescriptionImpl

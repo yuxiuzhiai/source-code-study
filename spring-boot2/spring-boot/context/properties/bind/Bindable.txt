@@ -1,0 +1,5 @@
+Bindable
+
+注释
+
+    可以被Binder绑定的源

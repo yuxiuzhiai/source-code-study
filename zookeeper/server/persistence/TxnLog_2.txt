@@ -1,0 +1,38 @@
+TxnLog
+
+注释
+
+	事务日志接口
+
+接口定义
+
+	public interface TxnLog {
+    
+	    void rollLog() throws IOException;
+	    boolean append(TxnHeader hdr, Record r) throws IOException;
+
+	    TxnIterator read(long zxid) throws IOException;
+	    
+	    long getLastLoggedZxid() throws IOException;
+	    
+	    boolean truncate(long zxid) throws IOException;
+	    
+	    long getDbId() throws IOException;
+	    
+	    void commit() throws IOException;
+	   
+	    void close() throws IOException;
+	    public interface TxnIterator {
+	        TxnHeader getHeader();
+	        
+	        Record getTxn();
+	     
+	        boolean next() throws IOException;
+	        
+	        void close() throws IOException;
+	    }
+	}
+
+子类
+
+	FileTxnLog

@@ -1,0 +1,26 @@
+RouterFactory
+
+注释
+
+接口定义
+
+	public interface RouterFactory {
+
+	    /**
+	     * Create router.
+	     *
+	     * @param url
+	     * @return router
+	     */
+	    @Adaptive("protocol")
+	    Router getRouter(URL url);
+
+	}
+
+子类
+
+	ConditionRouterFactory:
+
+	FileRouterFactory
+
+	ScriptRouterFactory

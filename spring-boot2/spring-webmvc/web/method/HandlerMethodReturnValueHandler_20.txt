@@ -1,0 +1,81 @@
+HandlerMethodReturnValueHandler
+
+注释
+
+	处理从一个handler方法调用返回的值
+
+接口定义
+
+	public interface HandlerMethodReturnValueHandler {
+
+		boolean supportsReturnType(MethodParameter returnType);
+
+		void handleReturnValue(@Nullable Object returnValue, MethodParameter returnType,
+				ModelAndViewContainer mavContainer, NativeWebRequest webRequest) throws Exception;
+
+	}
+
+子接口
+
+	AsyncHandlerMethodReturnValueHandler
+
+子类(18)
+
+	ModelAndViewMethodReturnValueHandler:
+		用于处理返回值为ModelAndView的handler返回值,并把view和model信息复制到ModelAndViewContainer
+		如果返回值是null,则ModelAndViewContainer的requestHandled值会被设置成true,表示request已经被直接处理了
+		这个HandlerMethodReturnValueHandler应该在支持@ModelAttribute/@ResponseBody的HandlerMethodReturnValueHandler之前配置
+
+	ModelAndViewResolverMethodReturnValueHandler:
+		这个应该被配置成最后一HandlerMethodReturnValueHandler,因为它会尝试处理所有类型的返回值
+		
+	MapMethodProcessor:
+		解决Map作为方法参数和处理Map返回值
+
+	ModelAttributeMethodProcessor:
+		解决@ModelAttribute注解的方法参数或返回值
+		Model attributes从model中获取,或者通过一个默认的构造函数创建.一旦创建就会绑定到request的参数中
+
+	ModelMethodProcessor:
+		解决Model参数或者Model返回值
+
+	AbstractMessageConverterMethodProcessor:
+		扩展自AbstractMessageConverterMethodArgumentResolver,并具备了处理返回值的能力,通过HttpMessageConverter写入到response
+
+	RequestResponseBodyMethodProcessor:
+		继承自AbstractMessageConverterMethodProcessor
+		解决@RequestBody注解的参数和@ResponseBody注解的返回值
+
+	HttpEntityMethodProcessor:
+		继承自AbstractMessageConverterMethodProcessor
+		处理HttpEntity/RequestEntity类型的方法参数,处理HttpEntity/ResponseEntity类型的返回值
+
+	ResponseBodyEmitterReturnValueHandler:
+		处理ResponseBodyEmitter类型的返回值
+
+	ServletModelAttributeMethodProcessor:
+		继承自ModelAttributeMethodProcessor
+
+	StreamingResponseBodyReturnValueHandler:
+		支持StreamingResponseBody类型的返回值
+
+	ViewMethodReturnValueHandler:
+		支持View类型的返回值
+
+	ViewNameMethodReturnValueHandler:
+		处理void和String类型的返回值,把他们作为view name,也支持CharSequence
+
+	HttpHeadersReturnValueHandler:
+		处理HttpHeaders返回类型
+
+	HandlerMethodReturnValueHandlerComposite:
+		通过将返回值的处理委培给一系列注册的HandlerMethodReturnValueHandler
+
+	DeferredResultMethodReturnValueHandler:
+		支持DeferredResult/ListenableFuture/CompletionStage类型的返回值
+
+	AsyncTaskMethodReturnValueHandler:
+		支持WebAsyncTask类型的返回值
+
+	CallableMethodReturnValueHandler:
+		支持Callable类型的返回值

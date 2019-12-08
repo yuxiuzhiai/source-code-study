@@ -1,0 +1,22 @@
+FlashMapManager
+
+注释
+	
+	存储和取回FlashMap的策略接口
+
+接口定义
+
+	public interface FlashMapManager {
+
+		FlashMap retrieveAndUpdate(HttpServletRequest request, HttpServletResponse response);
+
+		void saveOutputFlashMap(FlashMap flashMap, HttpServletRequest request, HttpServletResponse response);
+
+	}
+
+子类
+
+	AbstractFlashMapManager:
+
+	SessionFlashMapManager:
+		用session来存储和取回FlashMap

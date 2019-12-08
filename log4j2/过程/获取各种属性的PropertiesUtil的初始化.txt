@@ -1,0 +1,8 @@
+获取各种属性的PropertiesUtil的初始化
+
+
+1.已入参log4j2.component.properties作为url路径，用不同的classloader去classpath下扫描资源文件，如果有则加载成一个PropertyFilePropertySource对象
+2.通过spi机制去看classpath有无符合要求的类。log4j-api包自带了两个:
+	EnvironmentPropertySource:来源于System.getEnv()
+	SystemPropertiesPropertySource:来源于System.getProperties()
+3.将key token化，以三种形式的key存在: 原来的形式 、 log4j2.+驼峰化、List<String>,比如 os.name会转为:os.name,log4j2.osName,List{os,name}这三种形式

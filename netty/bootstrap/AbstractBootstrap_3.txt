@@ -1,0 +1,14 @@
+AbstractBootstrap
+
+注释
+
+	引导Channel的帮助类
+
+	当不是用于ServerBootstrap上下文中时,#bind()方法可以用于像UDP那样的无连接传输
+
+子类
+
+	Bootstrap:
+		引导客户端和无连接协议
+
+	ServerBootstrap

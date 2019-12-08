@@ -1,0 +1,10 @@
+ThreadContext
+
+类
+
+	1
+
+描述
+
+	ThreadContext允许应用在Map或者Stack中储存数据
+

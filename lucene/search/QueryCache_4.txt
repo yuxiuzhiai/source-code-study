@@ -1,0 +1,13 @@
+QueryCache
+
+注释
+
+
+子类
+
+相关类
+
+	QueryCachingPolicy
+		决定缓存哪些Query
+		子类
+			UsageTrackingQueryCachingPolicy

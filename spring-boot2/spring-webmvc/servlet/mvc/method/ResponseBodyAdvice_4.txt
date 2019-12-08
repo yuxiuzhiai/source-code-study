@@ -1,0 +1,27 @@
+ResponseBodyAdvice
+
+注释
+
+	允许在controller方法执行完成后body写入前,自定义response
+	这个接口的实现可能会直接被注册到RequestMappingHandlerAdapter和ExceptionHandlerExceptionResolver,或者通过@ControllerAdvice注解
+
+接口定义
+
+	public interface ResponseBodyAdvice<T> {
+
+		boolean supports(MethodParameter returnType, Class<? extends HttpMessageConverter<?>> converterType);
+
+		T beforeBodyWrite(@Nullable T body, MethodParameter returnType, MediaType selectedContentType,
+				Class<? extends HttpMessageConverter<?>> selectedConverterType,
+				ServerHttpRequest request, ServerHttpResponse response);
+
+	}
+
+子类
+	
+	AbstractMappingJacksonResponseBodyAdvice:
+
+	AbstractJsonpResponseBodyAdvice:
+
+	JsonViewResponseBodyAdvice:
+		继承自AbstractMappingJacksonResponseBodyAdvice

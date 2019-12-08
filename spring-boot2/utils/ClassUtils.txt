@@ -1,0 +1,11 @@
+ClassUtils:
+
+//判断className对应的类是否存在于classpath中
+public static boolean isPresent(String className, @Nullable ClassLoader classLoader) 
+
+
+/**
+ * 代替Class.forName(),支持返回原始类型和数组类型(eg:String[]),也支持解决内部类名称
+ */
+public static Class<?> forName(String name, @Nullable ClassLoader classLoader)
+    

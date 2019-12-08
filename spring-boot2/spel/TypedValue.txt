@@ -1,0 +1,6 @@
+TypedValue
+
+注释
+
+	封装一个对象和一个TypeDescriptor来描述它
+	

@@ -1,0 +1,14 @@
+PluginBuider创建插件对象的过程
+
+有两种执行路径:
+
+一.类中存在@PluginBuilderFactory标记的静态方法
+
+二.类中有@PluginFactory标记的静态方法
+
+	1.提取方法的参数注解
+	2.根据参数注解的@PluginVisitorStrategy注解的值，找到对应的PluginVisitor
+	3.通过PluginVisitor设置参数值
+	4.通过参数注解的@ConstraintValidator注解来验证参数
+	5.检查node的attributes Map中是否有剩余没有用到的参数
+	6.检查是否还有children node存在

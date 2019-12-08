@@ -1,0 +1,21 @@
+TypeConverter
+
+类
+
+	7
+
+描述
+
+	用于将String转为别的类型
+
+子类
+
+	EnumConverter
+
+相关类
+
+	Base64Converter
+	DateTypeConverter
+	HexConverter
+	TypeConverterRegistry:用于注册TypeConverter
+	TypeConverters:TypeConverter的集合，本身也实现了string到很多基本类型的转换

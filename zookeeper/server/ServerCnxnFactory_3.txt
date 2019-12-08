@@ -1,0 +1,11 @@
+ServerCnxnFactory
+
+注释
+
+	Cnxn代表一个客户端与服务端之间的连接
+
+子类
+
+	NIOServerCnxnFactory:
+
+	NettyServerCnxnFactory:

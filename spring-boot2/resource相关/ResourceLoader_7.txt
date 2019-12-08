@@ -1,0 +1,36 @@
+ResourceLoader
+
+注释
+
+    加载resource的策略接口
+    DefaultResource是独立实现,用于AC之外,也用于ResourceEditor
+
+接口定义
+
+    public interface ResourceLoader {
+
+        String CLASSPATH_URL_PREFIX = ResourceUtils.CLASSPATH_URL_PREFIX;
+
+        Resource getResource(String location);
+
+        ClassLoader getClassLoader();
+
+    }
+子接口
+
+    ResourcePatternResolver:
+        解析路径字符串中的模式,如果ant-style路径模式
+
+
+子类
+
+    DefaultResourceLoader:
+        默认实现
+    FileSystemResourceLoader:
+        继承自DefaultResourceLoader,解决路径作为file system资源
+    ServletContextResourceLoader:
+        继承自DefaultResourceLoader,解决路径作为ServletContext资源
+    ClassRelativeResourceLoader:
+        继承自DefaultRL,解释resource路径当成相对给定java.lang.Class的相对路径
+    PathMatchingResourcePatternResolver:
+        

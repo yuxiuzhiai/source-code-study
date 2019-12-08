@@ -1,0 +1,50 @@
+TaskExecutor
+
+注释
+
+	继承自JDK的Executor接口
+	其实跟JDK的接口一模一样,说是为了兼容啥的
+
+子接口
+
+	AsyncTaskExecutor:
+		支持异步
+
+	AsyncListenableTaskExecutor:
+		继承自AsyncTaskExecutor
+		提交任务的时候会返回一个ListenableFuture
+
+	SchedulingTaskExecutor:
+		继承自AsyncTaskExecutor
+
+子类(10)
+
+	SimpleAsyncTaskExecutor:
+		为每个task新建一个Thread,并异步执行
+
+	SyncTaskExecutor:
+		在调用线程中同步执行
+		跟线程池什么的根本没关系,就是简单地调用.run()方法
+
+	TaskExecutorAdapter:
+		继承自AsyncListenableTaskExecutor
+		适配JDK的Executor成Spring的TaskExecutor
+
+	ConcurrentTaskExecutor:
+		继承自SchedulingTaskExecutor/AsyncListenableTaskExecutor
+		也是一个将Executor适配成TaskExecutor的适配器
+
+	ConcurrentTaskScheduler:
+		继承自ConcurrentTaskExecutor,将ScheduledExecutorService适配成TaskScheduler
+
+	DefaultManagedTaskExecutor:
+		继承自ConcurrentTaskExecutor,为了基于JDNI的使用
+
+	DefaultManagedTaskScheduler:
+
+	ThreadPoolTaskExecutor:
+		可以向JavaBean一样配置属性,也是将ThreadPoolExecutor适配成TaskExecutor
+
+	ThreadPoolTaskScheduler:
+
+	WorkManagerTaskExecutor:

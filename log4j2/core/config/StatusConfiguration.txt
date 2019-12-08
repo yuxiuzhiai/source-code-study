@@ -1,0 +1,7 @@
+StatusConfiguration
+
+类
+
+	1
+
+描述

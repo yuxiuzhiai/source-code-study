@@ -1,0 +1,13 @@
+StringValueResolver
+注释
+
+    解决string值的简单的策略接口,供ConfigurableBeanFactory使用
+	
+接口定义
+
+	@FunctionalInterface
+	public interface StringValueResolver {
+
+		String resolveStringValue(String strVal);
+
+	}

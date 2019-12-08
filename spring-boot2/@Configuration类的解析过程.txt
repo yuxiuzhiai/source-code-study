@@ -1,0 +1,57 @@
+@Configuration类的解析过程: 在AbstractAC的模板方法refreshContext()中的invokeBeanFactoryPostProcessors(beanFactory)方法,ConfigurationClassPostProcessor被调用时触发
+
+processConfigBeanDefinitions(registry)方法解析:
+
+1.获取当前registry(其实就是BeanFactory)中所有已经注册的BeanDefinition
+
+2.对于每个BeanDefinition,调用ConfigurationClassUtils.checkConfigurationClassCandidate()方法
+	2.1.获取该BeanDefinition的AnnotationMetadata
+	2.2.如果该class有@Configuration注解,则给这个BeanDefinition设置一个org.springframework.context.annotation.ConfigurationClassPostProcessor.configurationClass属性,值为full;如果有@Component/@ComponentScan/@Import/@ImportResource注解或者有@Bean注解的方法,则设置该属性为lite
+
+3.所有满足full/lite条件的配置类,排序
+
+4.新建一个ConfigurationClassParser,一个BeanDefinitionHolder的Set用于存放所有的配置类,一个ConfigurationClass的Set用于存放所有已经解析过的配置类
+
+5.parser.parse(candidates)
+	对于每个candidate
+	5.1.先根据AnnotationMetadata和beanName构建一个ConfigurationClass
+	5.2.调用processConfigurationClass(configClass)方法
+		i)根据@Conditional注解判断是否需要解析该配置类
+		ii)根据configClass构建一个内部类实例SourceClass
+		iii)调用doProcessConfigurationClass(configClass,sourceClass)方法
+			a)判断是否有内部类,如果有就递归调用processConfigurationClass方法
+			
+			b)处理@PropertySource/@PropertySources注解:如果有的话就加载并加入到environment的propertySources中
+			
+			c)处理@ComponentScan/@ComponentScans注解
+				(1)对于每个@ComponentScan注解,调用ComponentScanAnnotationParser.parse()方法
+					(1.1)创建一个ClassPathBeanDefinitionScanner
+					(1.2)依次设置scanner的各个属性beanNameGenerator/scopeProxyMode/scopeMetadataResolver/resourcePattern/includeFilter/excludeFilter等
+					(1.3)确定basePackages属性,如果为空则使用@Configuration所在的包
+					(1.4)调用scanner的doScan方法:原理其实很粗暴,就是把包下的所有.class文件解析成Resource,然后逐个用includeFilter和excludeFilter判断
+						(1.4.1)对于每个basePackage,按照includeFilter和excludeFilter找到所有的bean并返回成BeanDefinition的Set
+						(1.4.2)对于每个BeanDefinition
+							(i)设置scope、beanName,应用默认属性
+							(ii)处理公共的一些注解,@Lazy/@Primary/@DependsOn/@Role/@Description等
+							(iii)将处理后的BeanDefinition添加到BeanFactory中去
+				(2)对于上一步添加的BeanDefinition,继续判断是否是配置类,如果是就递归调用parse方法
+			
+			d)处理@Import注解
+				(1)递归找到所有的@Import注解类
+					AutoConfigurationPackages.Registrar
+					AutoConfigurationImportSelector
+				(2)对于每个@Import的类
+					如果是ImportSelector类型
+
+					如果是ImportBeanDefinitionRegistrar
+			
+			e)处理@ImportResource注解
+
+			f)处理@Bean注解
+
+			g)处理接口的默认方法
+
+			h)处理父类
+	5.3.processDeferredImportSelectors():会解析所有的自动配置类
+		又走到了processImports()方法里面...
+		也走到了processConfigurationClass(configClass)方法

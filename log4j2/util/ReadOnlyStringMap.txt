@@ -1,0 +1,16 @@
+ReadOnlyStringMap
+
+类
+
+	8
+
+描述
+
+	只读的key-value集合
+
+子类
+
+	StringMap:暴露添加和删除方法的接口
+	IndexedReadOnlyStringMap:key排序
+	IndexedStringMap:继承StringMap和IndexedReadOnlyStringMap
+	SortedArrayStringMap:基于数组实现

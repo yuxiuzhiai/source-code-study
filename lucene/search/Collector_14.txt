@@ -1,0 +1,19 @@
+Collector
+
+注释
+
+	Collector接口主要用于聚集原始的查询结果，以及排序、整理、过滤等
+
+子类13
+
+	LeafCollector
+		子接口。将分数从查询到的文档中解耦出来。如果不需要的话就会完全跳过计算分数
+		子类
+			SimpleCollector
+				TotalHitCountCollector：只计算命中的文档数
+
+	TopDocsCollector
+		所有返回TopDocs的Collector的基类
+		子类
+			TopFieldCollector
+			TopScoreDocCollector：返回最高评分的topN

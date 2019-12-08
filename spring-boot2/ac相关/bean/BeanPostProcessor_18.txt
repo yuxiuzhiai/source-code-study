@@ -1,0 +1,77 @@
+BeanPostProcessor
+
+注释
+
+    factory hook,允许对bean实例的修改,比如:检查标记接口(**Aware),用代理包装他们
+
+接口定义
+
+	public interface BeanPostProcessor {
+		default Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException {
+			return bean;
+		}
+		default Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
+			return bean;
+		}
+	}
+
+子接口
+
+    InstantiationAwareBeanPostProcessor：
+        添加了一个before-instantiation回调和一个after instantiation但是先与属性设置的回调.一般用于防止特殊bean的默认实例化
+
+    DestructionAwareBeanPostProcessor:
+        添加before-destruction回调
+
+    MergedBeanDefinitionPostProcessor:
+        不懂
+    
+    SmartInstantiationAwareBeanPostProcessor:
+        添加一个回调来预测处理的bean的最终类型.一般作为内部使用
+
+子类(13)
+
+    ConfigurationPropertiesBindingPostProcessor:
+        绑定PropertySources到注解了@ConfigurationProperties的bean中
+
+    CommonAnnotationBeanPostProcessor:
+        用于支持java原生注解,如@PostConstruct,@PreDestroy,@Resource,@WebServiceRef
+
+    InstantiationAwareBeanPostProcessorAdapter:(抽象类)
+        实现了SmartInstantiationAwareBeanPostProcessor的适配器类
+
+    AutowiredAnnotationBeanPostProcessor:
+        @Autowired/@Value注解的处理
+        也支持@Inject注解
+        字段的注入在bean初始化之后,在任意方法被调用之前,字段不用是public的
+        @Lookup啥的
+
+    RequiredAnnotationBeanPostProcessor:
+        强制javabean的属性必须被配置,通过@Required注解
+
+    MethodValidationPostProcessor:
+        执行方法级别的验证
+        方法有JSR-303验证注解在参数或者返回值,eg:
+            public @NotNull Object myValidMethod(@NotNull String arg1, @Max(10) int arg2)
+        方法所在类要有@Validated注解
+
+    WebServerFactoryCustomizerBeanPostProcessor:
+        应用所有的WebServerFactoryCustomizer到WebServerFactory上
+
+    ErrorPageRegistrarBeanPostProcessor:
+        应用所有的ErrorPageRegistrar到ErrorPageRegistry中去
+
+    ApplicationListenerDetector:
+        检测实现了ApplicationListener的bean,包括那些内部类,因此不能依靠getBeanNamesForType()方法
+
+    ApplicationContextAwareProcessor:
+        将AC注入到实现了各种Aware这些接口的bean里面去
+
+    ServletContextAwareProcessor:
+        将ServletContext注入到实现了ServletContextAware接口的bean
+
+    WebApplicationContextServletContextAwareProcessor:
+        ServletContextAwareProcessor的变体,和ConfigurableWebApplicationContext一起使用.可以在ServletContext/ServletConfig实例化之前使用
+
+    AnnotationAwareAspectJAutoProxyCreator:
+        @AspectJ的处理

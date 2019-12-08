@@ -1,0 +1,19 @@
+LifecycleProcessor
+
+注释
+
+    AC用于处理lifecycle bean的策略接口
+
+接口定义
+
+    public interface LifecycleProcessor extends Lifecycle {
+
+        void onRefresh();
+
+        void onClose();
+
+    }
+
+子类
+
+    DefaultLifecycleProcessor:默认实现,同时实现了BeanFactoryAware接口

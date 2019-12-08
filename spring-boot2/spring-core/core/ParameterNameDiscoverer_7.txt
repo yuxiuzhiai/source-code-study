@@ -1,0 +1,35 @@
+ParameterNameDiscoverer
+
+注释
+
+	发现方法和构造函数的参数名称的接口
+
+接口定义
+
+	public interface ParameterNameDiscoverer {
+
+		String[] getParameterNames(Method method);
+
+		String[] getParameterNames(Constructor<?> ctor);
+
+	}
+
+子类
+
+	PrioritizedParameterNameDiscoverer:
+		依次尝试多种ParameterNameDiscoverer
+		第一个加入的discoverer优先级最高,如果返回null,就会执行下一个
+
+	DefaultParameterNameDiscoverer:
+		ParameterNameDiscoverer的默认实现,使用JAVA8标准反射机制,如果不行就会用基于ASM的LocalVariableTableParameterNameDiscoverer
+		如果Kotlin在classpath下,会优先使用KotlinReflectionParameterNameDiscoverer
+
+	StandardReflectionParameterNameDiscoverer:
+		基于java反射的实现
+
+	LocalVariableTableParameterNameDiscoverer:
+		基于ASM的实现
+
+	KotlinReflectionParameterNameDiscoverer:
+
+	AspectJAdviceParameterNameDiscoverer

@@ -1,0 +1,9 @@
+Clearable
+
+类
+
+	1
+
+描述
+
+	结合ReusableMessage使用，使处于可以重用的状态

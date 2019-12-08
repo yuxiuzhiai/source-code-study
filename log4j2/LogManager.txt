@@ -1,0 +1,3 @@
+LogManger
+
+	log4j日志系统的配置锚点.最常见用于获取logger.默认用全称类名作为name来获取logger.也可以有name参数

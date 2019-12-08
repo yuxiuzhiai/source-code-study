@@ -1,0 +1,37 @@
+MessageSource
+注释
+	
+	解决message的策略接口,支持message的参数化和国际化.spring提供了两个默认实现:ResourceBundleMessageSource:基于java的ResourceBundle/ReloadableResourceBundleMessageSource:可以重载message定义而不用重启VM
+    
+接口定义
+
+    public interface MessageSource {
+
+        String getMessage(String code, @Nullable Object[] args, @Nullable String defaultMessage, Locale locale);
+
+        String getMessage(String code, @Nullable Object[] args, Locale locale) throws NoSuchMessageException;
+
+        String getMessage(MessageSourceResolvable resolvable, Locale locale) throws NoSuchMessageException;
+
+    }
+子接口
+
+	HierarchicalMessageSource:
+		支持层级结构的MessageSource
+
+子类(6)
+
+	AbstractMessageSource:
+
+	AbstractResourceBasedMessageSource:
+		基于ResourceBundle实现的MessageSource的基类
+
+	DelegatingMessageSource:
+
+	ResourceBundleMS:
+
+	ReloadableResourceBundleMessageSource:
+		spring特定的MessageSource实现
+		相对于基于JDK的ResourceBundleMS
+
+	StaticMessageSource:

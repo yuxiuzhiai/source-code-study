@@ -1,0 +1,16 @@
+ImportBeanDefinitionRegistrar
+
+注释
+
+	在解析@Configuration的时候注册额外的BeanDefinition
+
+接口定义
+
+	public interface ImportBeanDefinitionRegistrar {
+
+		public void registerBeanDefinitions(
+				AnnotationMetadata importingClassMetadata, BeanDefinitionRegistry registry);
+
+	}
+
+子类(18)

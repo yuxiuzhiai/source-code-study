@@ -1,0 +1,22 @@
+Serialization
+
+注释
+
+接口定义
+
+	@SPI("hessian2")
+	public interface Serialization {
+
+	    byte getContentTypeId();
+
+	    String getContentType();
+
+	    @Adaptive
+	    ObjectOutput serialize(URL url, OutputStream output) throws IOException;
+
+	    @Adaptive
+	    ObjectInput deserialize(URL url, InputStream input) throws IOException;
+
+	}
+
+子类(9)

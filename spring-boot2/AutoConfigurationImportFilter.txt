@@ -1,0 +1,5 @@
+AutoConfigurationImportFilter
+
+子类
+
+	OnClassCondition

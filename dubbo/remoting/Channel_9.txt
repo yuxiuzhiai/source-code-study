@@ -1,0 +1,58 @@
+Channel
+
+注释
+
+接口定义
+
+	public interface Channel extends Endpoint {
+
+	    InetSocketAddress getRemoteAddress();
+
+	    boolean isConnected();
+
+	    boolean hasAttribute(String key);
+
+	    Object getAttribute(String key);
+
+	    void setAttribute(String key, Object value);
+
+	    void removeAttribute(String key);
+
+	}
+
+子接口
+
+	Client
+
+	ExchangeChannel:
+		接口定义
+			public interface ExchangeChannel extends Channel {
+
+			    ResponseFuture request(Object request) throws RemotingException;
+
+			    ResponseFuture request(Object request, int timeout) throws RemotingException;
+
+			    ExchangeHandler getExchangeHandler();
+
+			    void close(int timeout);
+
+			}
+
+子类
+
+	AbstractChannel
+
+	ChannelDelegate:
+
+	GrizzlyChannel:
+		glassfish相关,忽略
+
+	MinaChannel:
+		mina相关,忽略
+
+	NettyChannel:
+
+	NettyChannel:(netty4)
+
+	HeaderExchangeChannel:
+		实现了ExchangeChannel

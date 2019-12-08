@@ -1,0 +1,26 @@
+TelnetHandler
+
+注释
+	
+	对每种telnet命令的处理器
+
+接口定义
+
+	@SPI
+	public interface TelnetHandler {
+
+	    /**
+	     * telnet.
+	     *
+	     * @param channel
+	     * @param message
+	     */
+	    String telnet(Channel channel, String message) throws RemotingException;
+
+	}
+
+子接口
+	
+	ExchangeHandler:(单独)
+
+子类(16)

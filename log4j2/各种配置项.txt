@@ -1,0 +1,7 @@
+各种配置项
+
+设置为全局异步logger
+-Dlog4j2.contextSelector=org.apache.logging.log4j.core.async.AsyncLoggerContextSelector
+
+设置全局DEBUG
+log4j2.debug=true

@@ -1,0 +1,46 @@
+EvaluationContext
+
+注释
+
+	表达式的上下文
+
+接口定义
+
+	public interface EvaluationContext {
+
+		TypedValue getRootObject();
+
+		List<PropertyAccessor> getPropertyAccessors();
+
+		List<ConstructorResolver> getConstructorResolvers();
+
+		List<MethodResolver> getMethodResolvers();
+
+		BeanResolver getBeanResolver();
+
+		TypeLocator getTypeLocator();
+
+		TypeConverter getTypeConverter();
+
+		TypeComparator getTypeComparator();
+
+		OperatorOverloader getOperatorOverloader();
+
+		void setVariable(String name, @Nullable Object value);
+
+		Object lookupVariable(String name);
+
+	}
+
+子类
+
+	StandardEvaluationContext:
+		强大且高度可配置的EvaluationContext实现.
+
+	SimpleEvaluationContext:
+		EvaluationContext的基础实现.
+
+	MethodBasedEvaluationContext:
+		继承自StandardEvaluationContext
+
+	CacheEvaluationContext:

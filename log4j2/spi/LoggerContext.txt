@@ -1,0 +1,20 @@
+LoggerContext
+
+类
+
+	6
+
+描述
+
+	日志实现的锚点。主要方法就是根据name获得一个logger实例
+
+子类
+	
+	SimpleLoggerContext:没有找到日志实现时的默认实现
+	LoggerContext:log4j-core中的实现
+	AsyncLoggerContext:用于创建异步logger的LoggerContext
+
+相关类
+
+	Terminable:接口，提供一个终止的方法
+	ConfigurationListener:当配置文件变更时收到通知

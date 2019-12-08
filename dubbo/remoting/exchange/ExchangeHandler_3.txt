@@ -1,0 +1,17 @@
+ExchangeHandler
+
+注释
+
+接口定义
+
+	public interface ExchangeHandler extends ChannelHandler, TelnetHandler {
+
+	    Object reply(ExchangeChannel channel, Object request) throws RemotingException;
+
+	}
+
+子类
+
+	ExchangeHandlerDispatcher
+
+	ExchangeHandlerAdapter

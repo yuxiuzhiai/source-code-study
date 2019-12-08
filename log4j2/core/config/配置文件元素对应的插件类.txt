@@ -1,0 +1,32 @@
+配置文件元素对应的插件类
+
+类
+
+	13
+	
+描述
+
+
+相关类
+	Properties:PropertiesPlugin
+		Property:Property
+
+	CustomLevels:CustomLevels
+		CustomLevel:CustomLevelConfig
+
+	ThresholdFilter:ThresholdFilter
+
+	Appenders:AppendersPlugin
+		Console:ConsoleAppender
+		RollingFile:RollingFileAppender
+			Policies:CompositeTriggeringPolicy
+				SizeBasedTriggeringPolicy:SizeBasedTriggeringPolicy
+				TimeBasedTriggeringPolicy:TimeBasedTriggeringPolicy
+				CronTriggeringPolicy:CronTriggeringPolicy
+			DefaultRolloverStrategy:DefaultRolloverStrategy
+			DirectWriteRolloverStrategy:DirectWriteRolloverStrategy
+
+	Loggers:LoggersPlugin
+		Logger:LoggerConfig
+			AppeaderRef:AppenderRef
+		Root:LoggerConfig$RootLogger

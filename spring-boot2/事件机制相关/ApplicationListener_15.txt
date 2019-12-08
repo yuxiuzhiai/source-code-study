@@ -1,0 +1,66 @@
+ApplicationListener
+
+注释
+
+    基于java.util.EventListener的观察者设计模式
+
+接口定义
+       
+    @FunctionalInterface
+    public interface ApplicationListener<E extends ApplicationEvent> extends EventListener {
+        void onApplicationEvent(E event);
+    }
+
+两个子接口
+
+    GenericApplicationListener:拓展了支持的事件类型
+        
+        public interface GenericApplicationListener extends ApplicationListener<ApplicationEvent>, Ordered {
+            boolean supportsEventType(ResolvableType eventType);
+            boolean supportsSourceType(@Nullable Class<?> sourceType);
+        }
+
+    SmartApplicationListener:同上,已不推荐使用,不支持泛型
+
+实现类
+
+sb启动时候初始化的10个:
+
+    BackgroundPreinitializer:
+        触发后台耗时线程的初始化
+
+    ClearCachesAL:
+        context加载完成后清理缓存
+
+    ParentContextCloserAL:
+        当父AC关闭时也把当前AC关掉
+
+    FileEncodingAL:
+        关于spring.mandatory-file-encoding这个属性的校验
+
+    AnsiOutputAL:
+        根据spring.output.ansi.enabled属性配置AnsiOutput
+
+    ConfigFileAL:
+        加载属性文件,默认情况下会从:classpath:/classpath:config/等中加载application.properties/application.yml.也会基于active profile载入额外的文件.路径或者文件名可以通过spring.config.name/spring.config.location配置
+
+    DelegatingAL:
+        委派给context.listener.classes属性指定的AL
+
+    ClasspathLoggingAL:
+        仅响应ApplicationEnvironmentPreparedEvent/ApplicationFailedEvent,通过以debug级别打印thread context class loader
+
+    LoggingAL:
+        配置LoggingSystem.如果environment中有logging.config配置,则会用于引导LoggingSystem.并且,日志级别可以通过logging.level.*来配置.默认情况下,仅console会有日志输出.如果需要日志文件,可以通过logging.path或者logging.file来配置
+
+    LiquibaseServiceLocatorAL:
+
+2个适配器:
+    ApplicationListenerMethodAdapter:
+        传递事件到@EventListener注解的方法中
+    GenericApplicationListenerAdapter:
+        对于非GenericApplicationListener类型的AL,通过泛型数据得到支持的事件类型
+
+其他AL:
+    ResourceUrlProvider:
+        用于获取客户端访问静态资源的公共URL路径

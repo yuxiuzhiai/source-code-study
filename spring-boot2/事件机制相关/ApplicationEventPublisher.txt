@@ -1,0 +1,6 @@
+ApplicationEventPublisher
+
+注释
+
+	封装事件发布功能的接口
+	其实这个接口没有专门的实现类,都是由AC实现类负责实现

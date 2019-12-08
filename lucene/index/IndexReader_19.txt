@@ -1,0 +1,23 @@
+IndexReader
+
+注释
+
+	抽象类，提供了一个用于访问index特定时间点view的接口。任何来源于IndexWriter的变更都不可见，除非open了一个新的IndexReader。
+	如果IndexWriter在同一个进程内，最好通过DirectoryReader#open(IndexWriter)方法获取IndexReader。如果想用立马看到变更，可以使用DirectoryReader#openIfChanged(DirectoryReader)方法
+
+	有两种不同的IndexReader：
+		LeafReader：最小的reader，不是由子reader组成的
+		CompositeReader：由LeafReader组成
+
+子类
+
+	LeafReader
+		子类
+			CodecReader
+			SegmentReader
+
+	CompositeReader
+		子类
+			BaseCompositeReader
+				DirectoryReader：用于读取Directory中的索引
+					StandardDirectoryReader：默认实现

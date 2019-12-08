@@ -1,0 +1,30 @@
+MultipartResolver
+
+注释
+
+	文件上传的接口
+	有两个实现类:
+		CommonsMultipartResolver:使用Apache Commons FileUpload
+		StandardServletMultipartResolver:使用Servlet3.0+ API
+	DispathcherServlet没有默认实现,如果想要使用这两个实现,只需在AC中加一个MultipartResolver的bean就行了
+
+接口定义
+
+	public interface MultipartResolver {
+
+		boolean isMultipart(HttpServletRequest request);
+
+		MultipartHttpServletRequest resolveMultipart(HttpServletRequest request) throws MultipartException;
+
+		void cleanupMultipart(MultipartHttpServletRequest request);
+
+	}
+
+子类
+
+	CommonsMultipartResolver:
+		基于Apache Commons FileUpload实现
+		提供maxUploadSize,maxInMemorySize,defaultEncoding等bean的属性配置项
+
+	StandardServletMultipartResolver:
+		基于Servlet3.0 javax.servlet.http.Part接口的实现

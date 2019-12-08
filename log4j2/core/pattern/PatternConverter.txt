@@ -1,0 +1,61 @@
+PatternConverter
+
+类
+
+	40
+
+描述
+
+	主要是一个#format(Object logEvent,StringBuilder appeandTo)方法
+
+子类
+	
+	AbstractPatternConverter
+	LogEventPatternConverter:格式化LogEvent里面的信息
+	ArrayPatternConverter:接收一个对象数组
+	IntegerPatternConverter:装换i、index
+	ClassNamePatternConverter:装换C、class
+	DatePatternConverter:转换d、date
+	EncodingPatternConverter:使用特定格式从pattern中加密输出，支持格式化html和json
+	EndOfBatchPatternConverter:格式化endOfBatch
+	EqualsBaseReplacementConverter:
+	EqualsReplacementConverter:转换equals
+	EqualsIgnoreCaseReplacementConverter:装换equalsIgnoreCase
+	ExtendedThrowablePatternConverter:转换xEx、xThrowable、xException
+	FileLocationPatternConverter:转换F、file
+	FullLocationPatternConverter:转换l、location
+	HighlightConverter:转换highlight
+	LevelPatternConverter:转换p、level
+	LineLocationPatternConverter:转换L、line
+	LineSeparatorPatternConverter:转换n
+	LiteralPatternConverter
+	LoggerFqcnPatternConverter:转换fqcn
+	LoggerPatternConverter:转换c、logger
+	MapPatternConverter:转换K、map、MAP
+	MarkerPatternConverter:转换marker
+	MarkerSimpleNamePatternConverter:转换markerSimpleName
+	MaxLengthConverter:转换maxLen、maxLength
+	MdcPatternConverter:转换X、mdc、MDC
+	MessagePatternConverter:转换m、msg、message
+	MethodLocationPatternConverter:转换M、method
+	NanoTimePatternConverter:转换N、nano
+	NdcPatternConverter:转换x、NDC
+	ProcessIdPatternConverter:转换pid、processId
+	RegexReplacementConverter:转换replace
+	RelativeTimePatternConverter:转换r、relative
+	RootThrowablePatternConverter:转换rEx", "rThrowable", "rException
+	SequenceNumberPatternConverter:转换sn、sequenceNumber
+	ThreadIdPatternConverter：转换T、tid、threadId
+	ThreadNamePatternConverter:转换t、tn、threadName
+	ThreadPriorityPatternConverter:转换tp、threadPriority
+	ThrowablePatternConverter:转换ex", "throwable", "exception
+	UuidPatternConverter:转换u、uuid
+	VariablesNotEmptyReplacementConverter:notEmpty", "varsNotEmpty", "variablesNotEmpty
+
+
+相关类
+
+	FileDatePatternConverter:转换d、date,委派给DatePatternConverter实现
+
+	AnsiConverter:
+	AnsiConverter

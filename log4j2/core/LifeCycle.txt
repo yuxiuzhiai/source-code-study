@@ -1,0 +1,14 @@
+LifeCycle
+
+类
+	
+	3
+
+描述
+
+	log4j中各个组件的生命周期
+
+子类
+
+	LifeCycle2:子接口
+	AbstractLifeCycle

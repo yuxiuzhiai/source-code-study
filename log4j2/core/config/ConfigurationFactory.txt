@@ -1,0 +1,19 @@
+ConfigurationFactory
+
+类
+
+	5
+
+描述
+
+	工厂类，用于从配置文件中解析出Configuration对象。ConfigurationFactory允许通过三种方式指定实现：
+		1.系统属性log4j.configurationFactory
+		
+子类
+
+	XmlCF
+	JsonCF
+	YamlCF
+	PropertiesCF
+
+	

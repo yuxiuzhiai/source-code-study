@@ -1,0 +1,9 @@
+PatternProcessor
+
+类
+
+	1
+
+描述
+
+	解析rollover pattern

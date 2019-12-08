@@ -1,0 +1,36 @@
+RequestProcessor
+
+注释
+
+	RequestProcessor是链式的,用于处理事务.请求总是依序处理.单机服务器,leader,follower有点区别
+
+接口定义
+
+	public interface RequestProcessor {
+    
+	    class RequestProcessorException extends Exception {
+	        public RequestProcessorException(String msg, Throwable t) {
+	            super(msg, t);
+	        }
+	    }
+
+	    void processRequest(Request request) throws RequestProcessorException;
+
+	    void shutdown();
+	}
+
+子类
+
+	FinalRequestProcessor:
+
+	SyncRequestProcessor:
+		把请求以日志的方式输出到磁盘上,它把批量处理请求以提高io效率.
+		这个请求不会被传到下个RequestProcessor直到日志已经同步到磁盘
+		SyncRequestProcessor有三种使用场景:
+			1.Leader:同步请求到磁盘并且转发请求到AckRequestProcessor
+			2.Follower:同步请求到磁盘并转发请求到SendAckRequestProcessor
+			3.Observer:同步已经提交的请求到磁盘
+
+	PrepRequestProcessor:
+		一般是RequestProcessor链的开头,
+	

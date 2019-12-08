@@ -1,0 +1,25 @@
+ThemeSource
+
+注释
+    
+    基于给定的theme去参数化和国际化message
+
+接口定义
+
+    public interface ThemeSource {
+
+        Theme getTheme(String themeName);
+
+    }
+
+子接口
+
+    HierarchicalThemeSource：
+        带有层级功能的ThemeSource
+
+子类
+
+    DelegatingThemeSource
+
+    ResourceBundleThemeSource:
+        为每个theme寻找对应的ResourceBundle

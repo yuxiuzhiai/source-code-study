@@ -1,0 +1,39 @@
+ByteBuf(抽象类)
+
+注释
+
+	+-------------------+------------------+------------------+
+	| discardable bytes |  readable bytes  |  writable bytes  |
+	|                   |     (CONTENT)    |                  |
+	+-------------------+------------------+------------------+
+	|                   |                  |                  |
+	0      <=      readerIndex   <=   writerIndex    <=    capacity
+
+
+子类
+
+	AbstractByteBuf:
+		ByteBuf的骨架实现
+
+	AbstractReferenceCountedByteBuf:
+
+	AbstractPooledDerivedByteBuf:
+
+	AbstractDerivedByteBuf:
+		包装其他ByteBuf的实现的抽象基类
+
+	AbstractUnpooledSlicedByteBuf:
+
+	CompositeByteBuf:
+		继承自AbstractReferenceCountedByteBuf
+		将多个buffer作为一个合并的buffer展示的虚拟buffer
+		并不是复制多个buffer
+
+	SlicedByteBuf:
+		暴露包装ByteBuf的一部分
+
+	PooledByteBuf:
+		继承自AbstractReferenceCountedByteBuf
+
+
+

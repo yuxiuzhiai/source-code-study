@@ -1,0 +1,9 @@
+StringBuilderFormattable
+
+类
+
+	1
+
+描述
+
+	实现了这个接口的类，可以转化为文本而不用中间对象

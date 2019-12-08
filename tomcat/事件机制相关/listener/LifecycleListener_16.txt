@@ -1,0 +1,29 @@
+LifecycleListener
+
+注释
+
+接口定义
+
+	public interface LifecycleListener {
+
+	    public void lifecycleEvent(LifecycleEvent event);
+
+	}
+
+子类
+
+	AprLifecycleListener:APR相关
+	NamingContextListener:为server和context初始化和populate JNDI context
+	ContextConfig:context的启动事件监听器,用于为context和关联的servlet配置属性
+	EngineConfig:为Engine和关联的context配置属性
+	GlobalResourcesLifecycleListener:初始化JNDI相关的MBean集合
+	HeartbeatListener
+	HostConfig:为Host和关联的context配置属性
+	JmxRemoteLifecycleListener:
+	JreMemoryLeakPreventionListener
+	MapperListener:
+	SecurityListener
+	StoreConfigLifecycleListener:加载和注册StoreConfig MBean以Catalina:type=StoreConfig的名称
+	ThreadLocalLeakPreventionListener:
+	UserConfig:
+	VersionLoggerListener

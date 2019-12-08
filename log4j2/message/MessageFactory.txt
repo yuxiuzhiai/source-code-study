@@ -1,0 +1,35 @@
+MessageFactory
+
+类
+	
+	12
+
+描述
+
+	创建message的工厂
+
+子类
+
+	MessageFactory2:用多个参数的重载方法代替可变参数,以达到garbage-free的目的
+
+	AbstractMessageFactory:提供MessageFactory2的base类
+
+	ParameterizedMessageFactory:用于{}形式的属性替换
+
+	ParameterizedNoReferenceMessageFactory:不引用参数对象，StatusLogger中使用，避免内存泄漏
+
+	FormattedMessageFactory:用于创建FormattedMessage
+
+	MessageFormatMessageFactory:用于创建MessageFormatMessage
+
+	StringFormatterMessageFactory:用于创建StringFormattedMessage
+
+	LocalizedMessageFactory:用于创建LocalizedMessage
+
+	SimpleMessageFactory:创建SimpleMessage
+
+	ReusableMessageFactory:创建那些可以避免分配内存的message
+
+	MessageFactory2Adapter:将MessageFactory的实现适配到MessageFactory2
+
+	

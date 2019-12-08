@@ -1,0 +1,9 @@
+ThreadContextMapFactory
+
+类
+
+	1
+
+描述
+
+	创建ThreadContext使用的ThreadContextMap对象

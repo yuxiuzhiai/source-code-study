@@ -1,0 +1,46 @@
+ReferenceCounted
+
+接口定义
+
+	一个ReferenceCounted对象需要明确的释放
+	当初始化一个ReferenceCounted对象后,它的起始count是1,#retain()会增加count(),#release()会降低count
+	如果count下降到0,这个对象就会被重新分配
+
+接口定义
+
+	public interface ReferenceCounted {
+	
+	    int refCnt();
+
+	    ReferenceCounted retain();
+
+	    ReferenceCounted retain(int increment);
+
+	    /**
+	     * Records the current access location of this object for debugging purposes.
+	     * If this object is determined to be leaked, the information recorded by this operation will be provided to you
+	     * via {@link ResourceLeakDetector}.  This method is a shortcut to {@link #touch(Object) touch(null)}.
+	     */
+	    ReferenceCounted touch();
+
+	    /**
+	     * Records the current access location of this object with an additional arbitrary information for debugging
+	     * purposes.  If this object is determined to be leaked, the information recorded by this operation will be
+	     * provided to you via {@link ResourceLeakDetector}.
+	     */
+	    ReferenceCounted touch(Object hint);
+
+	    /**
+	     * Decreases the reference count by {@code 1} and deallocates this object if the reference count reaches at
+	     * {@code 0}.
+	     *
+	     * @return {@code true} if and only if the reference count became {@code 0} and this object has been deallocated
+	     */
+	    boolean release();
+
+	    boolean release(int decrement);
+	}
+
+子类
+
+	ByteBuf

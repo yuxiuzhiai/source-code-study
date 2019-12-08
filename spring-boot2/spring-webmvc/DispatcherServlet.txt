@@ -1,0 +1,85 @@
+DispatcherServlet
+
+注释
+
+    Http request的中心派发器.
+    继承自FrameworkServlet<-HttpServletBean
+
+方法
+
+initStrategies(AC):
+
+	1.initMultipartResolver(AC)
+		由MultipartAutoConfiguration自动配置类配置,默认就会配置,除非通过spring.servlet.multipart.enabled=false来关闭
+
+	2.initLocaleResolver(AC)
+		spring-boot并没有提供相关自动配置,默认会使用DispatcherServlet.properties中的配置项,当前是AcceptHeaderLocaleResolver
+
+	3.initThemeResolver(AC)
+		spring-boot没有提供自动配置,DispatcherServlet.properties中指定的为FixedThemeResolver
+
+	4.initHandlerMappings(AC)
+		spring-boot自动配置了7个:
+			faviconHandlerMapping:SimpleUrlHandlerMapping
+				/**/favicon.ico -> ResourceHttpRequesHandler
+			requestMappingHandlerMapping:
+
+			viewControllerHandlerMapping:
+
+			beanNameHandlerMapping:
+
+			resourceHandlerMapping:SimpleUrlHandlerMapping
+				/webjars/**
+				/**
+
+			defaultServletHandlerMapping
+
+			welcomePageHandlerMapping
+
+	5.initHandlerAdapters(AC)
+		spring-boot配置了3个:
+			requestMappingHandlerAdapter
+			httpRequestHandlerAdapter
+			simpleControllerHandlerAdapter
+
+	6.initHandlerExceptionResolvers(AC)
+
+	7.initRequestToViewNameTranslator(AC)
+
+	8.initViewResolvers(AC)
+
+	9.initFlashMapManager(AC)
+
+FrameworkServlet.processRequest(request,response):请求处理
+
+1.获取locale
+
+2.获取RequestAttributes并转换成ServletRequestAttributes
+
+3.开始DispatcherServlet.doService(request,response)方法
+	3.1.判断是不是 include request
+	3.2.设置一些参数
+		org.springframework.web.servlet.DispatcherServlet.CONTEXT
+        org.springframework.web.servlet.DispatcherServlet.LOCALE_RESOLVER
+        org.springframework.web.servlet.DispatcherServlet.THEME_RESOLVER
+        org.springframework.web.servlet.DispatcherServlet.THEME_SOURCE
+    3.3.FlashMap相关的处理
+    3.4.调用#doDispatch(request,response)方法
+    	3.4.1.获取WebAsyncManager
+    	3.4.2.判断是不是文件上传请求
+    	3.4.3.#getHandler(request):遍历HandlerMapping,找到合适的handler(HandlerExecutionChain)
+    	3.4.4.如果没有找到handler,则给response设置一个404响应码
+    	3.4.5.根据handler的类型找到对应的HandlerAdapter
+    	3.4.6.如果是GET/HEAD方法,则会有个lastModified的判断
+    	3.4.7.处理每个HandlerInterceptor
+    	3.4.8.调用HandlerAdapter.handler()方法:
+    		RequestMappingHandlerAdapter:
+    			i)#invokeHandlerMethod(request,response,handlerMethod)
+    				1)将HttpServletRequest适配成ServletWebRequest
+    				2)获得WebDataBinderFactory
+
+    	3.4.9.#processDispatchResult()
+    		i)如果请求处理过程中出了异常:
+    		ii)如果没有异常,检查返回的ModelAndView是否为空,如果不为空则渲染页面
+
+4.AC发布一个ServletRequestHandledEvent事件

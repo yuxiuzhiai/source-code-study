@@ -1,0 +1,14 @@
+StatusListener
+
+类
+
+	2
+
+描述
+	
+	log4j内部日志事件的监听器
+
+	
+子类
+
+	StatusConsoleListener:当StatusLogger处理事件时，往Console打印

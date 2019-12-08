@@ -1,0 +1,13 @@
+Advertiser
+
+类
+
+	3
+
+描述
+
+	
+子类
+
+	DefaultAdvertiser:什么都不做
+	MulticastDnsAdvertiser:

@@ -1,0 +1,29 @@
+StrLookup
+
+类
+
+	17
+
+描述
+
+	查找一个string key并转化成string value
+
+子类
+
+	AbstractLookup:用于给别的Lookup继承
+	AbstractConfigurationAwareLookup:结合了Configuration的Lookup
+	ContextMapLookup:从context中找key,默认情况下是ThreadContext
+	DateLookup:key是format，比如yyyy-MM-dd这种，用于格式化当前时间或是LogEvent中的时间
+	EnvironmentLookup:从环境变量中查找
+	Interpolator:代理所有别的Lookup
+	JavaLookup:关联java的，比如java版本 jre版本这种
+	JmxRuntimeInputArgumentsLookup:
+	JndiLookup
+	Log4jLookup:从log4j的属性中查找
+	MainMapLookup:从mainMap中查找，如果想要这个有用，需要在开始时将命令行参数通过setMainArguments()方法设置进来
+	MapLookup:基于map的查找
+	MarkerLookup:查找marker，借助MarkManager
+	ResourceBundleLookup:已BundlerName:BundleKey的方式，比如com.my.prop:myKey
+	StructuredDataLookup:从StructuredDataMessage形式的log message中查找
+	SystemPropertiesLookup:从系统属性中查找
+	

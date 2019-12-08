@@ -1,0 +1,18 @@
+PropertiesUtil
+	
+类
+	
+	1
+
+描述
+
+	用于处理properties文件和系统配置的工具类
+
+内部细节
+
+	内部类
+
+		Environment:是所有全局属性的抽象.有三种形式的查找:
+			1.normal:移除所有log4j相关的前缀,保留驼峰形式的属性名并以log4j2开头
+			2.legacy:原始属性名
+			3.tokenized:

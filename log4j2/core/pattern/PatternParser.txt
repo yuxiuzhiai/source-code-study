@@ -1,0 +1,10 @@
+PatternParser
+
+类
+
+	1
+
+描述
+
+	根据Pattern得到一组PatternConverter
+	PatternLayout的功能大多委派到这个类中实现

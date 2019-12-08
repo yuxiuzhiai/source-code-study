@@ -1,0 +1,25 @@
+IndexableField
+
+注释
+
+	代表一个字段
+
+子类
+	
+	Field
+		代表一个字段
+		子类
+			StringField：索引了但是没有词条化。即将整个String值作为一个token
+			TextField：索引、词条化，但是没有term vectors
+			
+			IntPoint
+			LongPoint
+			FloatPoint
+			DoublePoint
+
+			SortedDocValuesField
+			SortedSetDocValuesField
+			NumericDocValuesField
+			SortedNumericDocValuesField
+
+			StoredField

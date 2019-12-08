@@ -1,0 +1,5 @@
+LogFile
+
+注释
+
+	一个日志文件的引用,可以通过Environment中的logging.file/logging.path设置.默认文件名是spring.log

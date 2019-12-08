@@ -1,0 +1,19 @@
+ImportSelector
+
+注释
+
+    用于决定哪个@Configuration类应该被导入,基于一个给定的选择标准,通常是一或多个注解
+
+子接口
+
+	DeferredImportSelector:在所有@Configuration类解析完之后运行.这个类型的selector在被选中的import是@Conditional的时候非常有用
+
+		实现类:
+			AutoConfigurationImportSelector:处理@EnableAutoConfiguration
+			ImportAutoConfigurationImportSelector:继承自AutoConfigurationImportSelector,处理@ImportAutoConfiguration
+
+子类
+
+	EnableConfigurationPropertiesImportSelector:通过@ConfigurationProperties绑定外部properties到@Configuration类
+	CachingConfigurationSelector:@EnableCaching相关
+	AsyncConfigurationSelector:@EnableAsync相关

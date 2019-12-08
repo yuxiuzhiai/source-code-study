@@ -1,0 +1,2 @@
+PropertySourcesPlaceholderConfigurer:
+    注释:解决@Value("${}")和BeanDefinition中的占位符,通过spring的Environment和PropertySources集合

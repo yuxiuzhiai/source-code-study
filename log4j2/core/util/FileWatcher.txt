@@ -1,0 +1,18 @@
+FileWatcher
+
+类
+	
+	4
+
+描述
+
+	观察文件的变化，并在变化时执行动作
+
+子类
+
+	ConfiguratonFileWatcher:观察配置文件的变化，如果变化会导致一个reconfigration
+	ScriptManager:脚本相关
+
+相关类
+
+	WatchManager:用于管理FileWatcher

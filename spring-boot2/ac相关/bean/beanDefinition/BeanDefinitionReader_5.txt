@@ -1,0 +1,38 @@
+BeanDefinitionReader
+
+注释
+
+	读取BeanDefinition
+	但是并不是所有的BeanDefinition reader都实现了这个接口,比如AnnotationBeanDefinitionReader
+
+接口定义
+
+	public interface BeanDefinitionReader {
+
+		BeanDefinitionRegistry getRegistry();
+
+		ResourceLoader getResourceLoader();
+
+		ClassLoader getBeanClassLoader();
+
+		BeanNameGenerator getBeanNameGenerator();
+
+		int loadBeanDefinitions(Resource resource) throws BeanDefinitionStoreException;
+
+		int loadBeanDefinitions(Resource... resources) throws BeanDefinitionStoreException;
+
+		int loadBeanDefinitions(String location) throws BeanDefinitionStoreException;
+
+		int loadBeanDefinitions(String... locations) throws BeanDefinitionStoreException;
+
+	}
+
+子类
+
+	AbstractBeanDefinitionReader:
+
+	PropertiesBeanDefinitionReader:
+
+	XmlBeanDefinitionReader:
+
+	GroovyBeanDefinitionReader:

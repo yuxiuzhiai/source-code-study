@@ -1,0 +1,58 @@
+ViewResolver
+
+注释
+
+	can resolve views by name
+
+接口定义
+
+	public interface ViewResolver {
+
+		View resolveViewName(String viewName, Locale locale) throws Exception;
+
+	}
+
+子类(15)
+
+	AbstractCachingViewResolver:
+		会缓存view
+
+	UrlBasedViewResolver:
+		继承自AbstractCachingViewResolver.
+
+	InternalResourceViewResolver:
+		继承自UrlBasedViewResolver,支持InternalResourceView/JstlView,比如Servlets and JSPs
+
+	AbstractTemplateViewResolver:
+		继承自UrlBasedViewResolver
+
+	FreeMarkerViewResolver:
+
+	GroovyMarkupViewResolver:
+
+	MustacheViewResolver:
+
+	BeanNameViewResolver:
+
+	XmlViewResolver:
+		继承自AbstractCachingViewResolver
+
+	ResourceBundleViewResolver:
+
+	ContentNegotiatingViewResolver:
+		解析view name基于request file name或者Accept header
+		自己不解析view,会委派到其他ViewResolver
+		会根据请求的MediaType莱选择一个合适的View,MediaType是根据配置的ContentNegotiationManager决定的.一旦MediaType确定了,就会在每个接受委派的ViewResolver中查找出一个最匹配的
+
+	ScriptTemplateViewResolver:
+		继承自UrlBasedViewResolver,用于处理ScriptTemplateView
+
+	TilesViewResolver:
+		继承自UrlBasedViewResolver,用于处理TilesView
+
+	XsltViewResolver:
+		继承自UrlBasedViewResolver,用于处理XsltView
+
+	ViewResolverComposite:
+		委派给其他ViewResolver处理
+

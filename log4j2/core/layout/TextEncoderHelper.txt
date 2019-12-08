@@ -1,0 +1,9 @@
+TextEncoderHelper
+
+类
+	
+	1
+
+描述
+
+	将文本转成字节流

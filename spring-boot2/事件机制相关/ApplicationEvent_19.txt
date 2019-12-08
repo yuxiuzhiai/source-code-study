@@ -1,0 +1,31 @@
+ApplicationEvent
+
+注释
+
+    事件
+    
+子类
+
+    ExitCodeEvent
+
+    WebServerInitializedEvent
+        ServletWebServerInitializedEvent:WebServerInitializedEvent的子类
+
+    RequestHandledEvent
+        ServletRequestHandledEvent:RequestHandledEvent的子类,每次请求处理完成后会发布这个事件
+    PayloadApplicationEvent
+    
+    DataSourceSchemaCreatedEvent
+
+    ApplicationContextEvent:AC相关的事件,有如下4个实现类
+        ContextClosedEvent
+        ContextRefreshedEvent
+        ContextStartedEvent
+        ContextStoppedEvent
+
+    SpringApplicationEvent:SpringApplication发布的事件,发生在应用启动过程中
+        ApplicationStartingEvent
+        ApplicationEnvironmentPreparedEvent
+        ApplicationFailedEvent
+        ApplicationPreparedEvent
+        ApplicationReadyEvent

@@ -1,0 +1,42 @@
+ParameterNameDiscoverer
+
+注释
+
+    用于发现方法和构造方法的参数名称
+    并不是总会得到方法参数,但是会尝试不同的策略
+
+接口定义
+
+    public interface ParameterNameDiscoverer {
+
+        /**
+         * Return parameter names for this method,
+         * or {@code null} if they cannot be determined.
+         * @param method method to find parameter names for
+         * @return an array of parameter names if the names can be resolved,
+         * or {@code null} if they cannot
+         */
+        @Nullable
+        String[] getParameterNames(Method method);
+
+        /**
+         * Return parameter names for this constructor,
+         * or {@code null} if they cannot be determined.
+         * @param ctor constructor to find parameter names for
+         * @return an array of parameter names if the names can be resolved,
+         * or {@code null} if they cannot
+         */
+        @Nullable
+        String[] getParameterNames(Constructor<?> ctor);
+
+    }
+
+子类
+
+    DefaultParameterNameDiscoverer:ParameterNameDiscoverer的默认实现,使用java8标准的反射机制,如果不行就用基于asm的LocalVariableTableParameterNameDiscoverer在class文件中检查debug信息
+
+    LocalVariableTableParameterNameDiscoverer:基于LocalVariableTable的ParameterNameDiscoverer.返回null如果编译class的时候没有debug信息
+
+    PrioritizedParameterNameDiscoverer:会依序尝试不同的discoverer,前一个返回null则会继续下一个
+
+    StandardReflectionParameterNameDiscoverer:使用java8反射功能获取参数名称的对应实现,前提是要打开-parameters选项

@@ -1,0 +1,26 @@
+ZooKeeperServerListener
+
+注释
+
+	资源事件的监听器
+
+接口定义
+
+	public interface ZooKeeperServerListener {
+
+	    /**
+	     * This will notify the server that some critical thread has stopped. It
+	     * usually takes place when fatal error occurred.
+	     * 
+	     * @param threadName
+	     *            - name of the thread
+	     * @param errorCode
+	     *            - error code
+	     */
+	    void notifyStopping(String threadName, int errorCode);
+	}
+
+实现类
+
+	ZooKeeperServerListenerImpl:
+		默认实现

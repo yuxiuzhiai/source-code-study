@@ -1,0 +1,17 @@
+WebRequestInterceptor
+
+接口定义
+
+	public interface WebRequestInterceptor {
+
+		void preHandle(WebRequest request) throws Exception;
+
+		void postHandle(WebRequest request, @Nullable ModelMap model) throws Exception;
+
+		void afterCompletion(WebRequest request, @Nullable Exception ex) throws Exception;
+
+	}
+
+子接口
+
+	AsyncWebRequestInterceptor

@@ -1,0 +1,19 @@
+Action
+
+类
+
+	11
+
+描述
+
+	RollingFileAppender
+	当当前活动的日志文件关闭时执行的文件系统操作
+
+子类
+
+	AbstractAction
+	AbstractPathAction:
+	DeleteAction:删除旧文件
+	FileRenameAction
+	ZipCompressAction
+	CommonsCompressAction

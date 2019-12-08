@@ -1,0 +1,20 @@
+Rule
+
+注释
+
+	这个类的实现会在xml标签闭合的时候实现具体的动作
+
+实现类
+	
+	ObjectCreateRule:创建一个新对象,并将其push到对象栈中.当元素完成时,从栈中弹出
+	SetPropertiesRule:为对象设置属性,应该就是对应的xml标签的属性
+	SetNextRule:调用上层对象的方法,并把当前对象作为参数传入.一般用于建立父子关系
+	ConnectorCreateRule:创建Connector的Rule
+	CallMethodRule:
+	LifecycleListenerRule:创建一个LifecycleListener并关联到栈顶对象
+	SetAllPropertiesRule:使用introspection utils来设置属性的Rule
+	CertificateCreateRule:创建SSLHostConfigCertificate的Rule
+	SetNextNamingRule:看起来跟SetNextRule的意思差不多
+	CopyParentClassLoaderRule
+	SetContextPropertiesRule
+	SetParentClassLoaderRule

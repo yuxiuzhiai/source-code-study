@@ -1,0 +1,15 @@
+RewritePolicy
+
+类
+
+	4
+
+描述
+
+	支持在LogEvent打印之前修改其中的内容
+
+子类
+
+	LoggerNameLevelRewritePolicy:重写日志的level
+	MapRewritePolicy
+	PropertiesRewritePolicy

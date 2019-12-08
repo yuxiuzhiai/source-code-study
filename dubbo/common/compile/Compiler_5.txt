@@ -1,0 +1,29 @@
+Compiler
+
+注释
+
+	Java 代码编译器，用于动态生成字节码，加速调用
+
+接口定义
+
+	@SPI("javassist")
+	public interface Compiler {
+
+	    /**
+	     * Compile java source code.
+	     *
+	     * @param code        Java source code
+	     * @param classLoader classloader
+	     * @return Compiled class
+	     */
+	    Class<?> compile(String code, ClassLoader classLoader);
+
+	}
+
+子类
+
+	AbstractCompiler
+
+	JavassistCompiler
+
+	AdaptiveCompiler

@@ -1,0 +1,5 @@
+NamingContext
+
+注释
+
+	Catalina的JNDI context实现

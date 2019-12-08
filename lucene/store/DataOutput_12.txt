@@ -1,0 +1,19 @@
+DataOutput
+
+注释
+
+	执行lucene低级数据类型的写操作
+	只应该是单线程使用
+
+子类11
+
+	IndexOutput
+		添加数据到Directory中的一个文件
+		子类
+			ByteBuffersIndexOutput
+
+	GrowableByteArrayDataOutput
+		可以用于构建byte[]
+
+	ByteBuffersDataOutput
+		在一系列ByteBuffer中存储数据

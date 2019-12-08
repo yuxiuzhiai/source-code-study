@@ -1,0 +1,26 @@
+SpringApplicationRunListener
+
+注释
+    
+    SpringApplication.run()方法的监听器,目前spring中只有一个内置的实现类:EventPublishingRunListener
+
+接口定义
+
+    public interface SpringApplicationRunListener {
+
+        void starting();
+
+        void environmentPrepared(ConfigurableEnvironment environment);
+
+        void contextPrepared(ConfigurableApplicationContext context);
+
+        void contextLoaded(ConfigurableApplicationContext context);
+
+        void finished(ConfigurableApplicationContext context, Throwable exception);
+
+    }
+
+实现类
+
+    EventPublishingRunListener:
+        用于发布SpringApplicationEvent.名为Listener,实际主要工作是EventPublishing

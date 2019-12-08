@@ -1,0 +1,16 @@
+BeanNameGenerator
+
+注释
+    
+    为BeanDefinition生成一个name
+
+接口定义
+
+    public interface BeanNameGenerator {
+        String generateBeanName(BeanDefinition definition, BeanDefinitionRegistry registry);
+    }
+
+实现类
+
+    AnnotationBeanNameGenerator:为注解了@Component的bean生成一个name
+    DefaultBeanNameGenerator:BeanNameGenerator的默认实现

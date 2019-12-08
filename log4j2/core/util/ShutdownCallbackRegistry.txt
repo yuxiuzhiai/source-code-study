@@ -1,0 +1,13 @@
+ShutdownCallbackRegistry
+
+类
+
+	2
+
+描述
+
+	用于Runnable关闭时回调的registry
+
+子类
+
+	DefaultShutdownCallbackRegistry

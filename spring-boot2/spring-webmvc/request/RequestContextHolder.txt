@@ -1,0 +1,5 @@
+RequestContextHolder
+
+注释
+
+	holder class,把web request暴露成绑定了thread的RequestAttribute对象

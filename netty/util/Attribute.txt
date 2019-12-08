@@ -1,0 +1,26 @@
+Attribute
+
+注释
+
+	用于存储一个值的引用
+
+接口定义
+
+	public interface Attribute<T> {
+
+	    AttributeKey<T> key();
+
+	    T get();
+
+	    void set(T value);
+
+	    T getAndSet(T value);
+
+	    T setIfAbsent(T value);
+
+	    T getAndRemove();
+
+	    boolean compareAndSet(T oldValue, T newValue);
+
+	    void remove();
+	}

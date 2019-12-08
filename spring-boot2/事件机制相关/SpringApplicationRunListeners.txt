@@ -1,0 +1,5 @@
+SpringApplicationRunListeners
+
+注释
+
+    SpringApplicationRunListener的集合,集中处理SpringApplicationRunListener.并不是SpringApplicationRunListener实现类,但也是有SpringApplicationRunListener接口的所有方法

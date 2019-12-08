@@ -1,0 +1,22 @@
+ObjectFactory
+
+注释
+
+	定义一个可以返回Object实例的工厂
+	这个接口一般用于在每次调用返回一个目标对象的新的实例
+
+接口注释
+
+	public interface ObjectFactory<T> {
+
+		T getObject() throws BeansException;
+
+	}
+
+字接口
+
+	ObjectProvider
+
+子类
+
+	MessageInterpolatorFactory:

@@ -1,0 +1,5 @@
+CallableProcessingInterceptor
+
+注释
+
+	拦截当前的请求处理,兵符接口通过执行一个AsyncTaskExecutor中的Callable来获取

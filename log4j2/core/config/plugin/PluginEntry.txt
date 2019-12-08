@@ -1,0 +1,5 @@
+PluginEntry
+
+类
+
+	1

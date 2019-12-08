@@ -1,0 +1,14 @@
+NanoClock
+
+类
+
+	3
+
+描述
+
+	提供一个高精度的时间
+
+子类
+
+	DummyNanoClock:总是返回一个固定的时间点
+	SystemNanoClock:返回System.nanoTime()

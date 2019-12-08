@@ -1,0 +1,17 @@
+BindContext
+
+注释
+
+	BindHandler使用的上下文信息
+
+接口定义
+
+	public interface BindContext {
+
+		int getDepth();
+
+		Iterable<ConfigurationPropertySource> getSources();
+
+		ConfigurationProperty getConfigurationProperty();
+
+	}

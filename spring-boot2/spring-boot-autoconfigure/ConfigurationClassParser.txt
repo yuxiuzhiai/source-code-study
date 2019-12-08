@@ -1,0 +1,46 @@
+ConfigurationClassParser
+
+注释
+    
+    解析@Configuration类,填充一个ConfigurationClass对象的集合(解析单个@Configuration类可能导致任意数量的ConfigurationClass对象,因为一个@Configuration类可以通过@Import导入其他@Configuration类)
+
+方法解析
+
+一.parse(Set<BeanDefinitionHolder> configCandidates):
+
+1.根据每个BeanDefinitionHolder中BeanDefinition的类型选择要执行的方法
+
+2.
+	对于AnnotatedBeanDefinition:
+	2.1
+
+3.processDeferredImportSelectors()
+	
+
+二.processConfigurationClass(ConfigurationClass configClass):
+
+1.判断@Conditional注解,如果应该跳过,则结束
+
+2.
+
+三.doProcessConfigurationClass(ConfigurationClass configClass, SourceClass sourceClass):
+
+1.如果有内部类的话,解析内部类
+	1.1.如果有,有@Configuration,@Component,@ComponentScan,@Import,@ImportResource注解,则递归调用方法二
+
+2.解析@PropertySource注解:看当前类是否有@PropertySource或者@PropertySources注解,如果有则将其加入到environment中
+
+3.解析@ComponentScan注解:看是否有@ComponentScan或者@ComponetScans注解,如果有则根据各种规则扫描到所有合适的类,最终还是会逐个调用方法二
+
+4.解析@Import注解
+	4.1.递归地找到所哟的@Import注解,对于每个@Import
+
+	4.2.
+
+5.解析@ImportResource注解
+
+6.解析每个单独的@Bean注解的方法
+
+7.解析@Configuration实现的接口中的那些个默认方法
+
+8.解析父类

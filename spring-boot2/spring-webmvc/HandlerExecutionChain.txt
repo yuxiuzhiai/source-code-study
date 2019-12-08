@@ -1,0 +1,6 @@
+HandlerExecutionChain
+
+注释
+
+	包含handler对象和HandlerInterceptor
+	一般是HandlerMapping#getHandler()的返回值

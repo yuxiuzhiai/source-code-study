@@ -1,0 +1,5 @@
+FactoryBeanRegistrySupport
+
+注释
+
+    registry用于处理FactoryBean,集成在DefaultSingletonBeanRegistry中

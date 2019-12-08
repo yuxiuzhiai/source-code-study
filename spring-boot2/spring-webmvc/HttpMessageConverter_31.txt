@@ -1,0 +1,90 @@
+HttpMessageConverter
+
+注释
+
+    指定一个converter,可以从Http request/response装换或者转换成HTTP request/response
+
+接口定义
+
+    public interface HttpMessageConverter<T> {
+
+        boolean canRead(Class<?> clazz, @Nullable MediaType mediaType);
+
+        boolean canWrite(Class<?> clazz, @Nullable MediaType mediaType);
+
+        List<MediaType> getSupportedMediaTypes();
+
+        T read(Class<? extends T> clazz, HttpInputMessage inputMessage)
+                throws IOException, HttpMessageNotReadableException;
+
+        void write(T t, @Nullable MediaType contentType, HttpOutputMessage outputMessage)
+                throws IOException, HttpMessageNotWritableException;
+
+    }
+
+子接口
+
+    GenericHttpMessageConverter:
+        将Http request转成目标类型,和将目标类型写入HTTP response
+
+子类
+
+    AbstractHttpMessageConverter:
+
+    AbstractGenericHttpMessageConverter
+
+    AbstractJackson2HttpMessageConverter:
+        基于Jackson的HttpMessageConverter,和Content-Type无关
+
+    AbstractXmlHttpMessageConverter:
+        xml相关
+
+    AbstractJaxb2HttpMessageConverter:
+        JAXB2相关
+
+    MappingJackson2HttpMessageConverter:
+        使用Jackson的ObjectMapper读写json
+
+    MappingJackson2XmlHttpMessageConverter:
+        默认情况下,支持application/xml,text/xml和application/*+xml
+
+    FormHttpMessageConverter:
+        读写普通HTML form
+        可以读写application/x-www-form-urlencoded成MultivalueMap
+
+    AllEncompassingFormHttpMessageConverter:
+        继承自FormHttpMessageConverter,添加了xml和json部分的支持
+
+    BufferedImageHttpMessageConverter:
+        可以读写BufferedImage
+
+    ByteArrayHttpMessageConverter:
+        读写字节数组,content-type为application/octet-stream
+
+    GsonHttpMessageConverter:
+        Gson相关
+
+    MarshallingHttpMessageConverter:
+        使用spring的Marshaller/Unmarshaller抽象来读写xml
+
+    ObjectToStringHttpMessageConverter:
+        使用conversionService来转换对象,使用StringHttpMessageConverter来读写内容
+
+    ResourceHttpMessageConverter:
+
+    ResourceRegionHttpMessageConverter
+
+    StringHttpMessageConverter:
+        读写字符串,默认情况下支持所有的media-type,会设置Content-Type类型为text/plain
+
+
+    没啥用的:
+        MappingJackson2CborHttpMessageConverter:
+        MappingJackson2SmileHttpMessageConverter
+        AtomFeedHttpMessageConverter
+        Jaxb2CollectionHttpMessageConverter
+        Jaxb2RootElementHttpMessageConverter
+        ProtobufHttpMessageConverter
+        ProtobufJsonFormatHttpMessageConverter
+        RssChannelHttpMessageConverter
+        SourceHttpMessageConverter

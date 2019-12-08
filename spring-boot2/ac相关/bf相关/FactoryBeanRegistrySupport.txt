@@ -1,0 +1,5 @@
+FactoryBeanRegistrySupport
+
+注释
+
+	处理FactoryBean的singleton registry的辅助类,于DefaultSingletonBeanRegistry的singleton管理相集成

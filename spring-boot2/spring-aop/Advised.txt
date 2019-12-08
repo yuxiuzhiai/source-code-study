@@ -1,0 +1,70 @@
+Advised
+
+注释
+
+	持有AOP代理工厂配置的类会实现这个接口
+	任何spring中的AOP代理都可以被转换成这个接口以允许对它的advice进行操作
+
+接口定义
+
+	public interface Advised extends TargetClassAware {
+
+		boolean isFrozen();
+
+		boolean isProxyTargetClass();
+
+		Class<?>[] getProxiedInterfaces();
+
+		boolean isInterfaceProxied(Class<?> intf);
+
+		void setTargetSource(TargetSource targetSource);
+
+		TargetSource getTargetSource();
+
+		void setExposeProxy(boolean exposeProxy);
+
+		boolean isExposeProxy();
+
+		void setPreFiltered(boolean preFiltered);
+
+		boolean isPreFiltered();
+
+		Advisor[] getAdvisors();
+
+		void addAdvisor(Advisor advisor) throws AopConfigException;
+
+		void addAdvisor(int pos, Advisor advisor) throws AopConfigException;
+
+		boolean removeAdvisor(Advisor advisor);
+
+		void removeAdvisor(int index) throws AopConfigException;
+
+		int indexOf(Advisor advisor);
+
+		boolean replaceAdvisor(Advisor a, Advisor b) throws AopConfigException;
+
+		void addAdvice(Advice advice) throws AopConfigException;
+
+		void addAdvice(int pos, Advice advice) throws AopConfigException;
+
+		boolean removeAdvice(Advice advice);
+
+		int indexOf(Advice advice);
+
+		String toProxyConfigString();
+
+	}
+
+子类
+
+	AdvisedSupport:
+		AOP代理配置管理
+		这个类的子类就是AOP获取代理对象的工厂
+
+	ProxyFactory:
+
+	ProxyFactoryBean:
+
+	AspectJProxyFactory:
+		基于AspectJ的代理工厂
+		spring里面其实没有用到这个类

@@ -1,0 +1,5 @@
+CollectorManager
+
+注释
+
+	管理Collector。当并发执行查询的时候很有用

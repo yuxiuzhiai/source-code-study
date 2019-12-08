@@ -1,0 +1,20 @@
+ScopeMetadataResolver
+
+注释
+
+    策略接口,用于解决BeanDefinition的scope
+
+接口定义
+
+    @FunctionalInterface
+    public interface ScopeMetadataResolver {
+        ScopeMetadata resolveScopeMetadata(BeanDefinition definition);
+    }
+
+子类
+
+    AnnotationScopeMetadataResolver:
+    	默认做法是检测bean class是否有@Scope注解
+    Jsr330ScopeMetadataResolver:
+    	遵循JSR-330规则的ScopeMetadataResolver实现:默认scope为Prototype,除非有@Singleton注解
+    	其实这个类没有在spring中被用到

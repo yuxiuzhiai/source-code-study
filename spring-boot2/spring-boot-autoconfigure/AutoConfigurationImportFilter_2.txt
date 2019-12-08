@@ -1,0 +1,19 @@
+AutoConfigurationImportFilter
+
+注释
+
+	注册在spring.factories中的过滤器,用于限制自动配置类
+	这个类是用于在自动配置类的字节码加载之前移除他们
+
+	AutoConfigurationImportFilter的实现可能实现*Aware接口,各自的方法会先于match()方法被调用
+接口定义
+
+	public interface AutoConfigurationImportFilter {
+
+		boolean[] match(String[] autoConfigurationClasses,AutoConfigurationMetadata autoConfigurationMetadata);
+
+	}
+
+子类
+
+	OnClassCondition:

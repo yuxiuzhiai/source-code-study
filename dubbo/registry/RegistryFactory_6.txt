@@ -1,0 +1,16 @@
+RegistryFactory
+
+注释
+
+接口定义
+
+	@SPI("dubbo")
+	public interface RegistryFactory {
+
+	    Registry getRegistry(URL url);
+
+	}
+
+子类
+
+	ZookeeperRegistryFactory

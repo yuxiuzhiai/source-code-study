@@ -1,0 +1,25 @@
+SnapShot
+
+注释
+
+	快照
+
+接口定义
+
+	public interface SnapShot {
+    
+	    long deserialize(DataTree dt, Map<Long, Integer> sessions) 
+	        throws IOException;
+	    
+	    void serialize(DataTree dt, Map<Long, Integer> sessions, File name) 
+	        throws IOException;
+	    
+	    File findMostRecentSnapshot() throws IOException;
+	    
+	    void close() throws IOException;
+	} 
+
+子类
+
+	FileSnap:
+		快照实现,通过文件来完成snapshot的序列化,反序列化和访问

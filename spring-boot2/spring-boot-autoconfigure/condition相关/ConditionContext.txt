@@ -1,0 +1,42 @@
+ConditionContext
+
+注释
+
+    Condition中用于表示上下文信息
+
+接口定义
+
+    public interface ConditionContext {
+
+        /**
+         * Return the {@link BeanDefinitionRegistry} that will hold the bean definition
+         * should the condition match.
+         */
+        BeanDefinitionRegistry getRegistry();
+
+        /**
+         * Return the {@link ConfigurableListableBeanFactory} that will hold the bean
+         * definition should the condition match.
+         */
+        ConfigurableListableBeanFactory getBeanFactory();
+
+        /**
+         * Return the {@link Environment} for which the current application is running.
+         */
+        Environment getEnvironment();
+
+        /**
+         * Return the {@link ResourceLoader} currently being used.
+         */
+        ResourceLoader getResourceLoader();
+
+        /**
+         * Return the {@link ClassLoader} that should be used to load additional classes.
+         */
+        ClassLoader getClassLoader();
+
+    }
+
+其他
+
+    其唯一实现就是ConditionEvaluator的内部类:ConditionContextImpl

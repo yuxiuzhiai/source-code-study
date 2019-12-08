@@ -1,0 +1,29 @@
+SingletonBeanRegistry
+
+注释
+
+    定义一个Registry用于共享的bean实例.可以被BeanFactory实现用于一种统一的方式暴露singleton的管理
+    ConfigurableBeanFactory继承了这个接口
+
+接口定义
+
+    public interface SingletonBeanRegistry {
+
+        void registerSingleton(String beanName, Object singletonObject);
+
+        @Nullable
+        Object getSingleton(String beanName);
+
+        boolean containsSingleton(String beanName);
+
+        String[] getSingletonNames();
+
+        int getSingletonCount();
+
+        Object getSingletonMutex();
+
+    }
+
+子类
+
+    DefaultSingletonBeanRegistry:singleton bean的一般性registry.用于注册共享的bean实例,并可以通过bean name获取

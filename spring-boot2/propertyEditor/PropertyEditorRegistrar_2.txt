@@ -1,0 +1,17 @@
+PropertyEditorRegistrar
+
+注释
+
+    用于注册用户自定义的PropertyEditor,通过一个PropertyEditorRegistry
+
+接口定义
+
+    public interface PropertyEditorRegistrar {
+
+        void registerCustomEditors(PropertyEditorRegistry registry);
+
+    }
+
+子类
+
+    ResourceEditorRegistrar

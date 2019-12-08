@@ -1,0 +1,22 @@
+ContentNegotiationStrategy
+
+注释
+
+	用于解决请求中的media type的策略接口
+
+接口定义
+
+	public interface ContentNegotiationStrategy {
+
+		List<MediaType> MEDIA_TYPE_ALL_LIST = Collections.singletonList(MediaType.ALL);
+
+
+		List<MediaType> resolveMediaTypes(NativeWebRequest webRequest)
+				throws HttpMediaTypeNotAcceptableException;
+
+	}
+
+子类
+
+	AbstractMappingContentNegotiationStrategy:
+		

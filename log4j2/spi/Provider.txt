@@ -1,0 +1,15 @@
+Provider
+
+类
+
+	2
+
+描述
+
+	代表log4j2的provider
+	log4j自动创建
+	META-INF/log4j-provider.properties
+
+子类
+
+	Log4jProvider:指定了比较重要的LoggerContextFactory为Log4jContextFactory

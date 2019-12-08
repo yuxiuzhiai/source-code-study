@@ -1,0 +1,5 @@
+StringManager
+
+注释
+
+	用于处理资源文件ResourceBundle

@@ -1,0 +1,14 @@
+Parser
+
+注释
+
+	解析文本字符串来生成T实例
+
+接口定义
+
+	@FunctionalInterface
+	public interface Parser<T> {
+
+		T parse(String text, Locale locale) throws ParseException;
+
+	}

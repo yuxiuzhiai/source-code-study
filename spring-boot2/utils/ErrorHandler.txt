@@ -1,0 +1,12 @@
+ErrorHandler
+
+注释
+
+	处理错误的策略接口
+
+接口定义
+
+	@FunctionalInterface
+	public interface ErrorHandler {
+		void handleError(Throwable t);
+	}

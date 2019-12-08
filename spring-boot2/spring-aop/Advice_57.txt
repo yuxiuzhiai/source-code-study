@@ -1,0 +1,40 @@
+Advice
+
+注释
+
+	Advice的标记接口
+	Advice的实现可以使任意类型
+
+子接口(10)
+
+	BeforeAdvice:
+		标记接口
+
+	AfterAdvice:
+		标记接口
+
+	Interceptor:
+		标记接口
+		感觉这个应该就是Around advice的对应接口
+
+	ThrowsAdvice:
+		继承自AfterAdvice,标记接口
+
+	AfterReturningAdvice:
+		继承自AfterAdvice
+
+	ConstructorInterceptor:
+		继承自Interceptor
+
+	MethodInterceptor:
+
+
+	DynamicIntroductionAdvice:
+		允许Advice实现额外的接口,并且可以通过使用这个Interceptor的代理访问
+		Introduction通常是混合类
+
+	IntroductionInterceptor:
+
+	MethodBeforeAdvice:
+		继承自BeforeAdvice
+		在方法执行之前调用Advice.这种Advice不可以阻止方法的运行,除非报错

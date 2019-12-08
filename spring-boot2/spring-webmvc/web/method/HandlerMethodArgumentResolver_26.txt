@@ -1,0 +1,94 @@
+HandlerMethodArgumentResolver
+
+注释
+
+	解决方法参数的策略接口
+
+接口定义
+
+	public interface HandlerMethodArgumentResolver {
+
+		boolean supportsParameter(MethodParameter parameter);
+
+		Object resolveArgument(MethodParameter parameter, @Nullable ModelAndViewContainer mavContainer,
+				NativeWebRequest webRequest, @Nullable WebDataBinderFactory binderFactory) throws Exception;
+
+	}
+
+子类
+
+	AbstractMessageConverterMethodArgumentResolver:
+		通过HttpMessageConverter来读取request body,解决方法参数的基类
+
+	AbstractNamedValueMethodArgumentResolver:
+
+	AbstractCookieValueMethodArgumentResolver:
+		解决@CookieValue注解的方法参数
+
+	ServletCookieValueMethodArgumentResolver:
+		继承自AbstractCookieValueMethodArgumentResolver
+
+	AbstractWebArgumentResolverAdapter:
+		WebArgumentResolver类型的适配器
+
+	ServletWebArgumentResolverAdapter:
+		继承自AbstractWebArgumentResolverAdapter
+
+	ServletWebArgumentResolverAdapter:
+		继承自AbstractWebArgumentResolverAdapter
+
+	ErrorsMethodArgumentResolver:
+		解决Errors方法参数
+
+	ExpressionValueMethodArgumentResolver:	
+		解决@Value注解的方法参数
+
+	HandlerMethodArgumentResolverComposite:
+		组合很多HandlerMethodArgumentResolver来解决方法参数
+
+	MatrixVariableMapMethodArgumentResolver:
+		解决注解了MatrixVariable的Map类型参数
+
+	MatrixVariableMethodArgumentResolver:
+		解决了@MatrixVariable注解的参数
+
+	PathVariableMapMethodArgumentResolver:
+		解决了@PathVariable注解的Map类型参数
+
+	PathVariableMethodArgumentResolver:
+		解决了@PathVariable注解的参数
+
+	RedirectAttributesMethodArgumentResolver:
+		解决了RedirectAttributes类型的方法参数
+
+	RequestHeaderMapMethodArgumentResolver:
+		解决了@RequestHeader注解的Map类型参数
+
+	RequestHeaderMethodArgumentResolver:
+		解决了@RequestHeander注解的参数
+
+	RequestParamMapMethodArgumentResolver:
+		解决了@RequestParam注解的Map类型参数
+
+	RequestParamMethodArgumentResolver:
+		解决了@RequestParam注解的参数
+
+	RequestPartMethodArgumentResolver:
+		解决@RequestPart,MutipartFile,Part注解或类型的参数
+
+	ServletModelAttributeMethodProcessor:
+
+	ServletRequestMethodArgumentResolver:
+		解决request相关的方法参数：WebRequest,ServletRequest,MultipartRequest,HttpSession,PushBuilder,Principal,InputStream,Reader,HttpMethod,Locale,TimeZone,ZoneId
+
+	ServletResponseMethodArgumentResolver:
+		解决response相关的参数:ServletResponse,OutputStream,Writer
+
+	SessionAttributeMethodArgumentResolver:
+		解决@SessionAttribute注解的参数
+
+	SessionStatusMethodArgumentResolver:
+		解决SessionStatus参数
+
+	UriComponentsBuilderMethodArgumentResolver:
+		解决UriComponentsBuilder类型的参数

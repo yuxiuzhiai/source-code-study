@@ -1,0 +1,17 @@
+FailureAnalysisReporter
+
+注释
+
+	报告FailureAnalysis给用户
+
+接口定义
+
+	@FunctionalInterface
+	public interface FailureAnalysisReporter {
+		void report(FailureAnalysis analysis);
+	}
+
+实现类
+
+	LoggingFailureAnalysisReporter:
+		用打印日志的方式report

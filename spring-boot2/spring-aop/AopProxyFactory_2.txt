@@ -1,0 +1,23 @@
+AopProxyFactory
+
+注释
+
+	可以创建AopProxy的工厂接口
+
+接口定义
+
+	public interface AopProxyFactory {
+
+		AopProxy createAopProxy(AdvisedSupport config) throws AopConfigException;
+
+	}
+
+子类
+
+	DefaultAopProxyFactory:
+		默认实现,可以创建CGLIB代理或者JDK动态代理
+		如果对于一个给定的AdvisedSupport实例:
+			optimize=true
+			proxyTargetCalss=true
+			没有指定代理的接口
+		满足以上条件之一就会创建一个CGLIB代理

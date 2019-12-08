@@ -1,0 +1,14 @@
+PatternSelector
+
+类
+	
+	3
+
+描述
+
+	基于选择标准，允许在PatternLayout使用不同的模式
+
+子类
+
+	MarkerPatternSelector:基于LogEvent的Marker来选择模式
+	ScriptPatternSelector

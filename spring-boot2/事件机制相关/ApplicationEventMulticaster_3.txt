@@ -1,0 +1,38 @@
+ApplicationEventMulticaster
+
+注释
+
+    管理一众ApplicationListener,并向他们传播事件
+
+接口定义
+
+    public interface ApplicationEventMulticaster {
+
+        void addApplicationListener(ApplicationListener<?> listener);
+
+        void addApplicationListenerBean(String listenerBeanName);
+
+        void removeApplicationListener(ApplicationListener<?> listener);
+
+        void removeApplicationListenerBean(String listenerBeanName);
+
+        void removeAllListeners();
+
+        void multicastEvent(ApplicationEvent event);
+
+        void multicastEvent(ApplicationEvent event, @Nullable ResolvableType eventType);
+
+    }
+
+子类
+
+    AbstractApplicationEventMulticaster:
+        ApplicationEventMulticaster的抽象实现,提供基本的监听器注册功能
+        默认不知道同一个类型监听器的多个实例,因为listener保存在一个set里
+        具体的multicastEvent()方法留给了子类去实现
+
+        内部有个基于(事件类型及sourceType -> listener)的缓存实现
+
+    SimpleApplicationEventMulticaster:
+        ApplicationEventMulticaster的简单实现
+        传播所有事件到所有注册的listener,让listener自己处理自己感兴趣的事件

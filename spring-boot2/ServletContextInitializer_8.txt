@@ -1,0 +1,35 @@
+ServletContextInitializer
+
+注释
+
+	用于配置Servlet3.0+的ServletContext
+
+接口定义
+
+	@FunctionalInterface
+	public interface ServletContextInitializer {
+
+		void onStartup(ServletContext servletContext) throws ServletException;
+
+	}
+
+子类
+
+	RegistrationBean:(抽象类)
+
+	AbstractFilterRegistrationBean:
+		注册Filter的抽象基类
+
+	FilterRegistrationBean:
+		注册Filter
+
+	DynamicRegistrationBean:
+		基于javax.servlet.Registration.Dynamic的注册
+
+	ServletListenerRegistrationBean:
+		在Servlet中注册EventListener
+
+	ServletRegistrationBean:
+		注册Servlet
+
+	DelegatingFilterProxyRegistrationBean:

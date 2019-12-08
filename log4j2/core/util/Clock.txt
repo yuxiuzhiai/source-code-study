@@ -1,0 +1,19 @@
+Clock
+
+类
+
+	7
+
+描述
+
+	时间相关
+
+子类
+
+	PreciseClock:更精确的Clock
+		FixedPreciseClock:实现
+
+	SystemClock:返回System.currentTimeMills()
+	SystemMillisClock:跟上面一模一样
+	CachedClock
+	CoarseCachedClock
