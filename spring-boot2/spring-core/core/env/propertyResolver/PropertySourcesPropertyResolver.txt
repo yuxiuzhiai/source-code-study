@@ -1,5 +1,0 @@
-PropertySourcesPropertyResolver extend AbstractPropertySource
-
-注释
-
-    以PropertySources为基础解决查询属性值的为题

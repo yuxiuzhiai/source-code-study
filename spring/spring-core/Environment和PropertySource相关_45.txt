@@ -1,4 +1,4 @@
-Environment
+Environment(9)
 
 注释
     
@@ -50,3 +50,72 @@ Environment
 	StandardReactiveWebEnvironment:
 		继承自StandardEnvironment,没有重写或新增任何方法
 
+
+
+
+
+
+EnvironmentCapable(1)
+
+注释
+
+    指明对象包含了一个Environment并暴露了获取Environment的接口,所以的ApplicationContext都实现了这个接口
+
+
+
+
+
+
+PropertySourceLoader(3)
+
+接口注释
+    
+    通过SpringFactoriesLoader定位,用于加载PropertySource
+
+接口定义
+
+    public interface PropertySourceLoader {
+
+        String[] getFileExtensions();
+
+        PropertySource<?> load(String name, Resource resource, String profile)
+                throws IOException;
+
+    }
+
+子类
+
+    PropertiesPropertySourceLoader:加载.properties文件到PropertySource
+    YamlPropertySourceLoader:加载.yml/.yaml文件到PropertySource
+
+
+
+
+
+
+
+PropertySourceFactory(2)
+
+注释
+
+    用于创建基于Resource的PropertySource包装
+
+接口定义
+    
+    public interface PropertySourceFactory {
+
+        PropertySource<?> createPropertySource(@Nullable String name, EncodedResource resource) throws IOException;
+
+    }
+
+子类
+
+    DefaultPropertySourceFactory:包装每一个ResourcePropertySource中的Resource
+
+
+
+SpringConfigurationPropertySources(1)
+
+注释
+
+    转换MutablePropertySources到ConfigurationPropertySource的适配器
