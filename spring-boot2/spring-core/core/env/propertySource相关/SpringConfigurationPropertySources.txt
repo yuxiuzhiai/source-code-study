@@ -1,5 +1,0 @@
-SpringConfigurationPropertySources
-
-注释
-
-    转换MutablePropertySources到ConfigurationPropertySource的适配器
