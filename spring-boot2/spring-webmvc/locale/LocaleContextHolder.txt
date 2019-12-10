@@ -1,5 +1,0 @@
-LocaleContextHolder
-
-注释
-
-	将一个LocalContext关联到当前线程的holder class
