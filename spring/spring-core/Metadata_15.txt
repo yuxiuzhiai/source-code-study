@@ -1,0 +1,39 @@
+Metadata(9)
+
+AnnotatedTypeMetadata:定义访问特定类型AnnotationMetadata/MethodMetadata的元数据,不需要类已经被加载。有AnnotationMetadata和MethodMetadata两个子接口
+
+ClassMetadata:定义特定class的抽象元数据(不包括注解),不需要class已经被加载
+	子类
+		StandardClassMetadata:ClassMetadata的默认实现,使用标准反射来解析给定的Class
+
+MethodMetadata:应该是定义访问特定方法的元数据的方式
+	子类
+		StandardMethodMetadata:使用标准反射来解析给定的Method
+		SimpleMethodMetadata:使用ASM解析
+
+AnnotationMetadata:定义一种访问特定class的注解的方式,不需要类已经加载
+	子类
+		StandardAnnotationMetadata:使用反射的实现
+		SimpleAnnotationMetadata:使用ASM解析
+
+MetadataReader(2)
+
+	访问类元数据的简单门面,通过ASM org.springframework.asm.ClassReader读取读取一个.class文件,提取出它的元数据
+	子类
+		SimpleMetadataReader:基于ASM实现
+
+MetadataReaderFactory(4)
+	
+	MetadataReader的工厂接口
+
+	接口定义
+		public interface MetadataReaderFactory {
+		    MetadataReader getMetadataReader(String className) throws IOException;
+		    MetadataReader getMetadataReader(Resource resource) throws IOException;
+		}
+
+	子类
+
+	    SimpleMetadataReaderFactory:为每个请求创建一个org.springframwork.asm.ClassReader
+	    CachingMetadataReaderFactory:继承自SimpleMetadataReaderFactory,为每个Resource提供缓存
+	    ConcurrentReferenceCachingMetadataReaderFactory:继承自SimpleMetadataReaderFactory,也是提供缓存,不过是缓存在ConcurrentReferenceHashMap中
