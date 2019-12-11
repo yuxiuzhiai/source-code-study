@@ -1,0 +1,68 @@
+HandlerMapping(12)
+
+RequestCondition(11)
+    RequestMappingInfo
+
+HandlerMethodMappingNamingStrategy(2)
+
+注释
+    
+    定义请求和处理器之间的映射
+    Handler总是会包装成一个HandlerExecutionChain实例,该实例可能会有一些HandlerInterceptor实例.DispatcherServlet总是会调用每个HandlerInterceptor的preHandle方法,如果所有的preHandle方法都返回true才会调用handler本身
+
+接口定义
+    
+    public interface HandlerMapping {
+
+        String PATH_WITHIN_HANDLER_MAPPING_ATTRIBUTE = HandlerMapping.class.getName() + ".pathWithinHandlerMapping";
+
+        String BEST_MATCHING_PATTERN_ATTRIBUTE = HandlerMapping.class.getName() + ".bestMatchingPattern";
+
+        String INTROSPECT_TYPE_LEVEL_MAPPING = HandlerMapping.class.getName() + ".introspectTypeLevelMapping";
+
+        String URI_TEMPLATE_VARIABLES_ATTRIBUTE = HandlerMapping.class.getName() + ".uriTemplateVariables";
+
+        String MATRIX_VARIABLES_ATTRIBUTE = HandlerMapping.class.getName() + ".matrixVariables";
+
+        String PRODUCIBLE_MEDIA_TYPES_ATTRIBUTE = HandlerMapping.class.getName() + ".producibleMediaTypes";
+
+        HandlerExecutionChain getHandler(HttpServletRequest request) throws Exception;
+    }
+
+子接口
+
+    MatchableHandlerMapping:
+
+子类(10)
+
+    AbstractHandlerMapping:
+        支持排序,默认handler,handler interceptors,包括可以根据模式匹配的handler Interceptor
+
+    AbstractUrlHandlerMapping:
+        基于URL映射的HandlerMapping实现的抽象基类.
+        提供了映射handler到URL和可配置的URL查找的支持
+        支持ant-style的模式匹配
+
+    AbstractDetectingUrlHandlerMapping:
+        继承自AbstractUrlHandlerMapping,会去AC中查找所有的bean去探测URL映射
+
+    AbstractHandlerMethodMapping:
+        定义一个request和HandlerMethod之间的映射
+
+    RequestMappingInfoHandlerMapping:
+
+    RequestMappingHandlerMapping:
+        @RequestMapping注解相关
+
+    SimpleUrlHandlerMapping:
+        继承自AbstractUrlHandlerMapping
+
+    WebSocketHandlerMapping:
+        继承自SimpleUrlHandlerMapping,他匹配到的handler一般是WebSocketHttpRequestHandler或者SockJsHttpRequestHandler
+
+    WelcomePageHandlerMapping:
+        继承自AbstractUrlHandlerMapping
+
+    BeanNameUrlHandlerMapping:
+        DispatcherServlet使用的默认实现,和RequestMappingHandlerMapping一起使用
+        这个HandlerMapping映射URL到bean name

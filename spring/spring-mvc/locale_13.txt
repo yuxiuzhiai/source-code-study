@@ -1,0 +1,76 @@
+LocaleContext
+
+注释
+
+	决定当前Locale的策略接口
+	LocaleContext的实例会通过LocaleContextHolder与一个thread关联
+
+接口定义
+
+	public interface LocaleContext {
+
+		Locale getLocale();
+
+	}
+
+子接口
+
+	TimeZoneAwareLocaleContext:
+		添加当前timezone的支持
+
+子类
+	
+	SimpleLocaleContext
+	SimpleTimeZoneAwareLocaleContext
+
+
+
+LocaleContextHolder
+
+注释
+
+	将一个LocalContext关联到当前线程的holder class
+
+
+
+LocaleResolver
+
+注释
+
+	基于web的locale解决方法
+	这个接口允许基于request,session,cookies等实现.默认实现是AcceptHeaderLocaleResolver,简单地通过http header判断locale
+
+	使用RequestContext.getLocale()来得到当前controller或者view的locale
+
+接口定义
+
+	public interface LocaleResolver {
+
+		Locale resolveLocale(HttpServletRequest request);
+
+		void setLocale(HttpServletRequest request, @Nullable HttpServletResponse response, @Nullable Locale locale);
+
+	}
+
+子接口
+
+	LocaleContextResolver:
+		LocaleResolver的扩展,提供了更多的locale context,比如包括locale和time zone信息
+
+子类
+
+	AbstractLocaleResolver
+	AbstractLocaleContextResolver
+
+	AcceptHeaderLocaleResolver:
+		根据HTTP header中的"accept-language"判断locale
+
+	FixedLocaleResolver:
+		总是返回一个固定的Locale,默认值就是JVM中的
+
+	SessionLocaleResolver:
+		在用户session中存储一个locale属性
+
+	CookieLocaleResolver:
+		使用cookies的实现
+

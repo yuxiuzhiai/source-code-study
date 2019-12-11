@@ -1,0 +1,45 @@
+MultipartFile(3)
+
+MultipartRequest(6)
+
+MultipartResolver(3)
+
+MultipartRequest
+
+注释
+	
+	定义MultipartRequest
+
+接口定义
+
+	public interface MultipartRequest {
+
+		Iterator<String> getFileNames();
+
+		MultipartFile getFile(String name);
+
+		List<MultipartFile> getFiles(String name);
+
+		Map<String, MultipartFile> getFileMap();
+
+		MultiValueMap<String, MultipartFile> getMultiFileMap();
+
+		String getMultipartContentType(String paramOrFileName);
+
+	}
+
+子接口
+
+	MultipartHttpServletRequest:
+		为处理multipart content提供额外的方法
+
+子类
+
+	AbstractMultipartHttpServletRequest:
+		基础抽象类
+
+	DefaultMultipartHttpServletRequest:
+		默认实现
+	
+	StandardMultipartHttpServletRequest:
+		将一个HTTPServletRequest转化为MultipartHttpServletRequest的适配器类
