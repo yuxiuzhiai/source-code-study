@@ -1,0 +1,32 @@
+HandlerAdapter(6)
+
+注释
+
+接口定义
+
+	public interface HandlerAdapter {
+
+		boolean supports(Object handler);
+
+		ModelAndView handle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception;
+
+		long getLastModified(HttpServletRequest request, Object handler);
+
+	}
+
+子类
+
+	AbstractHandlerMethodAdapter:
+		支持HandlerMethod类型handler的HandlerAdapter的抽象基类
+
+	RequestMappingHandlerAdapter:
+		支持@RequestMapping注解的HandlerMethod
+
+	HttpRequestHandlerAdapter:
+		调用类型为HttpRequestHandler的handler
+
+	SimpleControllerHandlerAdapter:
+		调用Servlet的service方法去处理请求
+
+	SimpleControllerHandlerAdapter:
+		调用类型为Controller的handler
